@@ -1,0 +1,11 @@
+{% block tr_e_widget_data_component %}
+    <div class="tr-e-widget-data-component">
+        {% block tr_e_widget_data_component_title %}
+            <div class="tr-e-widget-data-component-inner">
+                <h4><b>{{ element.config.targetType.value }}</b>: {{ element.config.mode.value }}</h4>
+                
+                <h2>{{ $tc('global.cms.elements.tr-widget-data.labels.widgetName') }}</h2>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+/*Variables*/
+
+@function rem($pixels) {
+    @return #{$pixels/16px}rem;
+}
+
+/*COLORS*/
+$primary-color: #db3912;
+$primary-color-hov: #ff5d4f;
+
+$base-font-size: 16px;
+$default-color: #353535;
+$title-color: #273647;
+$white: #fff;
+$body_bg: #efe7da;
+$black: #000000;
+$base-font-family: 'Proxima Nova', sans-serif;
+$title-font-family: 'Capriola', sans-serif;
+$anim: all .2s ease;
+
+
+/*mediaqueries*/
+
+@mixin respond-to($width) {
+  @media only screen and (max-width: $width+ "px") {
+    @content;
+  }
+}
+
+@mixin respond-to-min($width) {
+  @media only screen and (min-width: $width+ "px") {
+    @content;
+  }
+}

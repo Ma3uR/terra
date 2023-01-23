@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Configuration</title>
+        <title lang="de-DE">Konfiguration</title>
+        <input-field type="time">
+            <name>runtime</name>
+            <label>Runtime of feed generation</label>
+            <label lang="de-DE">Zeitpunkt der Feed Erstellung</label>
+        </input-field>
+        <input-field type="single-select">
+            <name>ratingFilter</name>
+            <label>Filter by rating</label>
+            <label lang="de-DE">Bewertungen nach Rating filtern:</label>
+            <options>
+                <option>
+                    <id>0</id>
+                    <name>Show all</name>
+                    <name lang="de-DE">Alle Anzeigen</name>
+                </option>
+                <option>
+                    <id>1</id>
+                    <name>One more stars</name>
+                    <name lang="de-DE">Ein oder mehr Sterne</name>
+                </option>
+                <option>
+                    <id>2</id>
+                    <name>Two more stars</name>
+                    <name lang="de-DE">Zwei oder mehr Sterne</name>
+                </option>
+                <option>
+                    <id>3</id>
+                    <name>Three more stars</name>
+                    <name lang="de-DE">Drei oder mehr Sterne</name>
+                </option>
+                <option>
+                    <id>4</id>
+                    <name>Four more stars</name>
+                    <name lang="de-DE">Vier oder mehr Sterne</name>
+                </option>
+                <option>
+                    <id>5</id>
+                    <name>Five stars</name>
+                    <name lang="de-DE">Nur Fünf Sterne</name>
+                </option>
+            </options>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Advanced Configuration</title>
+        <title lang="de-DE">Erweiterte Konfiguration</title>
+
+        <component name="webmasterei-input-feed-url">
+            <name>domains</name>
+        </component>
+    </card>
+</config>

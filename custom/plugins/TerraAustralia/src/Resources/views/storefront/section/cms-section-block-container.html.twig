@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/section/cms-section-block-container.html.twig' %}
+
+{% block section_content_block_row %}
+    {% if block.noDisplayOnFront and block.noDisplayOnFront is same as(true) %}
+        {# Not display block if it marked as `noDisplayOnFront` #}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

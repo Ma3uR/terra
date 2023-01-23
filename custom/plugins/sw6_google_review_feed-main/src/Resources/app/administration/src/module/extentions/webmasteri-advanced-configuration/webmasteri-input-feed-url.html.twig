@@ -1,0 +1,32 @@
+<div class="webm-feed-component" v-if="this.availableDomains.length >= 1">
+    <h3>Api token</h3>
+    <div class="sw-block-field">
+        <div class="sw-block-field__block access-key">
+            <input type="text" v-model="accessToken" :label="'Access token'" :disabled="true">
+            <sw-button @click="generateAccessKey" variant="primary">Generate new access key</sw-button>
+        </div>
+    </div>
+    <br><br>
+
+    <h3>Feed Urls</h3>
+    <span>Select domains</span>
+    <sw-multi-select
+        :options="availableDomains"
+        labelProperty="url"
+        valueProperty="url"
+        v-model="selectedDomains">
+    </sw-multi-select>
+
+    <div class="sw-field sw-block-field sw-contextual-field sw-field--text sw-form-field-renderer sw-field--default">
+        <input v-for="url in this.feedUrls" :key="url" class="webm-feed-url" type="text" disabled="disabled"
+               :value="url">
+    </div>
+
+    <sw-button @click="generateFeed" :isLoading="isLoadingGeneration" variant="primary" class="mb32 ml5">
+        Generate feed
+    </sw-button>
+</div>
+
+<div class="webm-feed-component-placeholder" v-else>
+    <h2>Please select sale channel with available domains</h2>
+</div>

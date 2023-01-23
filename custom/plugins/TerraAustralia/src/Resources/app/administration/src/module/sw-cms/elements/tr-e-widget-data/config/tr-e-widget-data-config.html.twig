@@ -1,0 +1,57 @@
+{% block tr_e_widget_data_config %}
+    <div class="tr-e-widget-data-config">
+        <sw-tabs class="tr-e-widget-data-config__tabs" defaultItem="content">
+            <template slot-scope="{ active }" >
+                {% block tr_e_widget_data_config_tabs_content %}
+                    <sw-tabs-item :title="$tc('sw-cms.elements.general.config.tab.content')"
+                                  name="content"
+                                  :activeTab="active">
+                        {{ $tc('sw-cms.elements.general.config.tab.content') }}
+                    </sw-tabs-item>
+                {% endblock %}
+            </template>
+
+            <template slot="content" slot-scope="{ active }">
+                {% block tr_e_widget_data_config_content %}
+                    <sw-container v-if="active === 'content'" class="tr-e-widget-data-config__tab-content">
+                        {% block tr_e_widget_data_config_content_itemtype %}
+                            <sw-select-field 
+                                :label="$tc('global.cms.elements.tr-widget-data.labels.targetSource')"
+                                :helpText="$tc('global.cms.elements.tr-widget-data.labels.targetSourceHint')"
+                                v-model="element.config.targetType.value">
+                                    <option value="category">{{ $tc('global.cms.elements.tr-widget-data.labels.typeCategory') }}</option>
+                                </sw-select-field>
+                        {% endblock %}
+                        
+                        {% block tr_e_widget_data_config_content_itemmode %}
+                            <sw-select-field 
+                                :label="$tc('global.cms.elements.tr-widget-data.labels.mode')"
+                                v-model="element.config.mode.value">
+                                    <option value="seo">{{ $tc('global.cms.elements.tr-widget-data.labels.modes.seo') }}</option>
+                                </sw-select-field>
+                        {% endblock %}
+                        
+                        <template v-if="element.config.mode.value == 'seo'">
+                            {% block tr_e_widget_data_config_content_itemsettings_seo %}
+                               <sw-select-field
+                                :disabled="true"
+                                :label="$tc('global.cms.elements.tr-widget-data.labels.settings.seo.sourceType')"
+                                v-model="element.config.settings.value.seo.sourceType">
+                                    <option value="customFields">{{ $tc('global.cms.elements.tr-widget-data.labels.settings.seo.customFields') }}</option>
+                                </sw-select-field>
+                                
+                               <sw-field v-model="element.config.settings.value.seo.sourceFields"
+                                      type="text"
+                                      :label="$tc('global.cms.elements.tr-widget-data.labels.settings.seo.sourceFields')"
+                                      :helpText="$tc('global.cms.elements.tr-widget-data.labels.settings.seo.sourceFieldsHint')"
+                                      :placeholder="$tc('global.cms.elements.tr-widget-data.placeholders.settings.seo.sourceFields')">
+                                </sw-field>
+                            {% endblock %}
+                        </template>
+                        
+                    </sw-container>
+                {% endblock %}
+            </template>
+        </sw-tabs>
+    </div>
+{% endblock %}

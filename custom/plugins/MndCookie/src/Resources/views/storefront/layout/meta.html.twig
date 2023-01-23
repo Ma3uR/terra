@@ -1,0 +1,68 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_stylesheet %}
+    {{ parent() }}
+
+    {% set mndCookieConfig = config('MndCookie.config') %}
+
+    <style>
+        .mnd-cookie-bar {
+            background: {{ mndCookieConfig.backgroundColor|default('#000000') }}; color: {{ mndCookieConfig.textColor|default('#ffffff') }};
+        }
+        .mnd-cookie-bar a {
+            color: {{ mndCookieConfig.linkColor|default('#ffffff') }};
+        }
+        .mnd-cookie-bar a:hover, .mnd-cookie-bar a:active {
+            color: {{ mndCookieConfig.linkColor|default('#ffffff') }}; opacity:.7;
+        }
+        .mnd-cookie-modal .modal-content, .mnd-overlay-settings-link {
+            background: {{ mndCookieConfig.backgroundColor|default('#000000') }}; color: {{ mndCookieConfig.textColor|default('#ffffff') }};
+        }
+        .mnd-cookie-modal .modal-content a, .mnd-overlay-settings-link a {
+            color: {{ mndCookieConfig.linkColor|default('#ffffff') }};
+        }
+        .mnd-cookie-modal .modal-content a:hover, .mnd-cookie-modal .modal-content a:active, .mnd-overlay-settings-link a:hover, .mnd-overlay-settings-link a:active {
+            color: {{ mndCookieConfig.linkColor|default('#ffffff') }}; opacity:.7;
+        }
+        .mnd-cookie-modal .modal-header {
+            border:none;
+            color: {{ mndCookieConfig.textColor|default('#ffffff') }};
+            padding:1rem;
+        }
+        .mnd-cookie-modal h5 {
+            color: {{ mndCookieConfig.textColor|default('#ffffff') }};
+        }
+        .mnd-cookie-modal .modal-header button, .mnd-cookie-modal .modal-header .modal-title {
+            color: {{ mndCookieConfig.linkColor|default('#ffffff') }};
+        }
+        .mnd-cookie-modal .modal-header button:hover, .mnd-cookie-modal .modal-header button:active {
+            color: {{ mndCookieConfig.linkColor|default('#ffffff') }}; opacity:.7;
+        }
+
+        {% if mndCookieConfig.primaryButtonBgColor %}
+            .mnd-cookie-modal .modal-footer .btn-primary, .mnd-cookie-bar .mnd-cookie-bar-btns .btn-primary  {
+                background: {{ mndCookieConfig.primaryButtonBgColor }} !important;
+                border:1px solid {{ mndCookieConfig.primaryButtonBgColor }} !important;
+                color: {{ mndCookieConfig.primaryButtonTextColor|default('#ffffff') }} !important;
+            }
+
+            .mnd-cookie-modal .modal-footer .btn-primary:hover, .mnd-cookie-modal .modal-footer .btn-primary:active, .mnd-cookie-bar .mnd-cookie-bar-btns .btn-primary:hover, .mnd-cookie-bar .mnd-cookie-bar-btns .btn-primary:active {
+                background: {{ mndCookieConfig.primaryButtonBgColor }} !important; opacity:.7;
+                color: {{ mndCookieConfig.primaryButtonTextColor|default('#ffffff') }} !important;
+            }
+        {% endif %}
+
+        {% if mndCookieConfig.secondaryButtonBgColor %}
+            .mnd-cookie-modal .modal-footer .btn-outline-secondary, .mnd-cookie-bar .mnd-cookie-bar-btns .btn-outline-secondary {
+                background: {{ mndCookieConfig.secondaryButtonBgColor }} !important;
+                border:1px solid {{ mndCookieConfig.secondaryButtonBgColor }} !important;
+                color: {{ mndCookieConfig.secondaryButtonTextColor|default('#ffffff') }} !important;
+            }
+
+            .mnd-cookie-modal .modal-footer .btn-outline-secondary:hover, .mnd-cookie-modal .modal-footer .btn-outline-secondary:active, .mnd-cookie-bar .mnd-cookie-bar-btns .btn-outline-secondary:hover, .mnd-cookie-bar .mnd-cookie-bar-btns .btn-outline-secondary:active {
+                background: {{ mndCookieConfig.secondaryButtonBgColor }} !important; opacity:.7;
+                color: {{ mndCookieConfig.secondaryButtonTextColor|default('#ffffff') }} !important;
+            }
+        {% endif %}
+    </style>
+{% endblock %}

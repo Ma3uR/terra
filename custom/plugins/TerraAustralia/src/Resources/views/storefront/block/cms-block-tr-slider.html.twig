@@ -1,0 +1,11 @@
+{% block block_tr_slider %}
+    {% set element = block.slots.getSlot('slider') %}
+
+    <div class="col-12">
+        <section class="tr-banner js-banner-slider">
+            {% block block_image_slider_inner %}
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+            {% endblock %}
+        </section>
+    </div>
+{% endblock %}

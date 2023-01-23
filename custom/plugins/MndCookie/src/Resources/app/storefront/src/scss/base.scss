@@ -1,0 +1,199 @@
+.mnd-cookie-bar {
+    transform:translateY(100%);
+    transition: transform .5s ease-in-out;
+    padding: $spacer-md;
+    width:100%;
+    position: fixed;
+    bottom:0;
+    z-index:100000;
+
+    .mnd-cookie-bar-text-link {
+        text-decoration:underline !important;
+    }
+
+    .mnd-cookie-bar-text {
+        margin-bottom:$spacer-md;
+
+        a {
+            text-decoration: underline !important;
+        }
+    }
+
+    .mnd-cookie-bar-btns {
+        flex-grow: 0;
+        display:flex;
+        display:-webkit-flex;
+        flex-flow:column;
+
+        .mnd-btn-accept-all {
+            margin-bottom:$spacer-md;
+        }
+
+        .mnd-btn-accept-all {
+            order:1;
+            width:100%;
+        }
+
+        .mnd-btn-open-settings {
+            order:2;
+            width:100%;
+        }
+    }
+
+    &.is--active {
+        transform:translateY(0);
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .mnd-cookie-bar {
+        .mnd-cookie-bar-btns {
+            flex-flow: row nowrap;
+
+            .mnd-btn-accept-all, .mnd-btn-open-settings {
+                margin:0 $spacer-md 0 0;
+            }
+
+            .mnd-btn-accept-all {
+                order:2;
+                width:auto;
+            }
+
+            .mnd-btn-open-settings {
+                order:1;
+                width:auto;
+            }
+        }
+    }
+}
+
+.mnd-cookie-modal {
+    .mnd-cookie-bar-text-link {
+        text-decoration:underline !important;
+    }
+
+    .mnd-cookie-bar-text {
+        a {
+            text-decoration: underline !important;
+        }
+    }
+
+    .modal-footer {
+        flex-grow: 0;
+        display:flex;
+        display:-webkit-flex;
+        flex-flow:column;
+
+        .mnd-btn-accept-all {
+            margin:0 0 $spacer-md 0;
+        }
+
+        .mnd-btn-open-settings, .mnd-btn-save-settings {
+            margin:0;
+        }
+
+        .mnd-btn-accept-all {
+            order:1;
+            width:100%;
+        }
+
+        .mnd-btn-open-settings, .mnd-btn-save-settings {
+            order:2;
+            width:100%;
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .mnd-cookie-modal {
+        .modal-footer {
+            justify-content: space-between;
+            flex-flow:row nowrap;
+
+            .mnd-btn-accept-all {
+                margin-bottom:0;
+            }
+
+            .mnd-btn-open-settings, .mnd-btn-save-settings {
+                margin:0 $spacer-md 0 0;
+            }
+
+            .mnd-btn-accept-all {
+                order:2;
+                width:auto;
+            }
+
+            .mnd-btn-open-settings, .mnd-btn-save-settings {
+                order:1;
+                width:auto;
+            }
+        }
+    }
+}
+
+.mnd-settings-cookie-container {
+    .mnd-settings-cookie {
+        display:flex;
+        display:-webkit-flex;
+        justify-content: space-between;
+        padding:.625rem 0 0 0;
+        border-top:1px solid #bbb;
+
+        .mnd-settings-cookie-name {
+            flex: 0 50%;
+        }
+
+        .mnd-settings-cookie-status, .mnd-settings-cookie-toggle {
+            flex: 0 25%;
+            text-align:right;
+        }
+    }
+
+    .mnd-settings-cookie-text {
+        padding:.625rem 0;
+        opacity:.7;
+    }
+
+    .mnd-settings-cookie-toggle-disabled {
+        opacity:.5;
+    }
+}
+
+.mnd-overlay-settings-link {
+    position: fixed;
+    left:10px;
+    bottom:10px;
+    transform:translateX(-120%);
+    transition: transform .5s ease-in-out;
+    padding: $spacer-md;
+    z-index:100000;
+    box-shadow: 0 2px 20px 2px rgba($black, 0.4);
+
+    a {
+        text-decoration: none;
+    }
+
+    &.is--active {
+        transform:translateX(0);
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .mnd-cookie-bar {
+        padding: $spacer-md;
+        display:flex;
+        display:-webkit-flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .mnd-cookie-bar-text {
+            margin:0;
+        }
+
+        .mnd-cookie-bar-btns {
+            .mnd-btn-accept-all, .mnd-btn-open-settings {
+                margin:0 0 0 $spacer-md;
+            }
+        }
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "name": "biloba\/intl-translation-more-entities",
+    "description": "Translate with Auto Translation Pro More Entities",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "version": "1.0.1",
+    "require": {
+        "shopware/core": "^6.3",
+        "shopware/storefront": "^6.3",
+        "biloba/intl-translation": "^1.0.6"
+    },
+    "authors": [
+        {
+            "name": "Biloba IT"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Biloba\\IntlTranslationMoreEntities\\": "src\/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Biloba\\IntlTranslationMoreEntities\\BilobaIntlTranslationMoreEntities",
+        "plugin-icon": "plugin.png",
+        "shopware-min-version": "^6.3.0",
+        "copyright": "(c) by Biloba IT",
+        "label": {
+            "de-DE": "Auto Translation Pro Mehr Bereiche",
+            "en-GB": "Auto Translation Pro More Entities",
+            "fr-FR": "Auto Translation Pro plus de domaines",
+            "es-ES": "Auto Translation Pro más áreas",
+            "pt-PT": "Auto Translation Pro mais áreas",
+            "it-IT": "Auto Translation Pro altre aree",
+            "nl-NL": "Auto Translation Pro meer gebieden",
+            "pl-PL": "Auto Translation Pro więcej obszarów"
+        },
+        "description": {
+            "de-DE": "Dieses Addon für das Auto Translation Pro-Plugin ermöglicht es Ihnen, eine Übersetzung in mehr Bereichen wie Kategorien, Eigenschaften und mehr zu starten.",
+            "en-GB": "This addon Auto Translation Pro More Entities for the Auto Translation Pro plugin allows you to start a translation in more areas, such as categories, properties and more.",
+            "fr-FR": "Cet addon pour le plugin Auto Translation Pro vous permet de démarrer une traduction dans plus de domaines, tels que les catégories, les propriétés et plus encore.",
+            "es-ES": "Este addon Auto Translation Pro More Entities para el plugin Auto Translation Pro te permite iniciar una traducción en más áreas, como categorías, propiedades y más.",
+            "pt-PT": "Este suplemento para o plugin Auto Translation Pro permite-lhe iniciar uma tradução em mais áreas, tais como categorias, propriedades e muito mais.",
+            "it-IT": "Questo add-on Auto Translation Pro More Entities per il plugin Auto Translation Pro permette di avviare una traduzione in più aree, come categorie, proprietà e altro ancora.",
+            "nl-NL": "Deze addon voor de Auto Translation Pro plugin stelt u in staat om een vertaling te starten op meer gebieden, zoals categorieën, eigenschappen en meer.",
+            "pl-PL": "Ten dodatek do wtyczki Auto Translation Pro pozwala na rozpoczęcie tłumaczenia w większej liczbie obszarów, takich jak kategorie, właściwości i inne."
+        },
+        "manufacturerLink": {
+            "de-DE": "https:\/\/www.biloba-it.de\/online-shop\/",
+            "en-GB": "https:\/\/www.biloba-it.de\/online-shop\/"
+        },
+        "supportLink": {
+            "de-DE": "https://www.biloba-it.de/anfrage/",
+            "en-GB": "https://www.biloba-it.de/anfrage/"
+        }
+    },
+    "minimum-stability": "RC",
+    "require-dev": {
+        "evert/phpdoc-md": "^0.2.0"
+    }
+}

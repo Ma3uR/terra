@@ -1,0 +1,43 @@
+.tr-e-links-config {
+    .tr-e-links-config__cover {
+        margin-bottom: 22px;
+    }
+    
+    .tr-e-links-config__content {
+        .tr-e-links-config__controls {
+            margin-bottom: 22px;
+        }
+        
+        .tr-e-links-config__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 15px 15px;
+            height: 100%;
+            
+            .tr-e-links-config__inner-link {
+                padding: 10px;
+                border: 1px solid #d8d8d8;
+                border-radius: 3px;
+        
+                .tr-e-links-config__inner-link__field-label {
+                    margin-bottom: 10px;
+                }
+                
+                .tr-e-links-config__inner-link__field-url {
+                    margin-bottom: 10px;
+                }
+                
+                .tr-e-links-config__inner-link__remove {
+                    .tr-e-links-config__inner-link__remove-icon {
+                        margin-right: 7px;
+                        cursor: pointer;
+                    }
+                    
+                    .tr-e-links-config__inner-link__remove-icon:hover {
+                        color: #de294c;
+                    }
+                }
+            }
+        }
+    }
+}

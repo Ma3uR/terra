@@ -1,0 +1,41 @@
+{
+    "name": "eightworks/eightworks-addon-product-header",
+    "description": "Zeitgesteuerte individuelle Produkt-Header",
+    "type": "shopware-platform-plugin",
+    "version": "v1.0.0",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "8works"
+        }
+    ],
+    "require": {
+        "shopware/core": ">=6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Eightworks\\EightworksAddonProductHeader\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Eightworks\\EightworksAddonProductHeader\\EightworksAddonProductHeader",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "copyright": "(c) by 8works",
+        "label": {
+            "de-DE": "Zeitgesteuerte individuelle Produkt-Header",
+            "en-GB": "Time controlled individual product headers"
+        },
+        "description": {
+            "de-DE": "Zeitgesteuerte individuelle individuelle Header je Produkt. Mehr Informationen zum Plugin: https://www.8works.de/docs/#/eightworks/eightworksaddonproductheader/doc",
+            "en-GB": "Time controlled individual product headers for each product. More information: https://www.8works.de/docs/#/eightworks/eightworksaddonproductheader/doc"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.8works.de/",
+            "en-GB": "https://www.8works.de/"
+        },
+        "supportLink": {
+            "de-DE": "https://www.8works.de/docs/#/eightworks/eightworksaddonproductheader/doc",
+            "en-GB": "https://www.8works.de/docs/#/eightworks/eightworksaddonproductheader/doc"
+        }
+    }
+}

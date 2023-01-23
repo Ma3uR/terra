@@ -1,0 +1,25 @@
+{
+    "pickware-dhl": {
+        "special-addresses": {
+            "storefront": {
+                "post-number": "PostNumber",
+                "post-number-placeholder": "Enter PostNumber...",
+                "regular": {
+                    "radio-button-label": "Regular"
+                },
+                "packstation": {
+                    "radio-button-label": "DHL Packstation",
+                    "address-editor-title-extension": "(DHL Packstation)",
+                    "number-field-label": "Packstation number",
+                    "number-field-placeholder": "Enter Packstation number..."
+                },
+                "post-office": {
+                    "radio-button-label": "DHL Paketshop or Deutsche Post post office",
+                    "address-editor-title-extension": "(DHL Paketshop or Deutsche Post post office)",
+                    "number-field-label": "Paketshop number",
+                    "number-field-placeholder": "Enter Paketshop number..."
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,230 @@
+{
+    "global": {
+        "actions": {
+            "save": "Save",
+            "add": "Add",
+            "cancel": "Cancel",
+            "back": "Back"
+        },
+        "placeholders": {
+            "name": "Name...",
+            "title": "Title...",
+            "label": "Label...",
+            "caption": "Caption...",
+            "link": "Link to..."
+        },
+        "labels": {
+            "empty": "Nothing found",
+            "name": "Name",
+            "title": "Title",
+            "label": "Label",
+            "caption": "Caption",
+            "active": "Active",
+            "link": "Link to"
+        },
+        "cms": {
+            "elements": {
+                "tr-slider": {
+                    "label": "Terra Slider",
+                    "labels": {
+                        "btnText": "Zum Shop",
+                        "btnName": "Button name",
+                        "label": "Label slide",
+                        "title": "Title slide"
+                    },
+                    "placeholders": {
+                        "label": "Enter label slide...",
+                        "title": "Enter title slide..."
+                    }
+                },
+                "tr-widget": {
+                    "label": "Terra Widget",
+                    "labels": {
+                        "target": "Entity",
+                        "targetType": "Type Entity",
+                        "typeCategory": "Category",
+                        "widgetName": "Widget name"
+                    },
+                    "placeholders": {
+                        "target": "Entity...",
+                        "targetType": "Type entity..."
+                    }
+                },
+                "tr-feed": {
+                    "label": "Single Feed"
+                },
+                "tr-title": {
+                    "label": "Simple text (title, label)"
+                },
+                "tr-products": {
+                    "label": "Terra Products Block",
+                    "labels": {
+                        "title": "Title",
+                        "selection": "Products"
+                    },
+                    "placeholders": {
+                        "title": "Title...",
+                        "selection": "Products..."
+                    },
+                    "config": {
+                        "textProductStreamPerformanceHint": "Please keep in mind: Dynamic product groups might have a noticeable performance impact, depending on the complexity of the product group's filters and the amount of sliders shown on one page.",
+                        "label": {
+                            "productAssignmentType": "Product assignment",
+                            "productStreamChoice": "Dynamic product group",
+                            "productStreamSorting": "Sorting",
+                            "defaultSorting": "Sorting",
+                            "productStreamLimit": "Maximum number of products"
+                        },
+                        "placeholder": {
+                            "productStreamChoice": "Select a dynamic product group",
+                            "productStreamSorting": "Select a sorting...",
+                            "defaultSorting": "Select a sorting..."
+                        },
+                        "productAssignmentTypeOptions": {
+                            "manual": "Manual assignment",
+                            "productStream": "Dynamic product group"
+                        }
+                    }
+                },
+                "tr-manufacturers": {
+                    "label": "Terra Manufacturers Slider",
+                    "labels": {
+                        "title": "Title",
+                        "displayTitle": "Show title on storefront",
+                        "manufacturers": "Manufacturers"
+                    },
+                    "placeholders": {
+                        "title": "Title...",
+                        "manufacturers": "Manufacturers..."
+                    }
+                },
+                "tr-contacts": {
+                    "label": "Terra Contacts",
+                    "labels": {
+                        "background": "Background Image",
+                        "title": "Title",
+                        "phone": "Phone",
+                        "email": "Email",
+                        "mode": "Mode",
+                        "linkto": "Link to page",
+                        "linktoLabel": "Ask a Question"
+                    },
+                    "placeholders": {
+                        "title": "Title...",
+                        "phone": "Phone...",
+                        "email": "Email...",
+                        "linkto": "Link to page..."
+                    }
+                },
+                "tr-links": {
+                    "label": "LinkBox",
+                    "labelLink": "Label link",
+                    "labels": {
+                        "cover": "Background Image"
+                    }
+                },
+                "tr-contacts-widget": {
+                    "label": "Terra Contacts Widget",
+                    "labels": {
+                        "background": "Background Image",
+                        "title": "Title",
+                        "phone": "Phone",
+                        "email": "Email",
+                        "linkto": "Link to page",
+                        "linktoLabel": "Ask a Question"
+                    },
+                    "placeholders": {
+                        "title": "Title...",
+                        "phone": "Phone...",
+                        "email": "Email...",
+                        "linkto": "Link to page..."
+                    }
+                },
+                "tr-widget-data": {
+                    "label": "Terra Widget Data",
+                    "labels": {
+                        "target": "Entity",
+                        "targetSource": "Entity Source",
+                        "targetSourceHint": "The widget will look for a data source on the page where it is loaded",
+                        "typeCategory": "Category",
+                        "widgetName": "Widget Data",
+                        "mode": "Widget mode",
+                        "modes": {
+                            "seo": "Seo"
+                        },
+                        "settings": {
+                            "seo": {
+                                "sourceType": "Data source",
+                                "sourceFields": "Data fields",
+                                "sourceFieldsHint": "Field names ​​must be separated by commas. E.g. `name_field, name_field2, ...`",
+                                "customFields": "Custom Fields"
+                            }
+                        }
+                    },
+                    "placeholders": {
+                        "target": "Entity...",
+                        "targetType": "Type entity...",
+                        "settings": {
+                            "seo": {
+                                "sourceFields": "Data fields..."
+                            }
+                        }
+                    }
+                }
+            },
+            "blocks": {
+                "tr-slider": {
+                    "label": "Terra Slider"
+                },
+                "tr-widgetbox4": {
+                    "label": "Terra WidgetBox, four widgets"
+                },
+                "tr-benefits": {
+                    "label": "Terra Benefits"
+                },
+                "tr-products": {
+                    "label": "Terra Products Block"
+                },
+                "tr-manufacturers": {
+                    "label": "Terra Manufacturers Slider"
+                },
+                "tr-contacts": {
+                    "label": "Terra Contacts"
+                },
+                "tr-links": {
+                    "label": "Terra LinkBox"
+                },
+                "tr-listing-headline": {
+                    "label": "Listing Headline"
+                },
+                "tr-contacts-widget": {
+                    "label": "Terra Contacts Widget"
+                },
+                "tr-widgetbox13": {
+                    "label": "Terra WidgetBox, contacts + three widgets"
+                },
+                "tr-widget-data": {
+                    "label": "Terra Widget Data"
+                }
+            }
+        },
+        "category-header-widget": {
+            "cardTitle": "Header Widget Products",
+            "labels": {
+                "productAssignmentType": "Product assignment",
+                "productStreamChoice": "Dynamic product group",
+                "defaultSorting": "Sorting",
+                "products": "Products"
+            },
+            "placeholders": {
+                "productStreamChoice": "Select a dynamic product group",
+                "defaultSorting": "Select a sorting...",
+                "products": "Products..."
+            },
+            "productAssignmentTypeOptions": {
+                "manual": "Manual assignment",
+                "productStream": "Dynamic product group"
+            }
+        }
+    }
+}

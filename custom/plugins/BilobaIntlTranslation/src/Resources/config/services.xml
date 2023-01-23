@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="Biloba\IntlTranslation\Util\Logger" class="Monolog\Logger">
+            <factory service="Shopware\Core\Framework\Log\LoggerFactory" method="createRotating"/>
+            <argument type="string">biloba_intl_translation</argument>
+        </service>
+
+        <service id="Biloba\IntlTranslation\Core\Content\BilobaIntlTranslation\ConfigDefinition">
+            <tag name="shopware.entity.definition" entity="biloba_intl_translation_config" />
+        </service>
+
+        <service id="Biloba\IntlTranslation\Core\Content\BilobaIntlTranslation\LogDefinition">
+            <tag name="shopware.entity.definition" entity="biloba_intl_translation_log" />
+        </service>
+
+        <service id="Biloba\IntlTranslation\Core\Content\Api\TranslationController" public="true">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <argument type="service" id="Biloba\IntlTranslation\Service\TranslatorService"/>
+        </service>
+
+        <service id="Biloba\IntlTranslation\Components\LanguageProviders\BaseLanguageProvider">
+            <tag name="biloba.intl_translation.language_provider"/>
+        </service>
+
+        <service id="Biloba\IntlTranslation\Components\TranslationApi\DeepL">
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+
+            <tag name="biloba.intl_translation.api"/>
+        </service>
+
+        <service id="Biloba\IntlTranslation\Components\TranslationApi\Google">
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+            
+            <tag name="biloba.intl_translation.api"/>
+        </service>
+
+        <service id="Biloba\IntlTranslation\Components\EntityHandlers\ProductEntityHandler">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+            
+            <tag name="biloba.intl_translation.entity_handler"/>
+        </service>
+
+        <service id="Biloba\IntlTranslation\Service\TranslationLogService">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+            <argument type="service" id="biloba_intl_translation_log.repository"/>
+        </service>
+        <service id="biloba.intl_translation.translation_log" alias="Biloba\IntlTranslation\Service\TranslationLogService" public="true"/>
+
+        <service id="Biloba\IntlTranslation\Service\TranslatorService" public="true">
+            <argument type="tagged" tag="biloba.intl_translation.api"/>
+            <argument type="tagged" tag="biloba.intl_translation.entity_handler"/>
+            <argument type="tagged" tag="biloba.intl_translation.language_provider"/>
+            <argument type="tagged" tag="biloba.intl_translation.text_processor"/>
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+            <argument type="service" id="Biloba\IntlTranslation\Service\TranslationLogService"/>
+            <argument type="service" id="Biloba\IntlTranslation\Service\LicenceService"/>
+        </service>
+        <service id="biloba.intl_translation.translator" alias="Biloba\IntlTranslation\Service\TranslatorService" public="true"/>
+
+        <service id="Biloba\IntlTranslation\Service\LicenceService" public="true">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Shopware\Core\Framework\Store\Services\StoreClient"/>
+            <argument type="service" id="Shopware\Core\Framework\Store\Services\StoreService"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="user.repository"/>
+            <argument type="service" id="plugin.repository"/>
+            <argument type="service" id="cache.object"/>
+        </service>
+
+        <service id="Biloba\IntlTranslation\Command\TranslateCommand">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <argument type="service" id="Biloba\IntlTranslation\Service\TranslatorService"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="Biloba\IntlTranslation\Command\LanguageCommand">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <argument type="service" id="Biloba\IntlTranslation\Service\TranslatorService"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="Biloba\IntlTranslation\Components\TextProcessors\Cleanup">
+            <tag name="biloba.intl_translation.text_processor"/>
+        </service>
+    </services>
+</container>

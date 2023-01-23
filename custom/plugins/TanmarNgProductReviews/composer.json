@@ -1,0 +1,51 @@
+{
+    "name": "tanmar/product-reviews",
+    "description": "Customer Friendly Product Reviews",
+    "version": "v1.2.0",
+    "type": "shopware-platform-plugin",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Tanmar Webentwicklung"
+        }
+    ],
+    "require": {
+        "shopware/core": "~6.4",
+        "shopware/storefront": "*",
+        "shopware/administration": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Tanmar\\ProductReviews\\TanmarNgProductReviews",
+        "copyright": "(c) by Tanmar Webentwicklung",
+        "label": {
+            "de-DE": "Kundenfreundliche Artikel Bewertungen",
+            "en-GB": "Customer Friendly Product Reviews"
+        },
+        "description": {
+            "de-DE": "Kundenfreundliche Artikel Bewertungen für Shopware 6",
+            "en-GB": "Customer Friendly Product Reviews"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.tanmar.de",
+            "en-GB": "https://www.tanmar.de"
+        },
+        "supportLink": {
+            "de-DE": "https://www.tanmar.de/kontakt/",
+            "en-GB": "https://www.tanmar.de/kontakt/"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Tanmar\\ProductReviews\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tanmar\\ProductReviews\\Test\\": "tests/"
+        }
+    },
+    "conflict": {
+        "shopware/storefront": "<6,>=7",
+        "shopware/administration": "<6,>=7"
+    }
+}

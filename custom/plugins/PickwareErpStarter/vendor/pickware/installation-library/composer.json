@@ -1,0 +1,47 @@
+{
+    "name": "pickware/installation-library",
+    "type": "library",
+    "description": "A library with installers for Shopware 6 plugin installations",
+    "version": "2.0.1",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Pickware",
+            "email": "info@pickware.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "doctrine/dbal": "^2.10.0",
+        "shopware/core": "6.4.*",
+        "symfony/polyfill-php80": "^1.22.1",
+        "symfony/yaml": "~5.2.3"
+    },
+    "require-dev": {
+        "mikey179/vfsstream": "^1.6",
+        "phpunit/phpunit": "^8.5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pickware\\InstallationLibrary\\": "src"
+        },
+        "exclude-from-classmap": [
+            "**.unit.php",
+            "**.integration.php"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@remove-lock-file"
+        ],
+        "post-update-cmd": [
+            "@remove-lock-file"
+        ],
+        "remove-lock-file": [
+            "# Workaround as long as ocramius/package-versions is incompatible with composer config `lock: false`",
+            "rm composer.lock"
+        ],
+        "test:integration": "${SHOPWARE_DIR}/vendor/bin/phpunit --config phpunit.integration.xml --testdox",
+        "test:unit": "./vendor/bin/phpunit --config phpunit.unit.xml --testdox"
+    }
+}

@@ -1,0 +1,21 @@
+{% block clever_reach_initialSync_item %}
+    <li class="cr-list-group-item" v-bind:class="{disabled:disabled}" data-task="subscriberlist">
+        <div class="cr-content-window-wrapper">
+            <div class="cr-content-window">
+                <div>
+                    <i class="cr-icofont cr-icofont-circle">
+                        <i class="cr-icofont cr-icofont-2x" v-bind:class="classStatus" aria-hidden="true" data-status="subscriberlist"></i>
+                    </i>
+                </div>
+                <div class="cr-item">
+                    <div class="cr-item-text">
+                        {{ displayText }}
+                    </div>
+                    <div class="cr-item-badge">
+                        <span data-progress="subscriberlist">{{progress}}%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+{% endblock %}

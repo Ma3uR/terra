@@ -1,0 +1,29 @@
+{% block element_tr_e_widget %}
+    {% set elConfig = element.fieldConfig.elements %}
+    {% set category = element.data %}
+    
+    {% if category and category.active is same as(true) %}
+        <div class="tr-category-list__item">
+            <div class="tr-category-list__item-cont" {% if category.media %}style="background-image: url('{{ category.media.url }}')"{% endif %}>
+                <div class="tr-category-list__item-top">
+                    <div class="tr-category-list__title">{{ category.translated.name }}</div>
+                    
+                    {% if category.childs %}
+                        {% for child in category.childs %}
+                            {% if child.active is same as(true) %}
+                                {% set childUrl = seoUrl('frontend.navigation.page', { navigationId: child.id }) %}
+                                <a href="{{ childUrl }}" class="tr-category-list__sub-link">{{ child.translated.name }}<span class="tr-category-list__arrow"></span></a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                
+                {% set url = element.config.target.value ? seoUrl('frontend.navigation.page', { navigationId: element.config.target.value }) : 'javascript:void(0)' %}
+                <a href="{{ url }}" class="tr-category-list__link">
+                    <span class="tr-category-list__link-el">{{ "terraAustralia.cms.elements.tr-widget-category.linkTo"|trans }}</span>
+                    <span class="tr-category-list__arrow"></span>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

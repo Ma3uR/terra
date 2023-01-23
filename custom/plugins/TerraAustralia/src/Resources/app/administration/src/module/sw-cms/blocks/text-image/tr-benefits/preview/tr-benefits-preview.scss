@@ -1,0 +1,32 @@
+.tr-benefits-preview {
+    display: flex;
+    flex-direction: column;
+    
+    h3 {
+        display: block;
+        text-align: center;
+        margin: 5px 0;
+        font-size: 20px;
+        line-height: 22px;
+    }
+    
+    .tr-benefits-preview__inner {
+        position: relative;
+        display: flex;
+        padding: 10px;
+    
+        .tr-benefits-preview__inner-feed {
+            display: block;
+            margin: 0 5px;
+    
+            img {
+            }
+            
+            h5 {
+                font-size: 14px;
+                line-height: 16px;
+                text-align: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+{% sw_extends '@parent/storefront/page/product-detail/review/review-item.html.twig' %}
+
+{% block page_product_detail_review_item_title %}
+    {% set tanmarProductReviewsDesignData = context.context.extensions.tanmarProductReviewsDesignData %}
+    {% if not tanmarProductReviewsDesignData.active %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block page_product_detail_review_item_content %}
+    {% set tanmarProductReviewsDesignData = context.context.extensions.tanmarProductReviewsDesignData %}
+    {% if tanmarProductReviewsDesignData.active %}
+        <div class="tanmar-product-reviews-design-review-item-text-container">
+            {% block tanmar_product_reviews_design_page_product_detail_review_item_title %}
+                <div class="col-md-auto product-detail-review-item-title">
+                    <p class="h5">
+                        {{ review.title }}
+                    </p>
+                </div>
+            {% endblock %}
+            {{ parent() }}
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block page_product_detail_review_item %}
+    {% set tanmarProductReviewsDesignData = context.context.extensions.tanmarProductReviewsDesignData %}
+    {% if tanmarProductReviewsDesignData.active and (tanmarProductReviewsDesignData.readMoreCounter > 0) %}
+        <div class="tanmar-product-reviews-design-list-content {% if loop.index <= tanmarProductReviewsDesignData.readMoreCounter %}{% else %}is--hidden{% endif %}">
+            {{ parent() }}
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

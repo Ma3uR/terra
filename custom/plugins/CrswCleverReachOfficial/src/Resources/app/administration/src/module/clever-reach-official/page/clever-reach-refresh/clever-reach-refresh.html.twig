@@ -1,0 +1,26 @@
+{% block clever_reach_refresh %}
+    <clever-reach-container>
+        <sw-loader v-if="isLoading"></sw-loader>
+        <clever-reach-content-window-wrapper v-if="!showIframe">
+            <div class="clever-reach-refresh">
+                <div class="cr-refresh-icon-container">
+                    <img class="cr-welcome-icon" :src="$tc('clever-reach.refresh.helloIcon')">
+                </div>
+
+                <h3>
+                    {{ $tc('clever-reach.refresh.title') }}
+                </h3>
+                <div class="clever-reach-refresh-main-text">
+                    {{ $tc('clever-reach.refresh.description', 1, {id:userId}) }}
+                </div>
+                <div class="clever-reach-refresh-button cr-button-container">
+                    <button class="cr-primary" id="cr-log-account">
+                        {{ $tc('clever-reach.refresh.authenticateButtonText') }}
+                    </button>
+                </div>
+            </div>
+        </clever-reach-content-window-wrapper>
+
+        <clever-reach-iframe :type="type" v-if="showIframe"/>
+    </clever-reach-container>
+{% endblock %}

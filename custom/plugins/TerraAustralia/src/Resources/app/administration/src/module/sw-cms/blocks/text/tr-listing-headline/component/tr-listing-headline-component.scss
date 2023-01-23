@@ -1,0 +1,14 @@
+.tr-listing-headline-component {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    
+    .tr-listing-headline-component-links {
+        margin-bottom: 22px;
+        border-bottom: 1px solid #e5e5e5;
+        padding-bottom: 20px;
+    }
+    
+    .tr-listing-headline-component-text {
+    }
+}

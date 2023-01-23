@@ -1,0 +1,83 @@
+{% block tr_e_links_config %}
+    <div class="tr-e-links-config">
+        
+        {% block tr_e_links_config_cover %}
+            <div class="tr-e-links-config__cover">
+                <sw-media-upload-v2 variant="regular"
+                                 class="tr-e-links-config-cover"
+                                 :uploadTag="uploadTag"
+                                 :source="previewSource"
+                                 :allowMultiSelect="false"
+                                 :defaultFolder="cmsPageState.pageEntityName"
+                                 :label="$tc('global.cms.elements.tr-links.labels.cover')"
+                                 @media-upload-sidebar-open="onOpenMediaModal"
+                                 @media-upload-remove-image="onImageRemove">
+                </sw-media-upload-v2>
+                <sw-upload-listener
+                        :uploadTag="uploadTag"
+                        autoUpload
+                        @media-upload-finish="onImageUpload">
+                </sw-upload-listener>
+            </div>
+        {% endblock %}
+        
+        {% block tr_e_links_config_content %}
+            <div class="tr-e-links-config__content">
+                {% block tr_e_links_config_controls %}
+                    <div class="tr-e-links-config__controls">
+                        {% block tr_e_links_config_controls_add %}
+                            <sw-button @click="addLink" variant="default">{{ $tc('global.actions.add') }}</sw-button>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+                
+                {% block tr_e_links_config_content %}
+                    <div class="tr-e-links-config__inner">
+                        <div v-for="link in links" class="tr-e-links-config__inner-link">
+                            <sw-field v-model="link.label"
+                                      class="tr-e-links-config__inner-link__field-label"
+                                      type="text"
+                                      :label="$tc('global.labels.label')"
+                                      :placeholder="$tc('global.placeholders.label')"
+                                      @change="onChange">
+                            </sw-field>
+                            
+                            <sw-field v-model="link.link"
+                                      class="tr-e-links-config__inner-link__field-url"
+                                      type="text"
+                                      :label="$tc('global.labels.link')"
+                                      :placeholder="$tc('global.placeholders.link')"
+                                      @change="onChange">
+                            </sw-field>
+                            
+                            {% block sw_cms_element_gbc_post_slider_arrow_right %}
+                                <div class="tr-e-links-config__inner-link__remove">
+                                    <sw-icon class="tr-e-links-config__inner-link__remove-icon"
+                                             @click="onDelete(link)"
+                                             name="default-action-trash"
+                                             size="16">
+                                    </sw-icon>
+                                </div>
+                            {% endblock %}
+                        </div>
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+        
+        {% block tr_e_links_config_cover_modal %}
+            <sw-media-modal-v2
+                variant="regular"
+                v-if="mediaModalIsOpen"
+                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                :entityContext="cmsPageState.entityName"
+                :allowMultiSelect="false"
+                :initialFolderId="cmsPageState.defaultMediaFolderId"
+                @media-upload-remove-image="onImageRemove"
+                @media-modal-selection-change="onSelectionChanges"
+                @modal-close="onCloseModal">
+            </sw-media-modal-v2>
+        {% endblock %}
+        
+    </div>
+{% endblock %}

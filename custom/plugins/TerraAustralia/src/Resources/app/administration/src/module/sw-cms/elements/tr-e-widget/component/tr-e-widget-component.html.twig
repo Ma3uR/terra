@@ -1,0 +1,10 @@
+{% block tr_e_widget_component %}
+    <div class="tr-e-widget-component">
+        {% block tr_e_widget_component_title %}
+            <div class="tr-e-widget-component-inner">
+                <h2 v-if="src">{{ src.title || src.name }}</h2>
+                <h2 v-else>{{ $tc('global.cms.elements.tr-widget.labels.widgetName') }}</h2>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

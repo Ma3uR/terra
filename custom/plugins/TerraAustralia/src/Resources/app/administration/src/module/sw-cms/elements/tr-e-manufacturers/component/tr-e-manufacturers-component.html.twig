@@ -1,0 +1,36 @@
+{% block sw_cms_element_tr_e_manufacturers_component %}
+    <div class="tr-e-manufacturers-component">
+        {% block sw_cms_element_tr_e_manufacturers_component_title %}
+            <div v-if="element.config.title.value" class="tr-e-manufacturers-component__title">
+                {{ element.config.title.value }}
+            </div>
+        {% endblock %}
+        
+        {% block sw_cms_element_tr_e_manufacturers_component_content %}
+            <div class="tr-e-manufacturers-component__content">
+                {% block sw_cms_element_tr_e_manufacturers_component_content_holder %}
+                    <div class="tr-e-manufacturers-component__manufacturers-holder">
+                        <template v-if="!element.data || !element.data.manufacturers">
+                            {% block tr_e_manufacturers_component_manufacturers__demodata %}
+                                <div v-for="index in 4" class="tr-e-manufacturers-component__manufacturers-item">
+                                    <img :src="'/administration/static/img/cms/preview_mountain_small.jpg' | asset">
+                                </div>
+                            {% endblock %}
+                        </template>
+
+                        <template v-else>
+                            {% block tr_e_manufacturers_component_manufacturers__items %}
+                                <div class="tr-e-manufacturers-component__manufacturers-item"
+                                    v-for="(manufacturer, index) in element.data.manufacturers"
+                                    v-if="index < 4">
+                                    <img v-if="manufacturer.media" :src="manufacturer.media.url">
+                                    <span v-else>{{ manufacturer.name }}</span>
+                                </div>
+                            {% endblock %}
+                        </template>
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

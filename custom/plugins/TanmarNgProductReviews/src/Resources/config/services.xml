@@ -1,0 +1,119 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Tanmar\ProductReviews\Service\ConfigService">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="request_stack"/>
+        </service>
+
+        <service id="Tanmar\ProductReviews\Service\ProductReviewsService">
+            <argument type="service" id="Tanmar\ProductReviews\Service\ConfigService"/>
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="product_review.repository"/>
+        </service>
+
+        <service id="Tanmar\ProductReviews\Service\PromotionService">
+            <argument type="service" id="Tanmar\ProductReviews\Service\ConfigService"/>
+            <argument type="service" id="promotion.repository"/>
+            <argument type="service" id="promotion_individual_code.repository" />
+            <argument type="service" id="Shopware\Core\Checkout\Promotion\Util\PromotionCodeService" />
+        </service>
+        
+        <service id="Tanmar\ProductReviews\Service\OrderService">
+            <argument type="service" id="Tanmar\ProductReviews\Service\ConfigService"/>
+            <argument type="service" id="order.repository"/>
+        </service>
+
+        <service id="Tanmar\ProductReviews\Storefront\Page\StorefrontRenderSubscriber">
+            <argument type="service" id="Tanmar\ProductReviews\Service\ConfigService"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Tanmar\ProductReviews\Storefront\Page\Checkout\CheckoutPageSubscriber">
+            <argument type="service" id="Tanmar\ProductReviews\Service\ConfigService"/>
+            <argument type="service" id="Tanmar\ProductReviews\Service\OrderService"/>
+            <argument type="service" id="request_stack"/>
+            <argument type="service" id="order.repository"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+
+        <service id="Tanmar\ProductReviews\Components\LoggerHelper" public="true">
+            <argument type="service" id="Tanmar\ProductReviews\Service\ConfigService"/>
+            <argument>%kernel.environment%</argument>
+            <argument type="service" id="monolog.logger.business_events"/>
+        </service>
+
+        <service id="Tanmar\ProductReviews\Components\MailHelper" public="true">
+            <argument type="service" id="Tanmar\ProductReviews\Service\ConfigService"/>
+            <argument type="service" id="Tanmar\ProductReviews\Service\PromotionService"/>
+            <argument type="service" id="Shopware\Core\Content\Mail\Service\MailService"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="mail_template.repository"/>
+            <argument type="service" id="sales_channel.repository"/>
+            <argument type="service" id="Tanmar\ProductReviews\Components\LoggerHelper"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+
+            <!-- until NEXT-9294 is fixed -->
+            <argument type="service" id="customer_group.repository"/>
+            <argument type="service" id="payment_method.repository"/>
+            <argument type="service" id="shipping_method.repository"/>
+        </service>
+
+
+        <service id="Tanmar\ProductReviews\Storefront\Controller\TanmarProductReviewsController" public="true">
+            <argument type="service" id="Tanmar\ProductReviews\Service\ConfigService"/>
+            <argument type="service" id="Tanmar\ProductReviews\Service\PromotionService"/>
+            <argument type="service" id="Tanmar\ProductReviews\Service\OrderService"/>
+            <argument type="service" id="Tanmar\ProductReviews\Components\LoggerHelper"/>
+            <argument type="service" id="Shopware\Storefront\Page\GenericPageLoader"/>
+            <argument type="service" id="Tanmar\ProductReviews\Service\ProductReviewsService"/>
+            <argument type="service" id="product_review.repository"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="Tanmar\ProductReviews\Components\MailHelper"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Tanmar\ProductReviews\Administration\Controller\TanmarProductReviewsTestMailController" public="true">
+            <argument type="service" id="Tanmar\ProductReviews\Components\MailHelper"/>
+            <argument type="service" id="order.repository"/>
+            
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+
+        <service id="Tanmar\ProductReviews\ScheduledTask\SendProductReviewsInvitationTask">
+            <tag name="shopware.scheduled.task" />
+        </service>
+
+        <service id="Tanmar\ProductReviews\ScheduledTask\SendProductReviewsInvitationTaskHandler">
+            <argument type="service" id="scheduled_task.repository" />
+            <argument type="service" id="sales_channel.repository"/>
+            <argument type="service" id="Tanmar\ProductReviews\Components\MailHelper" />
+            <argument type="service" id="Tanmar\ProductReviews\Service\ConfigService"/>
+            <argument type="service" id="Tanmar\ProductReviews\Components\LoggerHelper" />
+
+            <tag name="messenger.message_handler" />
+        </service>
+
+
+        <service id="Tanmar\ProductReviews\Resources\snippet\en_GB\SnippetFile_en_GB" public="true">
+            <tag name="shopware.snippet.file" priority="100"/>
+        </service>
+
+        <service id="Tanmar\ProductReviews\Resources\snippet\de_DE\SnippetFile_de_DE" public="true">
+            <tag name="shopware.snippet.file" priority="100"/>
+        </service>
+    </services>
+</container>

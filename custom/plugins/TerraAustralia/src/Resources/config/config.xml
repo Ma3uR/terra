@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>General Properties</title>
+        <title lang="de-DE">Allgemeine Einstellungen</title>
+        
+        <input-field type="single-select">
+            <name>productListingPerPage</name>
+            <label>Products per page on listing</label>
+            <label lang="de-DE">Products per page on listing</label>
+            <options>
+                <option>
+                    <id>8</id>
+                    <name>8</name>
+                    <name lang="de-DE">8</name>
+                </option>
+                <option>
+                    <id>16</id>
+                    <name>16</name>
+                    <name lang="de-DE">16</name>
+                </option>
+                <option>
+                    <id>24</id>
+                    <name>24</name>
+                    <name lang="de-DE">24</name>
+                </option>
+                <option>
+                    <id>32</id>
+                    <name>32</name>
+                    <name lang="de-DE">32</name>
+                </option>
+                <option>
+                    <id>48</id>
+                    <name>48</name>
+                    <name lang="de-DE">48</name>
+                </option>
+            </options>
+        </input-field>
+    </card>
+
+</config>

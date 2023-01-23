@@ -1,0 +1,47 @@
+{% sw_extends '@Storefront/storefront/component/address/address-form.html.twig' %}
+
+{% set pickwareDhlAllowDhlSpecificAddress = (prefix == 'address') or (prefix == 'shippingAddress') %}
+
+{% block component_address_form %}
+    <div class="pickware-dhl-component-address-form-container">
+        {% if pickwareDhlAllowDhlSpecificAddress %}
+            {% sw_include 'storefront/pickware-dhl/address-form/address-radio-buttons.html.twig' %}
+        {% endif %}
+
+        {{ parent() }}
+    </div>
+{% endblock %}
+
+{% block component_address_form_address_fields %}
+    {% if pickwareDhlAllowDhlSpecificAddress %}
+        <div class="pickware-dhl-regular-address-form-container">
+            <div class="pickware-dhl-regular-address-form">
+                {{ parent() }}
+            </div>
+        </div>
+
+        <div class="pickware-dhl-packstation-address-form-container">
+            <div class="pickware-dhl-packstation-address-form">
+                {% sw_include 'storefront/pickware-dhl/address-form/special-address-form.html.twig' with {
+                    'data': data,
+                    'addressTypeKey': 'packstation',
+                    'specialAddressNumberFieldLabel': 'pickware-dhl.special-addresses.storefront.packstation.number-field-label',
+                    'specialAddressNumberFieldPlaceholder': 'pickware-dhl.special-addresses.storefront.packstation.number-field-placeholder',
+                } %}
+            </div>
+        </div>
+
+        <div class="pickware-dhl-post-office-address-form-container">
+            <div class="pickware-dhl-post-office-address-form">
+                {% sw_include 'storefront/pickware-dhl/address-form/special-address-form.html.twig' with {
+                    'data': data,
+                    'addressTypeKey': 'post-office',
+                    'specialAddressNumberFieldLabel': 'pickware-dhl.special-addresses.storefront.post-office.number-field-label',
+                    'specialAddressNumberFieldPlaceholder': 'pickware-dhl.special-addresses.storefront.post-office.number-field-placeholder',
+                } %}
+            </div>
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

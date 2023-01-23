@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<container
+    xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+>
+    <parameters>
+        <parameter key="pickware_erp.import_export_profiles.relative_stock_change.batch_size">50</parameter>
+    </parameters>
+    <services>
+        <service id="Pickware\PickwareErpStarter\ImportExport\Profiles\RelativeStockChange\RelativeStockChangeImporter">
+            <argument id="Pickware\DalBundle\EntityManager" type="service" />
+            <argument id="Pickware\PickwareErpStarter\StockApi\StockMovementService" type="service" />
+            <argument
+                id="Pickware\PickwareErpStarter\ImportExport\Profiles\RelativeStockChange\RelativeStockChangeImportCsvRowNormalizer"
+                type="service"
+            />
+            <argument type="service" id="Pickware\PickwareErpStarter\StockApi\StockLocationReferenceFinder" />
+            <argument type="service" id="Pickware\PickwareErpStarter\ImportExport\ImportExportStateService" />
+            <argument type="service" id="Pickware\PickwareErpStarter\Picking\PickingRequestService" />
+            <argument type="service" id="pickware_erp_starter.stocking.default_stocking_strategy" />
+            <argument>%pickware_erp.import_export_profiles.relative_stock_change.batch_size%</argument>
+            <tag name="pickware_erp_starter.importer" profileTechnicalName="relative-stock-change" />
+        </service>
+        <service
+            id="Pickware\PickwareErpStarter\ImportExport\Profiles\RelativeStockChange\RelativeStockChangeImportCsvRowNormalizer"
+        />
+    </services>
+</container>

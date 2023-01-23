@@ -1,0 +1,27 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-text.html.twig' %}
+
+{% block element_text %}
+    {%  set config = element.fieldConfig.elements %}
+
+    <div class="cms-element-{{ element.type }}{% if config.verticalAlign.value %} has-vertical-alignment{% endif %}">
+        <div class="tr-cms-element-content">
+            <div class="tr-cms-element-content-text">
+                {% block element_text_alignment %}
+                    {% if config.verticalAlign.value %}
+                        <div class="cms-element-alignment{% if config.verticalAlign.value == "center" %} align-self-center{% elseif config.verticalAlign.value == "flex-end" %} align-self-end{% else %} align-self-start{% endif %}">
+                    {% endif %}
+                    {% block element_text_inner %}
+                        {{ element.data.content|raw }}
+                    {% endblock %}
+                    {% if config.verticalAlign.value %}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+        <span class="tr-show-more-info js-show-more-info">
+            <span class="tr-show-more-info__more">{{ 'terraAustralia.global.more'|trans }}</span>
+            <span class="tr-show-more-info__short">{{ 'terraAustralia.global.short'|trans }}</span>
+        </span>
+    </div>
+{% endblock %}

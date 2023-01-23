@@ -1,0 +1,54 @@
+{% block element_tr_e_contacts %}
+    {% set translatedConfig = element.translated.config %}
+
+    {% set backgroundEntity = null %}
+    {% if translatedConfig.background.value %}
+        {% set mCollection = searchMedia([translatedConfig.background.value], context.context) %}
+        {% set backgroundEntity = mCollection.get(translatedConfig.background.value) %}
+    {% endif %}
+    <div class="col-12">
+        <section class="tr-info-block" {% if backgroundEntity %}style="background-image: url('{{ backgroundEntity.url }}')"{% endif %}>
+            <div class="container">
+                <h2 class="tr-title tr-title_center">{{ translatedConfig.title.value }}</h2>
+                <div class="row tr-contacts">
+                    <div class="col-lg-4">
+                        <h3 class="tr-sub-title">{{ "terraAustralia.cms.elements.tr-contacts.contactBlockTitle"|trans }}</h3>
+                        <div class="tr-contacts__cont row">
+                            <p class="col-6 col-lg-12">{{ "terraAustralia.cms.elements.tr-contacts.hotline"|trans }}: {% if translatedConfig.phone.value %}<a href="tel:{{ translatedConfig.phone.value }}">{{ translatedConfig.phone.value }}</a>{% endif %}</p>
+                            <p class="col-6 col-lg-12">{{ "terraAustralia.cms.elements.tr-contacts.help"|trans }}: {% if translatedConfig.email.value %}<a href="mailto:{{ translatedConfig.email.value }}">{{ translatedConfig.email.value }}</a>{% endif %}</p>
+                        </div>
+                    </div>
+                    <div class="cms-block cms-element-form col-lg-8">
+                        <h3 class="tr-sub-title">{{ "terraAustralia.cms.elements.tr-contacts.formBlockTitle"|trans }}</h3>
+
+                        {% set action = 'frontend.form.newsletter.register.handle' %}
+
+                        <form action="{{ path(action) }} "
+                              method="post"
+                              data-form-csrf-handler="true"
+                              data-form-validation="true">
+                            <div class="form-content">
+
+                                <input type="hidden" name="option" value="{{ constant('Shopware\\Storefront\\Controller\\FormController::SUBSCRIBE') }}">
+                                {{ sw_csrf(action) }}
+
+                                <div class="tr-contacts__form">
+                                    <div class="form-group">
+                                        <input name="email" type="email" class="form-control" placeholder="{{ "terraAustralia.cms.elements.tr-contacts.formInputEmailPlaceholder"|trans }}" required="required">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary btn-lg">{{ "terraAustralia.cms.elements.tr-contacts.formSendBtn"|trans }}</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="tr-contacts__gdpr-text">{{ "terraAustralia.cms.elements.tr-contacts.gdprText"|trans({
+                            '%url%': path('frontend.cms.page',{ id: config('core.basicInformation.privacyPage') })
+                        })|raw }}</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% block clever_reach_index %}
+    <sw-page :showSearchBar="false" :showSmartBar="false">
+        {% block clever_reach_content %}
+            <template slot="content">
+                <clever-reach-banner/>
+                <sw-loader v-if="isLoading"/>
+                <clever-reach-welcome v-else-if="this.$route.params.page==='welcome'"/>
+                <clever-reach-initialSync v-else-if="this.$route.params.page==='initialSync'"/>
+                <clever-reach-refresh v-else-if="this.$route.params.page==='refresh'"/>
+                <clever-reach-dashboard v-else-if="this.$route.params.page==='dashboard'"/>
+            </template>
+        {% endblock %}
+    </sw-page>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% block clever_reach_dashboard %}
+    <div>
+        <clever-reach-tab :customer-id="customerId"/>
+        <sw-loader v-if="isLoading"></sw-loader>
+        {% block clever_reach_dashboard_content %}
+            <clever-reach-container v-if="!isLoading">
+                <clever-reach-dashboard-error v-if="isInitialSyncFailed" :error-description="errorDescription"/>
+
+                <clever-reach-dashboard-statistics
+                        v-if="!isImportStatisticDisplayed && !isInitialSyncFailed"
+                        :recipient-list-name="recipientListName"
+                        :segments="segments"
+                        :number-of-recipients="numberOfRecipients"
+                />
+
+                <clever-reach-dashboard-card v-if="!isInitialSyncFailed"
+                                             :is-first-email-built="isFirstEmailBuilt"
+                                             :build-email-url="buildEmailUrl"
+                />
+            </clever-reach-container>
+        {% endblock %}
+    </div>
+{% endblock %}

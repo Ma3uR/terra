@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/component/address/address-editor-modal.html.twig' %}
+
+{% block component_address_address_editor_modal_accordion_overview_shipping_card_title_text %}
+    {{ parent() }}
+
+    {% if context.customer.defaultShippingAddress.street matches '/^Packstation.*/' %}
+        {{ 'pickware-dhl.special-addresses.storefront.packstation.address-editor-title-extension'|trans|sw_sanitize }}
+    {% elseif context.customer.defaultShippingAddress.street matches '/^Postfiliale.*/' %}
+        {{ 'pickware-dhl.special-addresses.storefront.post-office.address-editor-title-extension'|trans|sw_sanitize }}
+    {% endif %}
+{% endblock %}

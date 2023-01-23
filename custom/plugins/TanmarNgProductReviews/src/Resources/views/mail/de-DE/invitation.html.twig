@@ -1,0 +1,43 @@
+<div style="font-family:arial; font-size:12px;">
+    <p>
+        Guten Tag {{order.orderCustomer.firstName}} {{order.orderCustomer.lastName}},<br><br>
+        Wir hoffen, dass Sie mit den am {{ order.orderDateTime|date }} erworbenen Produkten zufrieden sind und Freude daran haben. Teilen Sie doch Ihre Erfahrungen mit anderen Kunden, indem Sie untenstehende Produkte bewerten. Produktbewertungen helfen bei zukünftigen Kaufentscheidungen, wovon auch Sie profitieren können.
+    </p>
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" style="font-family:Arial, Helvetica, sans-serif; font-size:12px;">
+        <tbody>
+            {% for lineItem in order.lineItems %}
+                {% if lineItem.type == "product" %}
+                    <tr>
+                        <td style="border-bottom: 1px solid #e2e2e2; height: 5px;">&nbsp;</td>
+                        <td style="border-bottom: 1px solid #e2e2e2; height: 5px;">&nbsp;</td>
+                        <td style="border-bottom: 1px solid #e2e2e2; height: 5px;">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="height: 6px;">&nbsp;</td>
+                        <td style="height: 6px;">&nbsp;</td>
+                        <td style="height: 6px;">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="20%" align="center" valign="middle" style="font-size:12px;">
+                            {%  if lineItem.product.cover %}
+                                <a href="{{ rawUrl('frontend.tanmarproductreviews', {'orderNumber':order.orderNumber, 'hash':hash}, salesChannel.domains|first.url) }}" class="review-link" style="color:#fff; border:0px solid #fff;" title="{{ lineItem.label|u.wordwrap(80) }}">
+                                    <img style="height: 80px; font-size:12px; border:0px solid #fff" height="80" src="{{ lineItem.product.cover.media.url }}" alt="{{ lineItem.label|u.wordwrap(80) }}" />
+                                </a>
+                            {% endif %}
+                        </td>
+                        <td width="49%" valign="middle" style="font-size:12px; font-family:Verdana, Arial, sans-serif; font-size: 12px; line-height: 18px; color: #000;">
+                            {{ lineItem.label|u.wordwrap(80) }}
+                        </td>
+                        <td width="31%" align="right" valign="middle">
+                            <div class="review-button" style="width:160px; margin:0 0 0 auto; background-color:#81bb44; height: auto; line-height: 100%;  border:0px solid #fff; text-align:center; color:#fff; font-size:14px; mso-line-height-rule: exactly; font-family:Verdana, Arial, sans-serif; padding: 0; border-radius: 4px; overflow: hidden" title="Jetzt bewerten {{ lineItem.label|u.wordwrap(80) }}">
+                                <a href="{{ rawUrl('frontend.tanmarproductreviews', {'orderNumber':order.orderNumber, 'hash':hash}, salesChannel.domains|first.url) }}" class="review-link" style="color:#fff;  font-size:14px; text-decoration:none; display:block; height: auto;  mso-line-height-rule: exactly; height: auto; line-height: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; ">
+                                    <span style="color:#fff; border:15px solid #81bb44; border-left:3px solid #81bb44; border-right:3px solid #81bb44; display:inline-block;">Jetzt bewerten</span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

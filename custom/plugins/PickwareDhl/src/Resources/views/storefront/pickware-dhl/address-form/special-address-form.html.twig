@@ -1,0 +1,150 @@
+{% set pickwareDhlSpecialAddressNumberField %}
+    {% set pickwareDhlSpecialAddressNumberFieldId = random() %}
+    <!-- Custom Field: Packstationsnummer/Postfilialnummer -->
+    <label
+        class="form-label"
+        for="{{ pickwareDhlSpecialAddressNumberFieldId }}"
+    >
+        {{ specialAddressNumberFieldLabel|trans|sw_sanitize }}{{ "general.required"|trans|sw_sanitize }}
+    </label>
+
+    <input
+        type="text"
+        id="{{ pickwareDhlSpecialAddressNumberFieldId }}"
+        class="form-control pickware-dhl-{{ addressTypeKey }}-number"
+        placeholder="{{ specialAddressNumberFieldPlaceholder|trans|sw_sanitize }}"
+        value=""
+        required="required"
+    >
+{% endset %}
+
+{% set pickwareDhlAdditionalAddressLine1Field %}
+    <!-- AdditionalAddressLine1 = Postnummer -->
+    <label
+        class="form-label"
+        for="{{ prefix }}AdditionalAddressLine1"
+    >
+        {{ 'pickware-dhl.special-addresses.storefront.post-number'|trans|sw_sanitize }}{{ "general.required"|trans|sw_sanitize }}
+    </label>
+
+    <input
+        type="text"
+        class="form-control"
+        name="{{ prefix }}[additionalAddressLine1]"
+        placeholder="{{ 'pickware-dhl.special-addresses.storefront.post-number-placeholder'|trans|sw_sanitize }}"
+        value="{{ data.get('additionalAddressLine1') }}"
+        required="required"
+    >
+{% endset %}
+
+{% set pickwareDhlZipcodeField %}
+    {% if formViolations.getViolations("/zipcode") is not empty %}
+        {% set violationPath = "/zipcode" %}
+    {% elseif formViolations.getViolations("/#{prefix}/zipcode") is not empty %}
+        {% set violationPath = "/#{prefix}/zipcode" %}
+    {% else %}
+        {% set violationPath = null %}
+    {% endif %}
+
+    <label
+        class="form-label"
+        for="{{ prefix }}AddressZipcode"
+    >
+        {{ "address.zipcodeLabel"|trans|sw_sanitize }}{{ "general.required"|trans|sw_sanitize }}
+    </label>
+
+    <input type="text"
+           class="form-control"
+           placeholder="{{ "address.zipcodePlaceholder"|trans|striptags }}"
+           name="{{ prefix }}[zipcode]"
+           value="{{ data.get('zipcode') }}"
+           required="required"
+    >
+
+    {% if violationPath %}
+        {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' %}
+    {% endif %}
+{% endset %}
+
+{% set pickwareDhlCityField %}
+    {% if formViolations.getViolations("/city") is not empty %}
+        {% set violationPath = "/city" %}
+    {% elseif formViolations.getViolations("/#{prefix}/city") is not empty %}
+        {% set violationPath = "/#{prefix}/city" %}
+    {% else %}
+        {% set violationPath = null %}
+    {% endif %}
+
+    <label
+        class="form-label"
+        for="{{ prefix }}AddressCity"
+    >
+        {{ "address.cityLabel"|trans|sw_sanitize }}{{ "general.required"|trans|sw_sanitize }}
+    </label>
+
+    <input
+        type="text"
+        class="form-control{% if violationPath %} is-invalid{% endif %}"
+        placeholder="{{ "address.cityPlaceholder"|trans|striptags }}"
+        name="{{ prefix }}[city]"
+        value="{{ data.get('city') }}"
+        required="required"
+    >
+
+    {% if violationPath %}
+        {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' %}
+    {% endif %}
+{% endset %}
+
+{% set pickwareDhlCountryField %}
+    <select
+        class="pickware-dhl-{{ addressTypeKey }}-country"
+        name="{{ prefix }}[countryId]"
+        required="required"
+    >
+        {% for country in page.countries %}
+            <option
+                {% if country.id == data.get('countryId') %}selected="selected"{% endif %}
+                value="{{ country.id }}"
+                iso="{{ country.iso }}"
+            >
+                {{ country.translated.name }}
+            </option>
+        {% endfor %}
+    </select>
+{% endset %}
+
+
+{% set pickwareDhlStreetField %}
+    <input
+        type="text"
+        class="pickware-dhl-{{ addressTypeKey }}-street"
+        name="{{ prefix }}[street]"
+        value="{{ data.get('street') }}"
+        required="required"
+    >
+{% endset %}
+
+<div class="form-row">
+    <div class="form-group col-md-3 col-6">
+        {{ pickwareDhlSpecialAddressNumberField }}
+    </div>
+
+    <div class="form-group col-md-3 col-6">
+        {{ pickwareDhlAdditionalAddressLine1Field }}
+    </div>
+
+    <div class="form-group col-md-2 col-4">
+        {{ pickwareDhlZipcodeField }}
+    </div>
+
+    <div class="form-group col-md-4 col-8">
+        {{ pickwareDhlCityField }}
+    </div>
+</div>
+
+<!-- Hidden form fields -->
+<div class="d-none">>
+    {{ pickwareDhlCountryField }}
+    {{ pickwareDhlStreetField }}
+</div>

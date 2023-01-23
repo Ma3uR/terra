@@ -1,0 +1,44 @@
+{
+  "clever-reach": {
+    "basic": {
+      "label": "CleverReach",
+      "description": "CleverReach - E-Mail Marketing"
+    },
+    "initialSync": {
+      "createSubscriberList":"Empfängerliste in CleverReach® erstellen",
+      "importSubscribers": "Importieren Sie Empfänger von {list} zu CleverReach®",
+      "addFields": "Datenfelder, Segmente und Tags zur Empfängerliste hinzufügen",
+      "banner": {
+        "title": "Starten Sie jetzt und erstellen Ihre E-Mail in CleverReach®",
+        "message": "Der Import Ihrer Daten wird im Hintergrund fortgesetzt",
+        "buttonText": "Jetzt E-Mail erstellen"
+      }
+    },
+    "dashboard": {
+      "dashboard": "Dashboard",
+      "helpAndSupport": "Hilfe & Support",
+      "helpAndSupportLink": "https://support.cleverreach.de/hc/de",
+      "cleverReachId": "CleverReach® Kundennummer:",
+      "title": "Gezieltes E-Mail Marketing für mehr Umsatz!",
+      "textMessage": "Erstellen Sie ansprechende Mailings und präsentieren Sie Ihren Kunden Ihre Produkte.",
+      "buttonTextFirst": "Erstellen Sie Ihren ersten Newsletter →",
+      "buttonTextNext": "Erstellen Sie jetzt Ihren nächsten Newsletter! →",
+      "importSuccessful": "Import war erfolgreich!",
+      "recipients": "Empfänger",
+      "recipientList": "Empfängerliste",
+      "segments": "Segmente",
+      "gdpr": "Beachten Sie die Hinweise zur DSGVO!",
+      "gdprUrl": "https://www.cleverreach.com/de/funktionen/datenschutz-sicherheit/eu-dsgvo/",
+      "errorPageTitle": "Es ist ein Fehler aufgetreten!",
+      "errorPageMessage1": "Fehlerbeschreibung: ",
+      "errorPageMessage2": "Für weitere Informationen kontaktieren Sie bitte ",
+      "retrySyncButtonText": "Wiederholen Sie die Datenübertragung"
+    },
+    "refresh": {
+      "title": "Fehler: Ungültiges API-Token",
+      "description": "CleverReach® API Zugriffstoken ist nicht mehr gültig. Damit das System die Daten für Sie synchronisieren kann, müssen Sie sich erneut mit Ihrer CleverReach® ID: {id} authentifizieren. Wenn Sie ein anderes CleverReach®-Konto verwenden möchten, müssen Sie diese Erweiterung neu installieren.",
+      "authenticateButtonText": "Authenticate now",
+      "helloIcon": "/bundles/crswcleverreachofficial/administration/img/clever-reach-icon-hallo.png"
+    }
+  }
+}

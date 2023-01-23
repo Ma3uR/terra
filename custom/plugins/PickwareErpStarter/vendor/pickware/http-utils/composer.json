@@ -1,0 +1,48 @@
+{
+    "name": "pickware/http-utils",
+    "type": "library",
+    "description": "A library with utils for HTTP request / response processing",
+    "version": "2.0.1",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Pickware",
+            "email": "info@pickware.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*",
+        "shopware/core": "6.4.*",
+        "symfony/http-foundation": "~5.2.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5.8"
+    },
+    "config": {
+        "platform": {
+            "php": "7.4.0"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Pickware\\HttpUtils\\": "src"
+        },
+        "exclude-from-classmap": [
+            "**.unit.php"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@remove-lock-file"
+        ],
+        "post-update-cmd": [
+            "@remove-lock-file"
+        ],
+        "remove-lock-file": [
+            "# Workaround as long as ocramius/package-versions is incompatible with composer config `lock: false`",
+            "rm composer.lock"
+        ],
+        "test:unit": "./vendor/bin/phpunit --config phpunit.unit.xml --testdox"
+    }
+}

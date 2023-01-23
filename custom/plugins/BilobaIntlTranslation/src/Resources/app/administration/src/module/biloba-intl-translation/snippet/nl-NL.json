@@ -1,0 +1,78 @@
+{
+    "biloba-intl-translation": {
+    	"general": {
+    		"mainMenuItemGeneral": "Biloba Translation Pro",
+            "notificationTranslated": {
+                "title": "Uitgevoerde vertalingen",
+                "message": "Als afzonderlijke onderdelen niet zijn vertaald, zorg er dan voor dat u ze voor de vertaling hebt opgeslagen."
+            },
+            "notificationTranslatedError": {
+                "title": "Fout",
+                "message": "Er is een fout opgetreden tijdens de vertaling!"
+            }
+    	},
+        "config": {
+        	"detail": {
+                "contextTargetLanguage": "Doeltaal",
+                "contextSourceLanguage": "Brontaal",
+                "contextApi": "Api",
+                "placeholder": "Context",
+        		"cancelButtonText": "Annuleren",
+                "saveButtonText": "Bespaar",
+                "apiLanguageLabel": "API",
+                "targetLanguageLabel": "Doeltaal",
+                "sourceLanguageLabel": "Brontaal",
+                "errorSameIdTitle" : "Doeltaal komt overeen met Brontaal",
+                "errorSameIdMessage": "De doeltaal mag niet overeenkomen met de brontaal",
+                "errorTitle": "Er is iets misgegaan!"
+        	},
+            "list": {
+                "columnTargetLanguageTitle": "Doeltaal",
+                "columnSourceLanguageTitle": "Brontaal",
+                "columnTranslationApiTitle": "API",
+                "createButtonText": "Maak Taal"
+            }
+        },
+        "log": {
+        	"detail": {
+                "id":"Id",
+                "initiator": "Initiatiefnemer",
+                "entityId": "EntityId",
+                "entityType": "EntityType",
+                "type": "Type",
+                "status": "Status",
+                "context": "Context",
+                "cancelButtonText": "Annuleer",
+                "saveButtonText": "Bespaar"
+            }
+        },
+        "plugin_config": {
+            "configuration": {
+                "deepLButtonTitle": "Kijk op DeepL API-sleutel",
+                "googleButtonTitle": "Kijk op Google API-sleutel"
+            },
+            "notificationError": {
+                "title": "Fout",
+                "message": "De cheque is mislukt. Controleer of de configuratie van de plugin is opgeslagen!"
+            },
+            "notificationSuccess": {
+                "title": "Succes",
+                "message": "Sleutel is geldig"
+            }
+        },
+        "sw-product": {
+            "detail": {
+                "buttonTranslate": "Vertaal"
+            }
+        },
+        "sw-settings": {
+            "language": {
+                "detail": {
+                    "title": "Vertaalinstellingen",
+                    "languageNotSupported": "Deze taal wordt momenteel niet ondersteund. Zorg ervoor dat er een lokalisatie is geselecteerd.\n\nVoor meer talen kunt u de plugin More Languages installeren, zorg ervoor dat de taal die u wilt gebruiken wordt ondersteund door de plugin.",
+                    "noApiKey": "Er is geen API-sleutel ingesteld! Voeg een sleutel toe in de plugin-instellingen."
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,64 @@
+{% sw_extends '@Storefront/storefront/utilities/alert.html.twig' %}
+
+{% block utilities_alert %}
+    <div role="alert"
+         class="alert alert-dismissible fade show {% if type %}alert-{{ type }}{% endif %}{% if icon != "error" %} alert-has-icon{% endif %}">
+        {% block utilities_alert_icon %}
+            {% if icon != "false" %}
+                <div class="tr-alert-icon">
+                    {% if type == "danger" %}
+                        <img src="/bundles/terraaustralia/assets/images/blocked.svg" alt="">
+                    {% elseif type == "warning" %}
+                        <img src="/bundles/terraaustralia/assets/images/warning.png" alt="">
+                    {% elseif type == "info" %}
+                        <img src="/bundles/terraaustralia/assets/images/info.svg" alt="">
+                    {% elseif type == "success" %}
+                        <img src="/bundles/terraaustralia/assets/images/checkmark.svg" alt="">
+                    {% else %}
+                        {% sw_icon 'alert' %}
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block utilities_alert_content_container %}
+            <div class="alert-content-container">
+
+                {% block utilities_alert_heading %}
+                    {% if heading %}
+                        <div class="alert-heading h5">
+                            {{ heading }}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+                {% block utilities_alert_content %}
+                    <div class="alert-content">
+                        {% if list|length > 1 %}
+                            <ul class="alert-list">
+                                {% for entry in list %}
+                                    <li>{{ entry|sw_sanitize }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% elseif list|length == 1 %}
+                            {% for entry in list %}
+                                {{ entry|sw_sanitize }}
+                            {% endfor %}
+                        {% else %}
+                            {{ content|sw_sanitize }}
+                        {% endif %}
+                    </div>
+                {% endblock %}
+
+                {% block utilities_alert_dismissible %}
+                    <button type="button"
+                            class="close"
+                            data-dismiss="alert"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% block tr_e_manufacturers_config %}
+    <div class="tr-e-manufacturers-config">
+        {% block tr_e_manufacturers_config_tabs %}
+            <sw-tabs class="tr-e-manufacturers-config__tabs" defaultItem="content">
+                <template slot-scope="{ active }" >
+                    {% block tr_e_manufacturers_config_tabs_content %}
+                        <sw-tabs-item :title="$tc('sw-cms.elements.general.config.tab.content')"
+                                      name="content"
+                                      :activeTab="active">
+                            {{ $tc('sw-cms.elements.general.config.tab.content') }}
+                        </sw-tabs-item>
+                    {% endblock %}
+                </template>
+
+                <template slot="content" slot-scope="{ active }">
+                    {% block tr_e_manufacturers_config_content %}
+                        <sw-container v-if="active === 'content'" class="tr-e-manufacturers-config__tab-content">
+                            
+                            {% block tr_e_manufacturers_config_content_title %}
+                                <sw-field type="text"
+                                          :label="$tc('global.cms.elements.tr-manufacturers.labels.title')"
+                                          :placeholder="$tc('global.cms.elements.tr-manufacturers.placeholders.title')"
+                                          v-model="element.config.title.value">
+                                </sw-field>
+                            {% endblock %}
+                            
+                            {% block tr_e_manufacturers_config_content_display_title %}
+                                <sw-field type="switch"
+                                          class="tr-e-manufacturers-config_switch"
+                                          :label="$tc('global.cms.elements.tr-manufacturers.labels.displayTitle')"
+                                          v-model="element.config.displayTitle.value">
+                                </sw-field>
+                            {% endblock %}
+                            
+                            {% block tr_e_manufacturers_config_content_manufacturers %}
+                                <sw-entity-multi-select
+                                        class="tr-e-manufacturers-config__manufacturers"
+                                        :label="$tc('global.cms.elements.tr-manufacturers.labels.manufacturers')"
+                                        :placeholder="$tc('global.cms.elements.tr-manufacturers.placeholders.manufacturers')"
+                                        v-model="manufacturersCollection"
+                                        @change="onManufacturersChange"
+                                        :context="manufacturersMultiSelectContext"
+                                        :criteria="manufacturersFilter"
+                                        :resultLimit="100"
+                                        labelProperty="name">
+                                    <template #result-label-property="{ item, index, labelProperty, searchTerm, getKey }">
+                                        <sw-highlight-text
+                                                :text="getKey(item,labelProperty) || getKey(item, `translated.${labelProperty}`)"
+                                                :searchTerm="searchTerm">
+                                        </sw-highlight-text>
+                                    </template>
+                                </sw-entity-multi-select>
+                            {% endblock %}
+                        </sw-container>
+                    {% endblock %}
+                </template>
+            </sw-tabs>
+        {% endblock %}
+    </div>
+{% endblock %}

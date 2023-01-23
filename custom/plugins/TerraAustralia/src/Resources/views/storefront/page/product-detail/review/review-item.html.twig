@@ -1,0 +1,82 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/review/review-item.html.twig' %}
+
+{% block page_product_detail_review_item %}
+	{# TODO: replace verification badge #}
+	{% set reviewVerifcation = 0 %}
+
+	<div class="product-detail-review-item"
+		 itemprop="review"
+		 itemscope
+		 itemtype="https://schema.org/Review">
+        {% block page_product_detail_review_item_meta_published %}
+			<meta itemprop="datePublished" content="{{ review.createdAt|date }}">
+        {% endblock %}
+
+        {% block page_product_detail_review_item_meta_title %}
+			<meta itemprop="name" content="{{ review.title }}">
+        {% endblock %}
+
+		{% block page_product_detail_review_item_info %}
+			<div class="row justify-content-between product-detail-review-item-info">
+
+                {% block page_product_detail_review_item_title %}
+                    <div class="col-12 product-detail-review-item-title">
+                        {{ review.title }}
+                    </div>
+                {% endblock %}
+
+                {% block page_product_detail_review_item_info_points %}
+                    <div class="col-md-auto product-detail-review-item-points">
+                        {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
+                            points: review.points
+                        } %}
+                    </div>
+                {% endblock %}
+
+                <div class="col-md-auto product-detail-review-item-row-wrap">
+                    <div class="row product-detail-review-item-row">
+                        {% block page_product_detail_review_item_info_name %}
+                            <div class="col-auto product-detail-review-item-name">{{ review.externalUser }}</div>
+                        {% endblock %}
+                        {% block page_product_detail_review_item_info_date %}
+                            <div class="col-auto product-detail-review-item-date">{{ review.createdAt|date("d.m.Y") }}</div>
+                        {% endblock %}
+                    </div>
+                </div>
+
+                {% block page_product_detail_review_item_info_verify %}
+					<div class="col-12 product-detail-review-item-verify">
+						{% if reviewVerifcation == 1 %}
+							<a data-toggle="tooltip"
+							   data-placement="bottom"
+							   title="{{ "detail.reviewVerifiedItemTooltip"|trans|striptags }}">
+                                {% sw_icon 'checkmark-circle' style {
+									'color': 'primary',
+									'size': 'sm'
+								} %}
+							</a>
+						{% endif %}
+					</div>
+                {% endblock %}
+
+                {% block page_product_detail_review_item_content %}
+                    <p class="col-12 product-detail-review-item-content" itemprop="description">
+                        {{ review.content }}
+                    </p>
+                {% endblock %}
+			</div>
+		{% endblock %}
+
+		{% block page_product_detail_review_item_comment %}
+			{% if review.comment %}
+				<div class="product-detail-review-item-comment">
+					<blockquote class="blockquote">
+						<footer class="blockquote-footer">
+							{{ "detail.reviewCommentLabel"|trans|sw_sanitize }}{{ review.comment }}
+						</footer>
+					</blockquote>
+				</div>
+			{% endif %}
+		{% endblock %}
+    </div>
+{% endblock %}

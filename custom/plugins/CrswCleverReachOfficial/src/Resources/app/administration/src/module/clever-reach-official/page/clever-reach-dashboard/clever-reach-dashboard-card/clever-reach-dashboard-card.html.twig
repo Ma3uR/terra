@@ -1,0 +1,18 @@
+{% block clever_reach_dashboard_card %}
+    <clever-reach-content-window-wrapper>
+        <div class="cr-create">
+            <h3>
+                {{ $tc('clever-reach.dashboard.title') }}
+            </h3>
+            <div class="cr-dashboard-text-wrapper cr-main-text">
+                {{ $tc('clever-reach.dashboard.textMessage') }}
+            </div>
+            <div class="cr-button-container">
+                <button class="cr-action-buttons-wrapper cr-primary" id="cr-buildEmail">
+                    <span v-if="isFirstEmailBuilt">{{ $tc('clever-reach.dashboard.buttonTextNext') }}</span>
+                    <span v-else>{{ $tc('clever-reach.dashboard.buttonTextFirst') }}</span>
+                </button>
+            </div>
+        </div>
+    </clever-reach-content-window-wrapper>
+{% endblock %}

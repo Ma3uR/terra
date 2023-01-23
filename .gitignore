@@ -1,0 +1,8 @@
+/*
+/*/
+!.gitignore
+!/custom/
+!/custom/plugins/
+/custom/static-plugins/*
+
+/custom/plugins/TerraAustralia/src/Resources/app/storefront/src/node_modules

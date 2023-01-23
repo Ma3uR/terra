@@ -1,0 +1,30 @@
+{% if page.product %}
+    {% if page.product.customFields and page.product.customFields.eightworks_addon_product_header_activation %}
+        {% set productHeaderScheduleDateStart = page.product.customFields.eightworks_addon_product_header_schedule_start %}
+        {% set productHeaderScheduleDateEnd = page.product.customFields.eightworks_addon_product_header_schedule_end %}
+        {% if ((productHeaderScheduleDateEnd == null or productHeaderScheduleDateEnd|date("YmdHi") > "now"|date("YmdHi")) and (productHeaderScheduleDateStart == null or productHeaderScheduleDateStart|date("YmdHi") <= "now"|date("YmdHi"))) %}
+            <div class="ew-addon-product-header w-100 bg-dark overflow-hidden d-flex align-items-center position-relative"{% if page.product.customFields.eightworks_addon_product_header_maxheight %} style="max-height: {{ page.product.customFields.eightworks_addon_product_header_maxheight }}px;"{% endif %}>
+                {% set productHeaderHTMLOverlay = page.product.customFields.eightworks_addon_product_header_htmloverlay %}
+                {% if productHeaderHTMLOverlay %}
+                    <div class="ew-addon-product-header-overlay{% if page.product.customFields.eightworks_addon_product_header_htmloverlay_mobile_scaling is not null %} ew-addon-product-header-scale-mobile-{{ page.product.customFields.eightworks_addon_product_header_htmloverlay_mobile_scaling }}{% endif %} position-absolute d-block w-100 p-3 align-self-center">{{ productHeaderHTMLOverlay|raw }}</div>
+                {% endif %}
+                {% set productHeaderEmbed = page.product.customFields.eightworks_addon_product_header_embed %}
+                {% if productHeaderEmbed %}
+                    <div class="ew-addon-product-header-embed embed-responsive embed-responsive-16by9">
+                        <iframe title="Embed ({{ productHeaderEmbed }})" class="embed-responsive-item" src="{{ productHeaderEmbed }}" allowfullscreen></iframe>
+                    </div>
+                {% else %}
+                    {% set productHeaderImageCollection = null %}
+                    {% if page.product.customFields.eightworks_addon_product_header_image %}
+                        {% set productHeaderImageCollection = searchMedia([page.product.customFields.eightworks_addon_product_header_image], context.context) %}
+                    {% endif %}
+                    {% if productHeaderImageCollection != null %}
+                        {% for productHeaderImageItem in productHeaderImageCollection.elements %}
+                            <img src="{{ productHeaderImageItem.url }}" alt="{{ productHeaderImageItem.alt }}" class="w-100{% if page.product.customFields.eightworks_addon_product_header_image_position != null %} {{ page.product.customFields.eightworks_addon_product_header_image_position }}{% endif %}" />
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endif %}

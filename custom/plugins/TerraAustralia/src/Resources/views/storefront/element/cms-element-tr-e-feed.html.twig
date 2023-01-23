@@ -1,0 +1,10 @@
+{% block element_tr_e_title %}
+    {% set elConfig = element.fieldConfig.elements %}
+    
+    <div class="tr-info-list__item col-6 col-lg-3">
+        <div class="tr-info-list__image">
+            <img src="{% if element.picture %}{{ element.picture.url }}{% endif %}" alt="">
+        </div>
+        <div class="tr-info-list__title">{{ element.translated.config.caption.value }}</div>
+    </div>
+{% endblock %}

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Basic Configuration</title>
+        <title lang="de-DE">Allgemeine Konfiguration</title>
+        <input-field type="bool">
+            <name>active</name>
+            <label>Active</label>
+            <label lang="de-DE">Aktiv</label>
+        </input-field>
+        <input-field type="bool">
+            <name>sendMails</name>
+            <label>Mail sending active</label>
+            <label lang="de-DE">Mailversand aktiv</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="single-select">
+            <name>loggingLevel</name>
+            <label>Logging level</label>
+            <label lang="de-DE">Logging Level</label>
+            <defaultValue>200</defaultValue>
+            <options>
+                <option>
+                    <id>0</id>
+                    <name>0 - None</name>
+                    <name lang="de-DE">0 - Keine</name>
+                </option>
+                <option>
+                    <id>100</id>
+                    <name>100 - Debug</name>
+                    <name lang="de-DE">100 - Debug</name>
+                </option>
+                <option>
+                    <id>200</id>
+                    <name>200 - Info</name>
+                    <name lang="de-DE">200 - Info</name>
+                </option>
+                <option>
+                    <id>400</id>
+                    <name>400 - Error</name>
+                    <name lang="de-DE">400 - Error</name>
+                </option>
+            </options>
+        </input-field>
+        <input-field type="bool">
+            <name>optin</name>
+            <label>Opt-in during checkout</label>
+            <label lang="de-DE">Opt-In beim Kauf</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field type="bool">
+            <name>reviewSkipModeration</name>
+            <label>Accept reviews automatically</label>
+            <label lang="de-DE">Bewertungen automatisch freigeschaltet</label>
+            <required></required>
+            <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field type="bool">
+            <name>headlineRequired</name>
+            <label>Headline is required</label>
+            <label lang="de-DE">Überschrift ist ein Pflichtfeld</label>
+            <required></required>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="int">
+            <name>reviewWordsHeadline</name>
+            <label>First x words as headline</label>
+            <label lang="de-DE">Erste X Wörter aus Kommentar als optionale Überschrift</label>
+            <required></required>
+            <defaultValue>7</defaultValue>
+            <helpText>This setting takes effect if customers do not fill out the optional heading and the heading is not a required field.</helpText>
+            <helpText lang="de-DE">Diese Einstellung greift, sobald Kunden die optionale Überschrift nicht ausfüllen und die Überschrift kein Pflichtfeld ist.</helpText>
+        </input-field>
+        <input-field type="single-select">
+            <name>starsPreselected</name>
+            <label>Stars preselected</label>
+            <label lang="de-DE">Sterne vorausgewählt</label>
+            <defaultValue>0</defaultValue>
+            <options>
+                <option>
+                    <id>0</id>
+                    <name>None</name>
+                    <name lang="de-DE">Keine</name>
+                </option>
+                <option>
+                    <id>1</id>
+                    <name>1 Star</name>
+                    <name lang="de-DE">1 Stern</name>
+                </option>
+                <option>
+                    <id>2</id>
+                    <name>2 Stars</name>
+                    <name lang="de-DE">2 Sterne</name>
+                </option>
+                <option>
+                    <id>3</id>
+                    <name>3 Stars</name>
+                    <name lang="de-DE">3 Sterne</name>
+                </option>
+                <option>
+                    <id>4</id>
+                    <name>4 Stars</name>
+                    <name lang="de-DE">4 Sterne</name>
+                </option>
+                <option>
+                    <id>5</id>
+                    <name>5 Stars</name>
+                    <name lang="de-DE">5 Sterne</name>
+                </option>
+            </options>
+        </input-field>
+    </card>
+    <card>
+        <title>Cron Configuration</title>
+        <title lang="de-DE">Cron Konfiguration</title>
+        <input-field type="int">
+            <name>daysAfterShipping</name>
+            <label>Send review invitation X days after shipping</label>
+            <label lang="de-DE">Bewertungsfrage X Tage nach Versand</label>
+            <defaultValue>21</defaultValue>
+        </input-field>
+        <input-field type="datetime">
+            <name>ignoreOlderThan</name>
+            <label>Ignore Orders from before this date</label>
+            <label lang="de-DE">Bestellungen älter als X ignorieren</label>
+            <defaultValue></defaultValue>
+        </input-field>
+        <input-field type="int">
+            <name>daysMaxBacklog</name>
+            <label>Ignore orders from before X days</label>
+            <label lang="de-DE">Bestellungen älter als X Tage ignorieren</label>
+            <defaultValue>30</defaultValue>
+        </input-field>
+        <input-field type="bool">
+            <name>askOldCustomers</name>
+            <label>Send mails to old customers</label>
+            <label lang="de-DE">Altkunden anschreiben</label>
+        </input-field>
+        <input-field type="int">
+            <name>maximumMails</name>
+            <label>Mails per cron call</label>
+            <label lang="de-DE">Mails pro Cron-Aufruf</label>
+            <defaultValue>100</defaultValue>
+        </input-field>
+        <component name="sw-entity-multi-id-select">
+            <name>excludeCustomerGroup</name>
+            <entity>customer_group</entity>
+            <label>Exclude customer group</label>
+            <label lang="de-DE">Kundengruppen ausschließen</label>
+        </component>
+        <component name="sw-entity-multi-id-select">
+            <name>excludePaymentMethod</name>
+            <entity>payment_method</entity>
+            <label>Exclude payment method</label>
+            <label lang="de-DE">Zahlarten ausschließen</label>
+        </component>
+        <component name="sw-entity-multi-id-select">
+            <name>excludeShippingMethod</name>
+            <entity>shipping_method</entity>
+            <label>Exclude shipping method</label>
+            <label lang="de-DE">Versandarten ausschließen</label>
+        </component>
+    </card>
+    <card>
+        <title>Voucher</title>
+        <title lang="de-DE">Gutschein</title>
+        <input-field type="bool">
+            <name>sendVoucherMail</name>
+            <label>Send Voucher</label>
+            <label lang="de-DE">Sende Gutschein</label>
+            <helpText>Send a voucher after the customer has rated all products.</helpText>
+            <helpText lang="de-DE">Sende einen Gutschein nachdem der Kunde alle Produkte bewertet hat.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <component name="sw-entity-single-select">
+            <name>sendVoucherMailPromotionId</name>
+            <entity>promotion</entity>
+            <label>Voucher</label>
+            <label lang="de-DE">Gutschein</label>
+            <helpText>Your chosen promotion needs to use individual codes. Validity period must be current. A sales channel must be assigned.</helpText>
+            <helpText lang="de-DE">Aktionscodetyp muss "Individuelle Aktionscodes" sein. Gültigkeitszeitraum muss aktuell sein. Ein Verkaufskanal muss zugewiesen sein.</helpText>
+        </component>
+        <input-field type="bool">
+            <name>sendVoucherMailCopy</name>
+            <label>Send copy</label>
+            <label lang="de-DE">Blindkopie senden</label>
+            <helpText>Send a copy of each voucher/thank you mail.</helpText>
+            <helpText lang="de-DE">Blindkopie jeder Gutschein/Danke Mail senden.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="text">
+            <name>sendVoucherMailCopyTo</name>
+            <label>Copy to the following address</label>
+            <label lang="de-DE">Blindkopie an folgende Adresse</label>
+            <placeholder>info@tanmar.de</placeholder>
+            <helpText>Set the recipients for coupon/thank you mail copy. If not filled, but copy is active, the mail goes to the shop owner.</helpText>
+            <helpText lang="de-DE">Setzen Sie den Empfänger für Blindkopien Gutschein/Danke Mail. Wenn nicht befüllt, aber Blindkopie aktiv, dann geht die Mail an den Shopbesitzer.</helpText>
+            <copyable>true</copyable>
+        </input-field>
+    </card>
+    <card>
+        <title>Email notification</title>
+        <title lang="de-DE">E-Mail Benachrichtigung</title>
+        <input-field type="bool">
+            <name>sendInvitationCopy</name>
+            <label>Send a blind copy of each invitation mail to the shop owner</label>
+            <label lang="de-DE">Blindkopie jeder Bewertungseinladung an Shopbesitzer senden</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="single-select">
+            <name>sendNewReviewNotification</name>
+            <label>Notify on new votes</label>
+            <label lang="de-DE">Bei neuen Bewertungen benachrichtigen</label>
+            <defaultValue>0</defaultValue>
+            <options>
+                <option>
+                    <id>0</id>
+                    <name>No</name>
+                    <name lang="de-DE">Nein</name>
+                </option>
+                <option>
+                    <id>1</id>
+                    <name>Yes, always</name>
+                    <name lang="de-DE">Ja, immer</name>
+                </option>
+                <option>
+                    <id>2</id>
+                    <name>Only on 4 or less stars</name>
+                    <name lang="de-DE">Nur bei 4 oder weniger Sternen</name>
+                </option>
+                <option>
+                    <id>3</id>
+                    <name>Only on 3 or less stars</name>
+                    <name lang="de-DE">Nur bei 3 oder weniger Sternen</name>
+                </option>
+                <option>
+                    <id>4</id>
+                    <name>Only on 2 or less stars</name>
+                    <name lang="de-DE">Nur bei 2 oder weniger Sternen</name>
+                </option>
+                <option>
+                    <id>5</id>
+                    <name>Only on 1 star</name>
+                    <name lang="de-DE">Nur bei 1 Stern</name>
+                </option>
+            </options>
+        </input-field>
+        <input-field type="text">
+            <name>sendNewReviewNotificationEmail</name>
+            <label>Notification on new ratings to the following addresses</label>
+            <label lang="de-DE">Benachrichtigung bei neuer Bewertung an folgende Adressen</label>
+            <required></required>
+            <placeholder>info@tanmar.de</placeholder>
+            <helpText>Set the recipients for notification mails.  Multiple addresses separated with semicolon ; If this value is empty, the shop owners mail will be used instead.</helpText>
+            <helpText lang="de-DE">Setzen Sie die Empfänger der Benachrichtigungen. Trennen Sie mehrere Adressen mit Semikolon; Ist dieser Wert nicht gesetzt. so wird die Adresse des Shopbetreibers aus den Stammdaten verwendet.</helpText>
+            <copyable>true</copyable>
+        </input-field>
+    </card>
+</config>

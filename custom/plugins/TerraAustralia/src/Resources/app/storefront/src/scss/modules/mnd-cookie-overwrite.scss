@@ -1,0 +1,25 @@
+.mnd-cookie-modal {
+    .modal-footer {
+        .mnd-btn-accept-all {
+            width: 100%;
+        }
+        .mnd-btn-open-settings, .mnd-btn-save-settings {
+            width: 100%;
+        }
+    }
+}
+@media (min-width: 768px) {
+    .mnd-cookie-modal {
+        .modal-footer {
+            flex-flow: column;
+            .mnd-btn-accept-all {
+                width: 100%;
+            }
+            .mnd-btn-open-settings, .mnd-btn-save-settings {
+                width: 100%;
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+        }
+    }
+}

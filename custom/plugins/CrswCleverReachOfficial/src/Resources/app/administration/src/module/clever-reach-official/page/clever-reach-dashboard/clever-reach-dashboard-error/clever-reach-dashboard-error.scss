@@ -1,0 +1,51 @@
+.clever-reach-error {
+    border: 1px solid #EC6702;
+    width: 100%;
+    height: 100%;
+}
+
+.clever-reach-error h3{
+    font-weight: bold;
+    font-size: 35px;
+    text-align: center;
+}
+
+.clever-reach-error-main-text {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.cr-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+.cr-icon {
+    width: 320px;
+    margin-bottom: 30px;
+}
+
+.cr-button-container {
+    padding-top: 100px;
+    text-align: center;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.cr-button-container .cr-primary {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #EC6702;
+    padding: 15px 30px;
+    min-width: 160px;
+    height: 41px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.22);
+    line-height: 0;
+    cursor: pointer;
+}

@@ -1,0 +1,191 @@
+{% block utilities_offcanvas_content %}
+	{% block page_product_detail_review_container %}
+
+		{#TODO: replace items per list config value#}
+		{% set reviewsPerListPage = 10 %}
+
+		{#TODO: replace current list page value#}
+		{% set currentListPage = 1 %}
+
+		{% set productReviewCount = reviews|length %}
+
+		{% if productReviewCount > 0 %}
+			{% set productAvgRating = reviews.matrix.averageRating|round(2, 'floor')  %}
+		{% endif %}
+
+		{# TODO: replace language flag #}
+		{% set foreignReviewsCount = 150 %}
+
+		<div class="product-detail-review">
+			{% block page_product_detail_review_tab_pane %}
+                <div class="row product-detail-review-content js-review-container">
+
+					{% block page_product_detail_review_main %}
+						<div class="col product-detail-review-main js-review-content">
+
+							{% block page_product_detail_review_list_container %}
+								<div id="review-list"
+									 class="product-detail-review-list"
+									 itemprop="review-list">
+
+                                    {% block page_product_detail_review_list %}
+
+                                        {% block page_product_detail_review_list_content %}
+                                            {% for review in reviews %}
+                                                <div class="product-detail-review-list-content">
+                                                    {% sw_include '@Storefront/storefront/page/product-detail/review/review-item.html.twig' %}
+                                                </div>
+                                            {% endfor %}
+                                        {% endblock %}
+
+                                        {% block page_product_detail_review_list_paging %}
+                                            {% set criteria = reviews.criteria %}
+
+                                            {% set totalPages = (reviews.total/criteria.limit)|round(0,'ceil') %}
+
+                                            {% if totalPages > 1 %}
+                                                {% set formAjaxSubmitOptions = {
+                                                    replaceSelectors: ".js-review-container",
+                                                    submitOnChange: true
+                                                } %}
+
+                                                {% block page_product_detail_review_list_paging_form %}
+                                                    <div class="product-detail-review-pagination">
+                                                        <form class="product-detail-review-pagination-form"
+                                                              action="{{ path('frontend.product.reviews', { productId: reviews.productId }) }}"
+                                                              method="post"
+                                                              data-form-ajax-submit="true"
+                                                              data-form-ajax-submit-options='{{ formAjaxSubmitOptions|json_encode }}'>
+
+                                                            {% block page_product_detail_review_list_paging_csrf %}
+                                                                {{ sw_csrf('frontend.product.reviews') }}
+                                                            {% endblock %}
+
+                                                            {% if app.request.get('limit') %}
+                                                                <input type="hidden" name="limit" value="{{ app.request.get('limit') }}">
+                                                            {% endif %}
+
+                                                            {% if app.request.get('language') %}
+                                                                <input type="hidden" name="language" value="{{ app.request.get('language') }}">
+                                                            {% endif %}
+
+                                                            {% if app.request.get('sort') %}
+                                                                <input type="hidden" name="sort" value="{{ app.request.get('sort') }}">
+                                                            {% endif %}
+
+                                                            {% if app.request.get('points') %}
+                                                                {% for points in app.request.get('points') %}
+                                                                    <input type="hidden" name="points[]" value="{{ points }}">
+                                                                {% endfor %}
+                                                            {% endif %}
+
+                                                            {% sw_include '@Storefront/storefront/component/pagination.html.twig' with {
+                                                                entities: reviews,
+                                                                criteria: reviews.criteria
+                                                            }  %}
+                                                        </form>
+                                                    </div>
+                                                {% endblock %}
+                                            {% endif %}
+                                        {% endblock %}
+                                    {% endblock %}
+
+                                    {% if productReviewCount <= 0 %}
+                                        {% block page_product_detail_review_list_empty %}
+                                            {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                                                type: "info",
+                                                content: "detail.reviewListEmpty"|trans|sw_sanitize
+                                            } %}
+                                        {% endblock %}
+                                    {% endif %}
+								</div>
+							{% endblock %}
+
+                            {% block page_product_detail_review_form_teaser_button %}
+                                <button class="btn btn-primary product-detail-review-teaser-btn"
+                                        type="button"
+{#                                        data-toggle="collapse"#}
+{#                                        data-target=".multi-collapse"#}
+{#                                        aria-expanded="false"#}
+{#                                        aria-controls="review-form review-list"#}
+                                        data-toggle="modal"
+                                        data-target="#leaveReview">
+                                        <span class="product-detail-review-teaser-show">
+                                            {% if not reviews.customerReview %}
+                                                {{ "detail.reviewTeaserButton"|trans|sw_sanitize }}
+                                            {% else %}
+                                                {{ "detail.reviewExistsTeaserButton"|trans|sw_sanitize }}
+                                            {% endif %}
+                                        </span>
+                                    <span class="product-detail-review-teaser-hide">
+                                            {{ "detail.reviewTeaserButtonHide"|trans|sw_sanitize }}
+                                        </span>
+                                </button>
+                            {% endblock %}
+						</div>
+					{% endblock %}
+				</div>
+
+                <div class="modal fade tr-modal-leave-review"
+                     id="leaveReview"
+                     tabindex="-1"
+                     role="dialog">
+                    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered"
+                         role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="modal-title h5">{{ "terraAustralia.productDetail.reviewsModalTitle"|trans|sw_sanitize }}</div>
+                                <button type="button"
+                                        class="modal-close close"
+                                        data-dismiss="modal"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">
+                                            {% sw_icon 'x' style { 'size': 'xs' } %}
+                                        </span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                {% block page_product_detail_review_form_container %}
+                                    <div class="js-review-container"
+                                        id="review-form">
+                                        <div class="js-review-content">
+                                            {% block page_product_detail_review_alert %}
+                                                {% if ratingSuccess == 1 %}
+                                                    {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                                                        type: "success",
+                                                        content: "detail.reviewFormSuccessAlert"|trans|sw_sanitize
+                                                    } %}
+                                                {% elseif ratingSuccess == 2  %}
+                                                    {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                                                        type: "success",
+                                                        content: "detail.reviewFormSuccessUpdateAlert"|trans|sw_sanitize
+                                                    } %}
+                                                {% elseif ratingSuccess == -1  %}
+                                                    {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                                                        type: "danger",
+                                                        content: "detail.reviewFormErrorAlert"|trans|sw_sanitize
+                                                    } %}
+                                                {% endif %}
+                                            {% endblock %}
+
+                                            {% if context.customer %}
+                                                <div class="product-detail-review-form">
+                                                    {% sw_include '@Storefront/storefront/page/product-detail/review/review-form.html.twig' %}
+                                                </div>
+                                            {% else %}
+                                                <div class="product-detail-review-login">
+                                                    {% sw_include '@Storefront/storefront/page/product-detail/review/review-login.html.twig' %}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			{% endblock %}
+		</div>
+	{% endblock %}
+{% endblock %}

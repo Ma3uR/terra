@@ -1,0 +1,204 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/index.html.twig' %}
+
+{% block base_main_inner %}
+    <div class="tr-visual-block" style="background-image: url('/bundles/terraaustralia/assets/images/bg-visual.jpg')">
+        <div class="container">
+            {% block page_product_detail_breadcrumb %}
+                <div class="breadcrumb product-breadcrumb">
+                    <a href="/">{{ "terraAustralia.header.home" | trans }}</a>
+                    <div class="breadcrumb-placeholder">
+                        <span class="tr-breadcrumb-placeholder-icon"></span>
+                    </div>
+                </div>
+            {% endblock %}
+            <h2 class="tr-title tr-title_center">{{ page.product.translated.name }}</h2>
+        </div>
+    </div>
+
+    {{ parent() }}
+{% endblock %}
+
+{% block base_content %}
+    {% block page_product_detail %}
+
+        <div class="product-detail"
+             itemscope
+             itemtype="https://schema.org/Product">
+            {% block page_product_detail_inner %}
+                {% block page_product_detail_content %}
+                    <div class="product-detail-content">
+
+                        {% set mediaItems = page.product.media.media %}
+
+                        {% block page_product_detail_main %}
+                            <div class="row product-detail-main">
+                                {% block page_product_detail_media %}
+                                    <div class="col-lg-6 product-detail-media">
+                                        {% if page.product.media %}
+                                            {% sw_include '@Storefront/storefront/element/cms-element-image-gallery.html.twig' with {
+                                                'mediaItems': mediaItems,
+                                                'zoom': true,
+                                                'zoomModal': true,
+                                                'displayMode': 'contain',
+                                                'gutter': 5,
+                                                'minHeight': '490px',
+                                                'galleryPosition': 'left',
+                                                'isProduct': true,
+                                                'fallbackImageTitle': page.product.translated.name,
+                                                'startIndexThumbnails': page.product.cover.position + 1,
+                                                'startIndexSlider': page.product.cover.position + 1
+                                            } %}
+                                        {% endif %}
+                                    </div>
+                                {% endblock %}
+
+                                {% block page_product_detail_buy %}
+                                    <div class="col-lg-6 product-detail-buy">
+                                        {% sw_include '@Storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+
+                {% block page_product_detail_info_list %}
+                    <div class="tr-info-list tr-info-list_product-detail row">
+                        <div class="tr-info-list__item col-6 col-lg-3">
+                            <div class="tr-info-list__item-inner">
+                                <div class="tr-info-list__image">
+                                    <img src="/bundles/terraaustralia/assets/images/info-list-img-prim-2.png" alt="">
+                                </div>
+                                <div class="tr-info-list__title">{{ 'terraAustralia.productDetail.infoListTitle1'|trans }}</div>
+                            </div>
+                        </div>
+                        <div class="tr-info-list__item col-6 col-lg-3">
+                            <div class="tr-info-list__item-inner">
+                                <div class="tr-info-list__image">
+                                    <img src="/bundles/terraaustralia/assets/images/info-list-img-prim-1.png" alt="">
+                                </div>
+                                <div class="tr-info-list__title">{{ 'terraAustralia.productDetail.infoListTitle2'|trans }}</div>
+                            </div>
+                        </div>
+                        <div class="tr-info-list__item col-6 col-lg-3">
+                            <div class="tr-info-list__item-inner">
+                                <div class="tr-info-list__image">
+                                    <img src="/bundles/terraaustralia/assets/images/info-list-img-prim-3-new.png" alt="">
+                                </div>
+                                <div class="tr-info-list__title">{{ 'terraAustralia.productDetail.infoListTitle3'|trans }}</div>
+                            </div>
+                        </div>
+                        <div class="tr-info-list__item col-6 col-lg-3">
+                            <div class="tr-info-list__item-inner">
+                                <div class="tr-info-list__image">
+                                    <img src="/bundles/terraaustralia/assets/images/info-list-img-prim-4-new.png" alt="">
+                                </div>
+                                <div class="tr-info-list__title">{{ 'terraAustralia.productDetail.infoListTitle4'|trans }}</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endblock %}
+
+                {% block page_product_detail_cross_selling_first %}
+
+                    {% if page.crossSellings.count() > 0 %}
+
+                        {% set firstCrossSellings = page.crossSellings|first %}
+
+                        <div class="tr-products-slider-wrap">
+                            {% block page_product_detail_cross_selling_first_headline %}
+                                <div class="row justify-content-between">
+                                    <div class="col-auto">
+                                        <h2 class="tr-title tr-title_decor">{{ firstCrossSellings.crossSelling.translated.name }}</h2>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="tr-slider-arrow-wrap">
+                                            <button class="tr-slider-arrow tr-slider-prev">
+                                                {% sw_icon 'arrow-head-left' %}
+                                            </button>
+                                            <button class="tr-slider-arrow tr-slider-next">
+                                                {% sw_icon 'arrow-head-right' %}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endblock %}
+
+                            {% set id = firstCrossSellings.crossSelling.id %}
+                            {% if firstCrossSellings.crossSelling.active and firstCrossSellings.getProducts().elements %}
+                                <div class="tr-products-slider js-products-slider">
+                                    {% block page_product_detail_cross_selling_first_slider %}
+                                        {% for product in firstCrossSellings.getProducts() %}
+                                            {% block page_product_detail_cross_selling_first_slider_item %}
+                                                <div class="tr-products-slider__item">
+                                                    {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' %}
+                                                </div>
+                                            {% endblock %}
+                                        {% endfor %}
+                                    {% endblock %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+                {% block page_product_detail_tabs %}
+                    <div class="product-detail-tabs">
+                        {% sw_include '@Storefront/storefront/page/product-detail/tabs.html.twig' %}
+                    </div>
+                {% endblock %}
+
+                {% block page_product_detail_cross_selling %}
+
+                    {% if page.crossSellings.count() > 0 %}
+
+                        {% set allCrossSellings = page.crossSellings|slice(1) %}
+
+                        {% if allCrossSellings %}
+
+                            <div class="row">
+                                {% for crossSelling in allCrossSellings %}
+                                    <div class="col-12 tr-products-slider-wrap {% if allCrossSellings|length > 1 %}col-xl-6{% endif %}">
+                                        {% block page_product_detail_cross_selling_headline %}
+                                            <div class="row justify-content-between">
+                                                <div class="col-auto">
+                                                    <h2 class="tr-title tr-title_decor">{{ crossSelling.crossSelling.translated.name }}</h2>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="tr-slider-arrow-wrap">
+                                                        <button class="tr-slider-arrow tr-slider-prev">
+                                                            {% sw_icon 'arrow-head-left' %}
+                                                        </button>
+                                                        <button class="tr-slider-arrow tr-slider-next">
+                                                            {% sw_icon 'arrow-head-right' %}
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endblock %}
+
+                                        {% set id = crossSelling.crossSelling.id %}
+
+                                        {% if crossSelling.crossSelling.active and crossSelling.getProducts().elements %}
+                                            <div class="tr-products-slider {% if allCrossSellings|length > 1 %}tr-products-slider_row js-products-slider-row{% else %}js-products-slider{% endif %}">
+                                                {% block page_product_detail_cross_selling_slider %}
+                                                    {% for product in crossSelling.getProducts() %}
+                                                        {% block page_product_detail_cross_selling_slider_item %}
+                                                            <div class="tr-products-slider__item">
+                                                                {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' %}
+                                                            </div>
+                                                        {% endblock %}
+                                                    {% endfor %}
+                                                {% endblock %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endblock %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

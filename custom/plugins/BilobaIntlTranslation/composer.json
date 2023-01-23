@@ -1,0 +1,59 @@
+{
+    "name": "biloba\/intl-translation",
+    "description": "Translate with Auto Translation Pro",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "version": "1.0.8",
+    "authors": [
+        {
+            "name": "Biloba IT"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Biloba\\IntlTranslation\\": "src\/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Biloba\\IntlTranslation\\BilobaIntlTranslation",
+        "plugin-icon": "plugin.png",
+        "shopware-min-version": "^6.3.0",
+        "copyright": "(c) by Biloba IT",
+        "label": {
+            "de-DE": "Auto Translation Pro",
+            "en-GB": "Auto Translation Pro",
+            "fr-FR": "Auto Translation Pro",
+            "es-ES": "Auto Translation Pro",
+            "pt-PT": "Auto Translation Pro",
+            "it-IT": "Auto Translation Pro",
+            "nl-NL": "Auto Translation Pro",
+            "pl-PL": "Auto Translation Pro"
+        },
+        "description": {
+            "de-DE": "\u00dcbersetze deine Sprachshops einfach und automatisch im Backend! Mit Hilfe von der DeepL oder  Google Translate API kann ganz einfach und automatisch \u00fcbersetzt werden.",
+            "en-GB": "Translate your language shops easily and automatically in the backend! With the help of the DeepL or Google Translate API you can translate easily and automatically.",
+            "fr-FR": "Traduisez vos boutiques de langues facilement et automatiquement dans le backend ! Avec l'aide de DeepL ou Google Translate API vous pouvez traduire facilement et automatiquement.",
+            "es-ES": "Traduzca sus tiendas de idiomas de forma f\u00e1cil y autom\u00e1tica en el backend! Con la ayuda de la API de DeepL o Google Translate puedes traducir de forma f\u00e1cil y autom\u00e1tica.",
+            "pt-PT": "Traduza suas lojas de idiomas de forma f\u00e1cil e autom\u00e1tica no backend! Com a ajuda do DeepL ou do Google Translate API voc\u00ea pode traduzir f\u00e1cil e automaticamente.",
+            "it-IT": "Traduci i tuoi negozi di lingua facilmente e automaticamente nel backend! Con l'aiuto delle API DeepL o Google Translate potete tradurre facilmente e automaticamente.",
+            "nl-NL": "Vertaal uw taalwinkels eenvoudig en automatisch in de back-end! Met behulp van de DeepL of Google Translate API kunt u eenvoudig en automatisch vertalen.",
+            "pl-PL": "T\u0142umacz swoje sklepy j\u0119zykowe \u0142atwo i automatycznie w backendzie! Z pomoc\u0105 API DeepL lub Google Translate mo\u017cesz t\u0142umaczy\u0107 \u0142atwo i automatycznie."
+        },
+        "manufacturerLink": {
+            "de-DE": "https:\/\/www.biloba-it.de\/online-shop\/",
+            "en-GB": "https:\/\/www.biloba-it.de\/online-shop\/"
+        },
+        "supportLink": {
+            "de-DE": "https://www.biloba-it.de/anfrage/",
+            "en-GB": "https://www.biloba-it.de/anfrage/"
+        }
+    },
+    "require": {
+        "shopware/core": "^6.3",
+        "shopware/storefront": "^6.3"
+    },
+    "minimum-stability": "RC",
+    "require-dev": {
+        "evert/phpdoc-md": "^0.2.0"
+    }
+}

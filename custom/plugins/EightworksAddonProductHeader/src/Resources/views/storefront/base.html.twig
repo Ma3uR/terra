@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_main %}
+    {% if controllerName|lower == 'product' %}
+        {% if
+            page.product.customFields.eightworks_addon_product_header_activation and
+            page.product.customFields.eightworks_addon_product_header_fullwidth
+        %}
+            {% include "/storefront/page/product-detail/product-header.html.twig" %}
+        {% endif %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}

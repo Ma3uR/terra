@@ -1,0 +1,57 @@
+{% set pickwareDhlRadioGroupId = random() %}
+
+{% set pickwareDhlLogo %}
+    <img
+        class="pickware-dhl-address-radio-logo"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN8AAAClCAIAAABTIr/cAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAAB3RJTUUH5AsRCCQPsTBfUAAADQZJREFUeNrt22uQZGV9x/H//zmXPqdneu7Ty4bNxhhLQAOuFwxILKNSChKheBFCkVTCIhpYX6SSyhurNHmfW+UNsyAiKVDKGIMRjAHCzawlmCBQKlUq3iIblum590xPnz6X558X0zPTMzuz+/RMz/Kfyu/zYmtrdueZ032+c/rp5zzN8hwB6GRe7wMA2BbqBL1QJ+iFOkEv1Al6oU7QC3WCXqgT9EKdoBfqBL1QJ+iFOkEv1Al6oU7QC3WCXqgT9EKdoBfqBL1QJ+iFOkEv1Al6oU7QC3WCXqgT9EKdoBfqBL1QJ+iFOkEv1Al6oU7QC3WCXqgT9EKdoBfqBL1QJ+iFOkEv1Al6oU7QC3WCXqgT9EKdoBfqBL1QJ+iFOkEv1Al6oU7QC3WCXqgT9EKdoBfqBL1QJ+iFOkEv1Al6oU7QC3WCXqgT9EKdoBfqBL1QJ+iFOkEv1Al6oU7QC3WCXqgT9EKdoBfqBL1QJ+iFOkEv//U+AAd8Dn+JhMju5bFtOf7uB/H2+GG+TtTXaSg7ZRYeC22Lee2LvM1/5k1/l86vt79/059MzES+eH0UVG14qPCrlgO3k8eUz/HCI6Viifns/1nEcjBuBz+cmrKsHRox2QbPPxLmM+bsozCJJW/ADl2deoNCQsRkW1x/NExfc/j2lRGEvLIMXpX6o3b9MFTSXSeTXebaZ+O5h8NdjkPbJ93+N0McSjAq5SP50DWt8pGcPTrTyWOSjGbuj6a/GIlLykKmROf96bKJZMOwQrMPlmrHY5u5PRRD4x9LTN/6IAv/Hp76+7JdPvMj3GDsppbXL8rTJO11Cs3+S2nh0ZBNF0/9jn+WtDg9ya1XwsUTwcgNrbE/SDZc5E6z8Fhp9sESEbHLC6vQ8LWt4etSMh3RG1o8EUzfH0nhNoilwSvT0ZsS9omEyNDyC/7UPZEkxI5n0lLlimz8aJNL+6BOxe+KDC1+O5i+P5J879Ps+KHsUVHnqXuj6fsiybf9b8vf92t3R3aZXY5NLPW9Ix+7JeHOC6eh1s+82kRczLsOEl1YVP8k8SqykmZ2ykzeEaeTxvU0Wiq9wVaPNb3hfZAm6a3TUOvnXm0iLuaczlyPMVFBs18pLb8QbPEMGcomTW0iTl91y8JSeNBWjzWDql2fzjIVC1w7Hic/8ZwGEQpG5cCxZvhrBdn2nGfqc/Hy93x2PIdC3oBUb2tGby72xVsiUlrn2pl72e3M7c0x5AtcfzLYfCKZbMJTn48az7tlIWRiqd6alC/OO4eSgmYeiOonAsc0OaCxP0r6fytrDyI099XS/CPdTMc9Gr2xVfmddL+kSTrnnZLR9P1R/alALPX+BYjJ9WJDlPzcs03eNPucfyic/7eS+48bvj4dvKq14YuG6v8Rzny5tHIVdDF0VTp8fYu4Pd1c+nYwfV8kmfOcx9LgB9KRGxM2e/CU7hl9dRpKX/GyV03/5dlevKYXCyZ52dt2Qnm2Y2v8VzB1byQtt1cdof73ZGM3Nzmi9RANNX/g1+6K7RK7DCKW+t6Wj9/aNLGQJTKU/o83ORFns+z4ayaW4guK6m2JV5F9dOEkjXVaCg8X5/9VY8s0u3rzfvqllw01f+T/8i/68xmn6Wz0G4WJVy+chtKTZnIizqaN69XXIxPQ7D9Fm5pY+m8/fcV5znqePfDJZnDQrvRdLHLtzij5kec+3QxGOias+4q+OlcWaE5fXmGSlBeeCLKa27KzL/2X5qU3Fp3r3pLy/DfCfNYhTUvhQTv0kZRM+7JnG1z7bNx8yTkLIrJUfzqQp4LND8Xx5pCQiWX8Y0n5SHvOKpZmvxQtPB26TsfXJqyXZfsuTdJZ59aYFh4PTv1N2TacLp4ckP+ZRulNBRXrX5z/Rjj3ULhyi+VMhDii8aNJ/NbVtzKWZv+5VH/cOYs1ZhfTE6bh69Khq9O1oRafCGe+VKKiixeQDRPW/Waf1Gmo+X2/dndsG05zNbI08MG08t6OC4ah5Rf9qc9HkjiNMHxta+iajiy+GUx/8ZyuvIqlymX52M0Jh+3VzeTHXu3OuKi7PQOdE9byPpturlG5onTaMeY1MzkRp//rNFcTS9FFRfXjTbN2s44pe81MTsTpa2cfQSz1XZqP35y076YYav3UmzzuumbeG5ZKh231WLN9K5ypmOPaRJz8oouF9/BAx4R1f1J/7WSShKfujRrfdV1fDEbkwO3N8PCGszL/UKnxvE98lu0dYql02B441vTHV9+FzPHk8Tj5iXcu12JMRaqfaMYXrU43U5q+L1p8JmDnF+hNE9Z9Sn2dRHNfD+e+7rq+yOHGVetV/VdkpixnXSAUS+W3FvFbVk8qk21y5fKs/91uezR6Qsiv2soV2foxJFx6Y3Hwz5ddL95C/ohU3nsOj3lvsDzXm4GkIMp788onQhwIe0SGGs/5J/+yL59yXX+J3lQc/ruloGrltLWks59aIfI79j4yScokRMb1msnhaT+FSdLuNlNyQGSo/WaOSTKigsnr/rpddHc6hIiNcEDEJAVRtsOzyYH0asLYozoNzT8czj1c6mK1ZbvnSCg8YKu3N4NfsdlJ88qn+5Z/4HwrmciUJLqg8Aa6P5eWKu/Lhj/aWlszT37sTd0dFw236WZB5YvzsaPJ+voore4WuCsu6q6DRBcW1Vub7Q1yTPmMqd3pOuHe3fNO7MvYTa2+yzK7xFP3RMsvdfG0rzM0fkuz7129mVH07JXdtriou969OBOm8ofy4IC1Da7dHTe7SXPlMBovdP+gLJWP5H1H8vb2NqZ81kzeES9+K3CqylJQlfFbNqbJVNS5djxeeMJtECF/RMb+cH3v5sod3bmvhXIO5ruWhq5Oo7fkRLT8ot94MZDWjsYxJFnP3j72qE5LQx9JB96f7vKohJg9Mf1CRLNfKS08Fu7gcTptlOz8oZbKR/LzP7UcvqG9/Ucymr4vWno2cNo0KcQxVT/e7Ls063zL0t7n8Z/OgwQ0fjTpf0+2dmtq4fFw7l/DrjYG7IxYKl9SVG9veoNCOZUvyQ//7RLzjnbZMZkyda4x70aP6jS09ExQf9Jtx812LPW9Ix+6rsUBLZ4Ipr+w9+uLQkRUuTw778+apV9fv9G38Ghp7qsOi/arhq9tDf1uuuFLhuqP72KfB1Mxy7NfjooGd/vL1jVLwZg9cKwZHrbpz7zpB0qOm1a3xjT6e634YlWv7EzZKdP4brCTyfsKIX9YRm5ocUitn67u7NzLa4YU5PXL8EfTsT9O/LHV5SdDy99b3Vbstrba/+7VxdGOlf/kh17trtgu7mifB7WnFtkp5xv6O38WiEs0fjTpuzSTJs9+reQ6mdkGGxq8MlX2yl7Q8HWtgQ+mOx/BEpfIH7XFPNfu3MudnUJiiQPquzgfvalV+e10/TNuhrJJM3lHnDpmYal0qGNxdAVTPmMmJ+LWL10H2bDPY/Ug/VEbHiqyad/1Ixk7NXRNa+jalJjIl7Ebk9Ebkl0Nx+QNiLpX9uWX/KXv+E77M7b69sEr0+hQIRnNPBDVnw56f19YSISYyfRLfGEx+KG08r7UHxFa28fEZJs8dU+0/LzvtOgtZPqk+onm+r14ai9CTf9jtPSs28q5EG+5bC7kDUn1tuS1f4iTlz2xxNz7SY5Y6n9nvvJmbumZYOnZHb1J34Rp8MNpr7bf9+yVPfmhN/dgqesPVhORpfIl+ejvCxE1vhPMPxJ6FWmfiTOf3dP+df29raz+ycSGuCTegITn2/iivPz2PH5zYVY+mrPxGaw/GSx+K/AGxbGDketbA1du3mq+eCKoPxV4A26DCA1d07HPY+M/9b0rO/zXRf2bYeM5Pz1piiWWnHv2Syvkj9rqJ5vBQZv+wpv6XOT6GZIzjskexb9ZRBf05uLZo/VOpnzKZFM72pAjFIxbf9ySUHbK5PMbB5Gtv2WLv6+swkjHF4WIiAMyZfEGxKtYLlH7ZqZsMWZ60iuWXN8QsJHwV+3mD20Kpa+aou76PDBLcMie6cO7hohIWlzUuVhiaZHYHl1ChbyKhIeKlbu16SmvJ9dmJgnOt95Abz5V17N7RbSblx5Zf3l1HaSrnyUdP+IMur1ybDlmTwbZ8vHuxfLF6puwXg7u+Igc9G7K3ZNj6t0D24mebJjYo10Xe/rMvL5P+/b2ww46+P8KdYJeqBP0Qp2gF+oEvVAn6IU6QS/UCXqhTtALdYJeqBP0Qp2gF+oEvVAn6IU6QS/UCXqhTtALdYJeqBP0Qp2gF+oEvVAn6IU6QS/UCXqhTtALdYJeqBP0Qp2gF+oEvVAn6IU6QS/UCXqhTtALdYJeqBP0Qp2gF+oEvVAn6IU6QS/UCXqhTtALdYJeqBP0Qp2gF+oEvVAn6IU6QS/UCXqhTtALdYJeqBP0Qp2gF+oEvVAn6IU6QS/UCXqhTtALdYJeqBP0Qp2gF+oEvVAn6IU6QS/UCXqhTtALdYJeqBP0Qp2g1/8ByN/uJ+xC8uUAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjAtMTEtMTdUMDg6MzY6MTUtMDU6MDB1rBfnAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIwLTExLTE3VDA4OjM2OjE1LTA1OjAwBPGvWwAAAABJRU5ErkJggg=="
+    />
+{% endset %}
+
+<div
+    class="pickware-dhl-special-address-radio-group pickware-dhl-address-radio-group"
+    pickware-dhl-address-form
+>
+    <div>
+        <input
+            type="radio"
+            value="regular"
+            name="pickwareDhlAddressRadioGroup"
+            class="pickware-dhl-radio-button-regular"
+            id="{{ pickwareDhlRadioGroupId }}pickwareDhlAddressRadioRegular"
+        >
+
+        <label for="{{ pickwareDhlRadioGroupId }}pickwareDhlAddressRadioRegular">
+            {{ 'pickware-dhl.special-addresses.storefront.regular.radio-button-label'|trans|sw_sanitize }}
+        </label>
+    </div>
+
+    <div>
+        <input
+            type="radio"
+            value="packstation"
+            name="pickwareDhlAddressRadioGroup"
+            class="pickware-dhl-radio-button-packstation"
+            id="{{ pickwareDhlRadioGroupId }}pickwareDhlRadioButtonPackstation"
+        >
+
+        <label for="{{ pickwareDhlRadioGroupId }}pickwareDhlAddressRadioPackstation">
+            {{ 'pickware-dhl.special-addresses.storefront.packstation.radio-button-label'|trans|sw_sanitize }}
+            {{ pickwareDhlLogo }}
+        </label>
+    </div>
+
+    <div>
+        <input
+            type="radio"
+            value="post-office"
+            name="pickwareDhlAddressRadioGroup"
+            class="pickware-dhl-radio-button-post-office"
+            id="{{ pickwareDhlRadioGroupId }}pickwareDhlRadioButtonPostOffice"
+        >
+
+        <label for="{{ pickwareDhlRadioGroupId }}pickwareDhlAddressRadioPostOffice">
+            {{ 'pickware-dhl.special-addresses.storefront.post-office.radio-button-label'|trans|sw_sanitize }}
+            {{ pickwareDhlLogo }}
+        </label>
+    </div>
+</div>

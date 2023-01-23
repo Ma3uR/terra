@@ -1,0 +1,26 @@
+{% block tr_benefits_component %}
+    <div class="tr-benefits-component">
+        <div class="tr-benefits-component__title">
+            <slot name="title"></slot>
+        </div>
+        
+        <div class="tr-benefits-component__inner">
+            <div class="tr-benefits-component__inner-feed">
+                <slot  name="feed1"></slot>
+            </div>
+            
+            <div class="tr-benefits-component__inner-feed">
+                <slot  name="feed2"></slot>
+            </div>
+            
+            <div class="tr-benefits-component__inner-feed">
+                <slot  name="feed3"></slot>
+            </div>
+            
+            <div class="tr-benefits-component__inner-feed">
+                <slot  name="feed4"></slot>
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}

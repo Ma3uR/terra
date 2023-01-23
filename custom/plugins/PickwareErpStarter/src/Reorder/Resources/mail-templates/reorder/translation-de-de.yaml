@@ -1,0 +1,8 @@
+localeCode: 'de-DE'
+subject: 'Meldebestand Benachrichtigung'
+sender: 'Shopware Administration'
+description: 'Meldebestand Benachrichtigung'
+contentHtml:
+  fromFile: 'content-de-de.html'
+contentPlain:
+  fromFile: 'content-de-de.txt'

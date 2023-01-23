@@ -1,0 +1,6 @@
+{% block sw_cms_block_config__quickaction_delete %}
+    {% parent %}
+    <sw-button :disabled="isTranslationDisabled" :isLoading="isTranslating" @click="onTranslate">
+        {{ $tc('biloba-intl-translation.sw-product.detail.buttonTranslate')}}
+    </sw-button>
+{% endblock %}

@@ -1,0 +1,322 @@
+- name: product
+  type: single-select
+  label:
+    de-DE: Produkt
+    en-GB: Product
+  options:
+    - value: V01PAK
+      label:
+        de-DE: DHL Paket
+        en-GB: DHL Paket
+    - value: V53WPAK
+      label:
+        de-DE: DHL Paket International
+        en-GB: DHL Paket International
+    - value: V54EPAK
+      label:
+        de-DE: DHL Europaket
+        en-GB: DHL Europaket
+    - value: V55PAK
+      label:
+        de-DE: DHL Paket Connect
+        en-GB: DHL Paket Connect
+    - value: V62WP
+      label:
+        de-DE: DHL Warenpost
+        en-GB: DHL Warenpost
+  default: V01PAK
+
+- name: enclosedReturnLabel
+  type: boolean
+  label:
+    en-GB: Attach return label
+    de-DE: Retourenlabel anfügen
+  default: false
+  enablingConditions:
+    product:
+      - 'V01PAK'
+
+- type: group
+  label:
+    en-GB: General
+    de-DE: Allgemein
+  elements:
+    - name: bulkyGoods
+      type: boolean
+      label:
+        en-GB: Bulky goods
+        de-DE: Sperrgut
+      default: false
+      enablingConditions:
+        product:
+          - 'V01PAK'
+          - 'V53WPAK'
+          - 'V55PAK'
+    - name: namedPersonOnly
+      type: boolean
+      label:
+        de-DE: Persönliche Übergabe
+        en-GB: Personal handover
+      default: false
+      enablingConditions:
+        product:
+          - 'V01PAK'
+    - name: visualCheckOfAge
+      type: single-select
+      label:
+        en-GB: Visual check of age
+        de-DE: Alterssichtprüfung
+      options:
+        - value: '0'
+          label:
+            en-GB: No visual age control
+            de-DE: Keine Alterssichtprüfung
+        - value: '16'
+          label:
+            en-GB: at least 16 years
+            de-DE: mind. 16 Jahre
+        - value: '18'
+          label:
+            en-GB: at least 18 yeast
+            de-DE: mind. 18 Jahre
+      default: '0'
+      enablingConditions:
+        product:
+          - 'V01PAK'
+    - name: additionalInsurance
+      type: single-select
+      label:
+        de-DE: Zusätzliche Versicherung
+        en-GB: Additional insurance
+      options:
+        - value: '0'
+          label:
+            en-GB: No additional insurance
+            de-DE: Keine zusätzliche Versicherung
+        - value: '2500'
+          label:
+            en-GB: up to EUR 2,500
+            de-DE: bis EUR 2.500
+        - value: '25000'
+          label:
+            en-GB: up to EUR 25,000
+            de-DE: bis EUR 25.000
+      default: '0'
+      enablingConditions:
+        product:
+          - 'V01PAK'
+          - 'V53WPAK'
+          - 'V54EPAK'
+          - 'V55PAK'
+- type: group
+  label:
+    en-GB: Cash on delivery
+    de-DE: Nachnahme
+  elements:
+    - name: codEnabled
+      type: boolean
+      groupHeader: true
+      label:
+        en-GB: Cash on delivery
+        de-DE: Nachnahme
+      default: false
+      enablingConditions:
+        product:
+          - 'V01PAK'
+          - 'V53WPAK'
+    - name: codAmount
+      type: money
+      currency: EUR
+      precision: 2
+      max: 3500
+      label:
+        en-GB: Cash on delivery amount
+        de-DE: Nachnahmebetrag
+      default:
+      enablingConditions:
+        codEnabled: true
+- type: group
+  label:
+    en-GB: Ident-Check
+    de-DE: Ident-Check
+  elements:
+    - name: identCheckEnabled
+      groupHeader: true
+      type: boolean
+      label:
+        en-GB: Ident-Check
+        de-DE: Ident-Check
+      default: false
+      enablingConditions:
+        product:
+          - 'V01PAK'
+    - name: identCheckGivenName
+      type: text
+      label:
+        en-GB: First name
+        de-DE: Vorname
+      default: ''
+      enablingConditions:
+        identCheckEnabled: true
+    - name: identCheckSurname
+      type: text
+      label:
+        en-GB: Surname
+        de-DE: Nachname
+      default: ''
+      enablingConditions:
+        identCheckEnabled: true
+    - name: identCheckDateOfBirth
+      type: date
+      label:
+        en-GB: Date of birth
+        de-DE: Geburtsdatum
+      default:
+      enablingConditions:
+        identCheckEnabled: true
+    - name: identCheckMinimumAge
+      type: single-select
+      label:
+        en-GB: Minimum age of recipient
+        de-DE: Mindestalter des Empfängers
+      options:
+        - value: '16'
+          label:
+            en-GB: 16 years
+            de-DE: 16 Jahre
+        - value: '18'
+          label:
+            en-GB: 18 years
+            de-DE: 18 Jahre
+      default: '18'
+      enablingConditions:
+        identCheckEnabled: true
+
+- type: group
+  label:
+    en-GB: Delivery specifications
+    de-DE: Zustellvorgaben
+  elements:
+    - name: 'preferredDay'
+      type: date
+      label:
+        de-DE: 'Liefertag'
+        en-GB: 'Delivery day'
+      enablingConditions:
+        product:
+          - 'V01PAK'
+    - name: 'endorsement'
+      type: single-select
+      label:
+        en-GB: Endorsement (Sender's Instructions)
+        de-DE: Vorausverfügung
+      helpText:
+        en-GB: The service is mandatory for international shipments and defines the handling of parcels that cannot be delivered.
+        de-DE: Der Service ist für internationale Sendungen verpflichtend und definiert die Behandlung von Paketen, die nicht zugestellt werden können.
+      options:
+        - value: ''
+          label:
+            en-GB: Not specified
+            de-DE: Keine Angabe
+        - value: 'IMMEDIATE'
+          label:
+            en-GB: Immediate return to sender
+            de-DE: Sofortige Rücksendung an den Absender (entgeltlich)
+        - value: 'ABANDONMENT'
+          label:
+            en-GB: Abandonment of Parcel (free of charge)
+            de-DE: Preisgabe des Paketes durch den Absender (entgeltfrei)
+      default: ''
+      enablingConditions:
+        product:
+          - 'V53WPAK' # DHL Paket International
+
+- name: 'exportDocuments'
+  type: group
+  label:
+    de-DE: 'Exportdokumente'
+    en-GB: 'Export documents'
+  elements:
+    - name: 'createExportDocuments'
+      type: boolean
+      label:
+        en-GB: 'Create export documents'
+        de-DE: 'Exportdokumente erstellen'
+      default: false
+    - name: 'frankatur'
+      type: 'single-select'
+      label:
+        de-DE: 'Frankatur'
+        en-GB: 'Frankatur'
+      enablingConditions:
+        createExportDocuments: true
+      showConditions:
+        product: 'V54EPAK' # Europaket
+      default: null
+      options:
+        - value: 'DDP'
+          label:
+            de-DE: 'Frei Haus inkl. Zollabfertigung, Zölle und Steuern (DDP)'
+            en-GB: 'Delivered duty paid (DDP)'
+        - value: 'DXV'
+          label:
+            de-DE: 'Frei Haus inkl. Zollabfertigung, Zölle exkl. Steuern (DXV)'
+            en-GB: 'Delivered duty paid excluding taxes (DXV)'
+        - value: 'DDX'
+          label:
+            de-DE: 'Frei Haus inkl. Zollabfertigung, exkl. Zölle und Steuern (DDX)'
+            en-GB: 'Delivered duty paid excluding duties and taxes (DDX)'
+        - value: 'DDU'
+          label:
+            de-DE: 'Frei Haus exkl. Zollabfertigung, Zölle und Steuern (DDU)'
+            en-GB: 'Delivered duty unpaid (DDU)'
+    - name: 'incoterm'
+      type: 'single-select'
+      label:
+        de-DE: 'Incoterm'
+        en-GB: 'Incoterm'
+      enablingConditions:
+        createExportDocuments: true
+      showConditions:
+        product: # All products that are NOT Europaket
+          - 'V01PAK'
+          - 'V53WPAK'
+          - 'V55PAK'
+      default: null
+      options:
+        - value: 'EXW'
+          label:
+            de-DE: 'Ab Werk (EXW)'
+            en-GB: 'Ex works (EXW)'
+        - value: 'FCA'
+          label:
+            de-DE: 'Frei Frachtführer (FCA)'
+            en-GB: 'Free carrier (FCA)'
+        - value: 'CPT'
+          label:
+            de-DE: 'Fracht bezahlt bis (CPT)'
+            en-GB: 'Carriage paid to (CPT)'
+        - value: 'CIP'
+          label:
+            de-DE: 'Fracht und Versicherung bezahlt (CIP)'
+            en-GB: 'Carriage insurance paid (CIP)'
+        - value: 'DAT'
+          label:
+            de-DE: 'geliefert Terminal (DAT)'
+            en-GB: 'Delivered at terminal (DAT)'
+        - value: 'DAP'
+          label:
+            de-DE: 'geliefert benannter Ort (DAP)'
+            en-GB: 'Delivered at place (DAP)'
+- name: advancedSettings
+  type: group
+  label:
+    en-GB: Advanced settings
+    de-DE: Erweiterte Einstellungen
+  elements:
+    - name: printOnlyIfCodeable
+      type: boolean
+      label:
+        en-GB: Create label only if address is codeable
+        de-DE: Label nur erzeugen, wenn Adresse leitcodierbar
+      default: true

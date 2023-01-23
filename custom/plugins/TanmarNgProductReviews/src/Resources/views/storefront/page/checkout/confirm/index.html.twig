@@ -1,0 +1,23 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/index.html.twig' %}
+
+{% block page_checkout_confirm_tos_control %}
+    {{ parent() }}
+    {% set tanmarProductReviewsData = context.context.extensions.tanmarProductReviewsData %}
+    {% if tanmarProductReviewsData.active and tanmarProductReviewsData.optin %}
+        {% block page_checkout_confirm_tanmar_product_reviews_optin %}
+            <div class="custom-control custom-checkbox">
+                {% block page_checkout_confirm_tanmar_product_reviews_optin_checkbox %}
+                    <input type="checkbox" id="tanmar_product_reviews_optin" form="confirmOrderForm" name="tanmar_product_reviews_optin" value="1" class="custom-control-input">
+                    <input type="hidden" id="tanmar_product_reviews_consent_contained" form="confirmOrderForm" name="tanmar_product_reviews_consent_contained" value="1" class="custom-control-input">
+                {% endblock %}
+
+                {% block page_checkout_confirm_tanmar_product_reviews_optin_label %}
+                    <label for="tanmar_product_reviews_optin" id="tanmar_product_reviews_optin_label" class="custom-control-label">{{ "tanmar-product-reviews.optin.description"|trans }}</label>
+                    {% if tanmarProductReviewsData.coupon %}
+                        <span class="checkout-newsletter-couponinfo">{{ "tanmar-product-reviews.optin.coupon"|trans }}</span>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

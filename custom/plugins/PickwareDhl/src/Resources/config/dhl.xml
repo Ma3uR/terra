@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd"
+>
+    <card>
+        <title>Login DHL Business Customer Portal</title>
+        <title lang="de-DE">Login DHL Geschäftkundenportal</title>
+        <input-field type="text">
+            <name>username</name>
+            <required>true</required>
+            <label>Username</label>
+            <label lang="de-DE">Benutzername</label>
+            <helpText lang="de-DE">
+                Dein Benutzername für das DHL Geschäftskundenportal. Bitte teste deine Zugangsdaten, indem du dich damit
+                unter www.dhl-geschaeftskundenportal.de anmeldest. Weitere Information findest du in der Dokumentation.
+                Wenn du den Testing-Webservice von DHL verwendest, musst du hier den Benutzernamen deines
+                DHL-Entwickler-Portal-Accounts angeben.
+            </helpText>
+            <helpText>
+                The username for the DHL Business Customer Portal. Please test your account by logging into
+                www.dhl-geschaeftskundenportal.de! For further information please refer to the documentation. In case
+                you are using the testing webservice you need to enter the username of you DHL developer portal account.
+            </helpText>
+        </input-field>
+        <input-field type="password">
+            <name>password</name>
+            <required>true</required>
+            <label>Password</label>
+            <label lang="de-DE">Passwort</label>
+            <helpText lang="de-DE">
+                Dein Passwort für das DHL Geschäftskundenportal. Bitte teste deine Zugangsdaten, indem du dich damit
+                unter www.dhl-geschaeftskundenportal.de anmeldest. Weitere Information findest du in der Dokumentation.
+                Wenn du den Testing-Webservice von DHL verwendest, musst du hier das Passwort deines
+                DHL-Entwickler-Portal-Accounts angeben.
+            </helpText>
+            <helpText>
+                The password for the DHL Business Customer Portal. Please test your account by logging into
+                www.dhl-geschaeftskundenportal.de! For further information please refer to the documentation. In case
+                you are using the testing webservice you need to enter the password of you DHL developer portal account.
+            </helpText>
+        </input-field>
+        <input-field type="bool">
+            <name>useTestingEndpoint</name>
+            <label>Use testing webservice</label>
+            <label lang="de-DE">Nutze Testing-Webservice</label>
+            <helpText lang="de-DE">
+                Nutze den Testing-Webservice von DHL anstatt den Productive-Webservice. In diesem Fall musst du oben
+                die Zugangsdaten zu deinem DHL-Entwickler-Portal-Account angeben.
+            </helpText>
+            <helpText>
+                Use the DHL testing web service instead of the productive web service. This requires you to enter the
+                login data of your DHL developer portal account above.
+            </helpText>
+        </input-field>
+    </card>
+    <card>
+        <title lang="de-DE">Vertragsinformationen</title>
+        <title>Contract information</title>
+        <input-field type="text">
+            <name>customerNumber</name>
+            <label>Customer number (EKP)</label>
+            <label lang="de-DE">Kundennummer (EKP)</label>
+            <required>true</required>
+            <placeholder>1234567890</placeholder>
+        </input-field>
+        <input-field type="text">
+            <name>participationV01PAK</name>
+            <label>Participation DHL Paket</label>
+            <label lang="de-DE">Teilnahme DHL Paket</label>
+            <required>false</required>
+            <placeholder>01</placeholder>
+        </input-field>
+        <input-field type="text">
+            <name>returnParticipationV01PAK</name>
+            <label>Participation DHL Retoure (for DHL Paket)</label>
+            <label lang="de-DE">Teilnahme DHL Retoure (für DHL Paket)</label>
+            <required>false</required>
+            <placeholder>01</placeholder>
+        </input-field>
+        <input-field type="text">
+            <name>participationV53WPAK</name>
+            <label>Participation DHL Paket International</label>
+            <label lang="de-DE">Teilnahme DHL Paket International</label>
+            <required>false</required>
+            <placeholder>01</placeholder>
+        </input-field>
+        <input-field type="text">
+            <name>participationV54EPAK</name>
+            <label>Participation DHL Europaket</label>
+            <label lang="de-DE">Teilnahme DHL Europaket</label>
+            <required>false</required>
+            <placeholder>01</placeholder>
+        </input-field>
+        <input-field type="text">
+            <name>participationV55PAK</name>
+            <label>Participation DHL Connect</label>
+            <label lang="de-DE">Teilnahme DHL Connect</label>
+            <required>false</required>
+            <placeholder>01</placeholder>
+        </input-field>
+        <input-field type="text">
+            <name>participationV62WP</name>
+            <label>Participation DHL Warenpost</label>
+            <label lang="de-DE">Teilnahme DHL Warenpost</label>
+            <required>false</required>
+            <placeholder>01</placeholder>
+        </input-field>
+    </card>
+    <card>
+        <title>Communication settings</title>
+        <title lang="de-DE">Kommunikationseinstellungen</title>
+        <input-field type="bool">
+            <name>gdprAllowEmail</name>
+            <label lang="de-DE">E-Mail-Adresse des Kunden an DHL übermitteln</label>
+            <label>Send customer's email address to DHL</label>
+            <helpText lang="de-DE">
+                Wähle aus, ob die E-Mail-Adresse von Kunden an DHL übermittelt wird. Dies ist notwendig, wenn die Kunden
+                Informationen zur Paketverfolgung und -ankündigung erhalten sollen.
+            </helpText>
+            <helpText>
+                Choose whether to transfer the customers email address to the DHL service. This is necessary if you want
+                the user to receive package tracking mails and delivery notifications from DHL.
+            </helpText>
+        </input-field>
+        <input-field type="bool">
+            <name>gdprAllowPhone</name>
+            <label lang="de-DE">Telefonnummer des Kunden an DHL übermitteln</label>
+            <label>Send customer's phone number to DHL</label>
+            <helpText lang="de-DE">Wähle aus, ob die Telefonnummer von Kunden an DHL übermittelt wird.</helpText>
+            <helpText>Choose whether to transfer the customers phone number to the DHL service.</helpText>
+        </input-field>
+        <input-field type="bool">
+            <name>enableDispatchNotification</name>
+            <label lang="de-DE">Versandbenachrichtigung per E-Mail aktivieren</label>
+            <label>Enable dispatch notification via email</label>
+            <helpText lang="de-DE">
+                Wenn aktiviert, sendet DHL eine Versandbenachrichtigung per E-Mail an den Paketempfänger, sobald du den
+                Tagesabschluss erstellt hast. Beachte, dass dies nur funktioniert, wenn du die Option "E-Mail-Adresse
+                des Kunden an DHL übermitteln" eingeschaltet hast.
+            </helpText>
+            <helpText>
+                If enabled, DHL sends a dispatch notification via email to the parcel receiver once you create the End
+                of Day Closing. Note that this will only work if you have enabled the "Send customer's email address to
+                DHL" option.
+            </helpText>
+        </input-field>
+    </card>
+    <card>
+        <title lang="de-DE">Kontodaten</title>
+        <title>Bank account data</title>
+        <input-field type="text">
+            <name>bankTransferDataAccountOwnerName</name>
+            <label>Owner</label>
+            <label lang="de-DE">Inhaber</label>
+            <helpText lang="de-DE">
+                Diese Daten werden benötigt, um Zahlungen per Nachnahme auf das richtige Konto zu leiten.
+            </helpText>
+            <helpText>This data is needed to direct cash on delivery payments to the correct bank account.</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>bankTransferDataIban</name>
+            <label>IBAN</label>
+            <label lang="de-DE">IBAN</label>
+            <helpText lang="de-DE">
+                Diese Daten werden benötigt, um Zahlungen per Nachnahme auf das richtige Konto zu leiten.
+            </helpText>
+            <helpText>This data is needed to direct cash on delivery payments to the correct bank account.</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>bankTransferDataBankName</name>
+            <label>Name of bank</label>
+            <label lang="de-DE">Name der Bank</label>
+            <helpText lang="de-DE">
+                Diese Daten werden benötigt, um Zahlungen per Nachnahme auf das richtige Konto zu leiten.
+            </helpText>
+            <helpText>This data is needed to direct cash on delivery payments to the correct bank account.</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>bankTransferDataBic</name>
+            <label>BIC</label>
+            <label lang="de-DE">BIC</label>
+            <helpText lang="de-DE">
+                Diese Daten werden benötigt, um Zahlungen per Nachnahme auf das richtige Konto zu leiten.
+            </helpText>
+            <helpText>This data is needed to direct cash on delivery payments to the correct bank account.</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>bankTransferDataNote1</name>
+            <label>Purpose of use:</label>
+            <label lang="de-DE">Verwendunszweck</label>
+            <helpText lang="de-DE">
+                Diese Daten werden benötigt, um Zahlungen per Nachnahme auf das richtige Konto zu leiten. Nutze den
+                Platzhalter {{ customerReference }}, um die Kundenreferenznummer des Paketes einzufügen.
+            </helpText>
+            <helpText>
+                This data is needed to direct cash on delivery payments to the correct bank account. You can use the
+                placeholder {{ customerReference }} to insert the customer reference number of the package.
+            </helpText>
+        </input-field>
+        <input-field type="text">
+            <name>bankTransferDataNote2</name>
+        </input-field>
+        <input-field type="text">
+            <name>bankTransferDataAccountReference</name>
+            <label>Customer reference:</label>
+            <label lang="de-DE">Kundenreferenz</label>
+            <helpText lang="de-DE">
+                Diese Daten werden benötigt, um Zahlungen per Nachnahme auf das richtige Konto zu leiten. Nutze den
+                Platzhalter {{ customerReference }}, um die Kundenreferenznummer des Paketes einzufügen.
+            </helpText>
+            <helpText>
+                This data is needed to direct cash on delivery payments to the correct bank account. You can use the
+                placeholder {{ customerReference }} to insert the customer reference number of the package.
+            </helpText>
+        </input-field>
+    </card>
+</config>

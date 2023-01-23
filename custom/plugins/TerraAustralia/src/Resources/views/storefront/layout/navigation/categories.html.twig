@@ -1,0 +1,94 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/categories.html.twig' %}
+
+{% block layout_navigation_categories %}
+    {% set navigationMaxDepth = 3 %}
+
+    {% if not level %}
+        {% set level = 0 %}
+    {% endif %}
+    {% set activeId = page.header.navigation.active.id %}
+
+    <div class="navigation-flyout-categories is-level-{{ level }}">
+        {% for treeItem in navigationTree %}
+            {% set id = treeItem.category.id %}
+            {% set name = treeItem.category.translated.name %}
+            {% set link = treeItem.category.externalLink %}
+
+            {% block layout_navigation_categories_item %}
+                <div class="navigation-flyout-col">
+                    {% block layout_navigation_categories_item_link %}
+                        {% if treeItem.category.type == 'folder' %}
+                            <div class="nav-item nav-link navigation-flyout-link is-level-{{ level }}"
+                                 title="{{ name }}">
+                                <span itemprop="name">{{ name }}</span>
+                            </div>
+                        {% else %}
+                            <a class="nav-item nav-link navigation-flyout-link is-level-{{ level }}{% if id is same as(activeId) %} active{% endif %}"
+                               href="{% if link %}{{ link }}{% else %}{{ seoUrl('frontend.navigation.page', { navigationId: id }) }}{% endif %}"
+                               itemprop="url"
+                               title="{{ name }}">
+                                <span itemprop="name">{{ name }}</span>
+                            </a>
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block layout_navigation_products %}
+                        <div class="tr-nav-products">
+                            {% block layout_navigation_products_headline %}
+                                <div class="row justify-content-between tr-nav-products__top-bar align-items-center">
+                                    <div class="col-auto">
+                                        <div class="tr-nav-products__top-bar-title">{{ name }}</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="tr-category-list__link"
+                                           href="{% if link %}{{ link }}{% else %}{{ seoUrl('frontend.navigation.page', { navigationId: id }) }}{% endif %}">
+                                            <span class="tr-category-list__link-el">{{ 'terraAustralia.navigation.category'|trans }}</span>
+                                            <span class="tr-category-list__arrow"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endblock %}
+
+                            {% block layout_navigation_products_list %}
+                                {% if treeItem.products.total > 0 %}
+                                    <div class="tr-nav-products-content row">
+                                        {% block layout_navigation_products_list_item %}
+                                            {% for product in treeItem.products.elements %}
+                                                {% if product.parent %}
+                                                    {% set name = product.parent.translated.name %}
+                                                {% else%}
+                                                    {% set name = product.translated.name %}
+                                                {% endif %}
+
+                                                {% set id = product.id %}
+                                                {% set cover = product.cover.media %}
+
+                                                <div class="col-md-4 tr-nav-products__item">
+                                                    <a
+                                                        href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+                                                       title="{{ name }}"
+                                                       class="tr-nav-products__link">
+                                                        <div class="tr-nav-products__image">
+                                                            {% if cover.url %}
+                                                                <img src="{{ cover.url }}" alt="{{ (cover.translated.alt ?: name) }}">
+                                                            {% else %}
+                                                                <img src="/bundles/terraaustralia/assets/images/no-image.png" alt="{{ (cover.translated.alt ?: name) }}">
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="tr-nav-products__title">{{ name }}</div>
+                                                        {#<div class="tr-nav-products__price">159,00 €</div>#}
+                                                        {% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        {% endblock %}
+                                    </div>
+                                {% endif %}
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        {% endfor %}
+    </div>
+{% endblock %}

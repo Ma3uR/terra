@@ -1,0 +1,7 @@
+{% block sw_cms_element_tr_e_feed_component %}
+    <div class="tr-e-feed-component">
+        <img :src="mediaUrl">
+        <h4 v-if="element.config.caption.value">{{ element.config.caption.value }}</h4>
+        <h4 v-else>Caption</h4>
+    </div>
+{% endblock %}

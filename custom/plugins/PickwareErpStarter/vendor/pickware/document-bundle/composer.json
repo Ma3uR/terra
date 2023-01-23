@@ -1,0 +1,70 @@
+{
+    "name": "pickware/document-bundle",
+    "type": "library",
+    "description": "A bundle for Shopware 6 to provide a document model",
+    "version": "2.0.2",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Pickware GmbH",
+            "email": "info@pickware.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "doctrine/dbal": "^2.10.0",
+        "iio/libmergepdf": "^4.0.2",
+        "league/flysystem": "^1.0.55",
+        "pickware/dal-bundle": "^3.0.0",
+        "pickware/http-utils": "^2.0.0",
+        "pickware/units-of-measurement": "^1.2.0",
+        "shopware/core": "6.4.*",
+        "symfony/config": "~5.2.3",
+        "symfony/dependency-injection": "~5.2.3",
+        "symfony/event-dispatcher": "~5.2.3",
+        "symfony/http-foundation": "~5.2.3",
+        "symfony/routing": "~5.2.3",
+        "symfony/validator": "~5.2.3"
+    },
+    "require-dev": {
+        "mikey179/vfsstream": "^1.6.8",
+        "phpunit/phpunit": "^8.5.0",
+        "smalot/pdfparser": "^0.14.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pickware\\DocumentBundle\\": "src",
+            "Pickware\\ShopwarePlugins\\DocumentBundle\\Migration\\": "src/MigrationOldNamespace"
+        },
+        "exclude-from-classmap": [
+            "**.unit.php",
+            "**.integration.php"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../libraries/composer-packages/*"
+        },
+        {
+            "type": "path",
+            "url": "../../bundles/*"
+        }
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "@remove-lock-file"
+        ],
+        "post-update-cmd": [
+            "@remove-lock-file"
+        ],
+        "remove-lock-file": [
+            "# Workaround as long as ocramius/package-versions is incompatible with composer config `lock: false`",
+            "rm composer.lock"
+        ],
+        "test:integration": "${SHOPWARE_DIR}/vendor/bin/phpunit --config phpunit.integration.xml --testdox",
+        "test:unit": "./vendor/bin/phpunit --config phpunit.unit.xml --testdox"
+    }
+}

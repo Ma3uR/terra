@@ -1,0 +1,31 @@
+{
+    "name": "pickware/debug-bundle",
+    "type": "library",
+    "description": "A bundle for Shopware 6 that provides helpful utilities for debugging.",
+    "version": "2.0.5",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Pickware GmbH",
+            "email": "info@pickware.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "psr/log": "^1.1.2",
+        "shopware/core": "6.4.*",
+        "symfony/config": "^5.2.3",
+        "symfony/dependency-injection": "^5.2.3"
+    },
+    "config": {
+        "lock": false
+    },
+    "autoload": {
+        "psr-4": {
+            "Pickware\\DebugBundle\\": "src"
+        },
+        "files": [
+            "src/PickwareDebugging.php"
+        ]
+    }
+}

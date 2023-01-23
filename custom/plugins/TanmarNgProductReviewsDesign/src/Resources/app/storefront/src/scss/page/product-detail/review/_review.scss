@@ -1,0 +1,312 @@
+$tanmar-product-reviews-design-border-color: $sw-border-color !default;
+$tanmar-product-reviews-design-background-threshold: 5% !default;
+
+@function brightness($color) {
+    $sum: red($color) + green($color) + blue($color);
+    @return percentage($sum / (255*3));
+}
+
+@function tanmar-product-reviews-design-background ($color){
+    @if brightness($color) > $tanmar-product-reviews-design-background-threshold {
+        @return desaturate(lighten($color,80%), 100%);
+    } @else {
+        @return hsl(hue($color), saturation($color), 96%);
+    }
+}
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+.is-tanmar-product-reviews-design{
+    .is--hidden{
+        display: none;
+    }
+    .product-detail-review hr{
+        display: none;
+    }
+    .product-detail-review-item-hint {
+        padding-left: 0;
+    }
+    .product-detail-review-content > div{
+        width: 100%;
+        max-width: 100%;
+        flex: initial;
+    }
+    .product-detail-review-widget{
+        position: relative;
+        top: 0;
+        margin: $spacer;
+        @include clearfix;
+    }
+    .product-detail-review-checkbox{
+        width: 180px;
+        flex: initial;
+    }
+    .product-detail-review-share{
+        width: 80px;
+        flex: initial;
+    }
+    .product-detail-review-progressbar-col{
+        display: block !important;
+        width: calc(100% - 260px);
+        flex: initial;
+    }
+    .product-detail-review-info{
+        margin-bottom: 10px;
+        .product-detail-review-rating{
+            margin: $spacer-sm 0;
+            height: 18px;
+            display: inline-block;
+            > .h6{
+                display: none;
+            }
+        }
+        .product-detail-review-title{
+            width: auto;
+            display: inline-block;
+        }
+        .tanmar-product-reviews-design-rating-outof-right{
+            margin-left: $spacer-lg;
+        }
+        .tanmar-product-reviews-design-rating-outof, .tanmar-product-reviews-design-rating-outof-right{
+            float: left;
+        }
+        @include clearfix;
+    }
+    .tanmar-product-reviews-design-rating-average{
+        @include font-size(40);
+    }
+    .tanmar-product-reviews-design-rating-base{
+        @include font-size(20);
+    }
+    .product-detail-review-filter{
+        height: 30px;
+    }    
+    .product-detail-review-progressbar-container{
+        height: 6px
+    }
+    .product-detail-review-teaser{
+        margin-top: 10px;
+        > p{
+            display: none;
+        }
+    }
+    #review-form{
+        padding: ($spacer * 2);
+        margin-bottom: $spacer-lg;
+        background-color: tanmar-product-reviews-design-background($sw-text-color);
+    }
+    .product-detail-review-list-content{
+        .product-detail-review-item{
+            padding: ($spacer * 2) 0;
+            border-color: $tanmar-product-reviews-design-border-color;
+            .product-detail-review-item-content{
+            }
+            .product-detail-review-item-info{
+                margin: 0;
+            }
+            .tanmar-product-reviews-design-review-item-text-container{
+            }
+            .product-detail-review-item-comment{
+                background-color: tanmar-product-reviews-design-background($sw-text-color);
+                font-style: italic;
+                position: relative;
+                padding: 20px 25px;
+                min-height: 90px;
+                color: #66686a;
+                margin-top: 20px;
+                &:before {
+                    position: absolute;
+                    content: "";
+                    display: block;
+                    border: 20px solid transparent;
+                    border-bottom: 20px solid tanmar-product-reviews-design-background($sw-text-color);
+                    top: -40px;
+                    left: 22px;
+                }
+            }
+            @include clearfix;
+        }
+    }
+    .product-detail-review-item{
+        .product-detail-review-item-title{
+            padding-left: 0;
+            margin-bottom: $spacer-xs;
+            text-transform: uppercase;
+            @include font-size(16);
+            .h5{
+                margin: 0;
+                line-height: 26px;
+            }
+        }
+    }
+    .product-detail-review-item-date{
+        order: 2;
+    }
+    .product-detail-review-item-points{
+        order: 1;
+    }
+    .product-detail-review-item-verify{
+        order: 3;
+    }
+    .tanmar-product-reviews-design-best-vs-worst-review{
+        clear: both;
+        margin: 60px 0;
+        background: none;
+        padding: 30px;
+        border-top: 3px solid $tanmar-product-reviews-design-border-color;
+        border-bottom: 3px solid $tanmar-product-reviews-design-border-color;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        gap: 60px;
+        h3{
+            margin-top: 0px;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+        .tanmar-product-reviews-design-best-review{
+            flex: 1 1;
+        }
+        .tanmar-product-reviews-design-worst-review{            
+            flex: 1 1;
+        }
+        .product-detail-review-item{
+            background: transparent;
+            border: none;
+            .product-detail-review-item-info{
+                margin: 0;
+                margin-bottom: $spacer-sm;
+                flex-wrap: nowrap;
+            }
+            /*.product-detail-review-item-points i{
+                font-size: 18px;
+            }*/
+            .product-detail-review-item-points{
+                margin-right: $spacer;
+            }
+            .product-detail-review-item-points, .product-detail-review-item-date{
+                padding: 0;
+                height: 26px;
+                line-height: 26px;
+            }
+        }
+        .tanmar-product-reviews-design-vs-badge {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            vertical-align: middle;
+            background-color: $tanmar-product-reviews-design-border-color;
+            z-index: 10;
+            font-size: 18px;
+            font-weight: 500;
+            text-indent: 3px;
+            &:before, &:after  {
+                content: "";
+                width: 2px;
+                height: 80px;
+                left: 19px;
+                top: -80px;
+                background-color: $tanmar-product-reviews-design-border-color;
+                position: absolute;
+            }
+            &:after {
+                top: 40px;
+            }
+        }
+    }
+    .tanmar-product-reviews-design-read-more-counter{
+        position: relative;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        color: $icon-review-color;
+    }
+    .product-detail-review-item-points, .product-detail-review-item-date{
+        padding-left: 0;
+    }
+}
+@media screen and (max-width: 400px) {
+    .is-tanmar-product-reviews-design{
+        .product-detail-review-checkbox{
+            width: calc(100% - 80px);
+        }
+        .product-detail-review-share{
+            width: 80px;
+        }
+        .product-detail-review-progressbar-col{
+            display: none !important;
+        }
+    }
+}
+@media screen and (max-width: 767px) {
+    .is-tanmar-product-reviews-design{
+        .product-detail-review-item-points{
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            width: auto;
+            max-width: 100%;
+        }
+    }
+}
+@media screen and (max-width: 900px) {
+    .is-tanmar-product-reviews-design{
+        .tanmar-product-reviews-design-best-vs-worst-review{
+            flex-direction: column;
+            .tanmar-product-reviews-design-vs-badge {
+                display: none;
+            }
+        }
+    }
+}
+@media screen and (min-width: 901px) {
+    .is-tanmar-product-reviews-design{
+        .js-review-filter, .product-detail-review-teaser{
+            float: left;
+            width: 50%;
+        }
+        .product-detail-review-list-content{
+            .product-detail-review-item{
+                padding: ($spacer * 2);
+                .product-detail-review-item-content{
+                }
+                .product-detail-review-item-info{
+                    float: left;
+                    width: 19%;
+                }
+                .tanmar-product-reviews-design-review-item-text-container{
+                    float: left;
+                    width: 81%;
+                }
+                .product-detail-review-item-comment{
+                    float: right;
+                    width: 81%;
+                }
+                @include clearfix;
+            }
+        }
+        .product-detail-review-teaser{
+            margin-top: 0;
+            text-align: right;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        .product-detail-review-widget{
+            margin: ($spacer * 2);
+        }
+    }
+}

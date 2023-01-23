@@ -1,0 +1,19 @@
+{% block tr_listing_headline %}
+    {% set links = block.slots.getSlot('links') %}
+    {% set text = block.slots.getSlot('text') %}
+
+    <div class="col-12">
+        <section class="tr-category-info-wrap">
+           <div class="container">
+               <div class="tr-category-info">
+                   <div class="tr-category-info__category-list">
+                       {% sw_include "@Storefront/storefront/element/cms-element-" ~ links.type ~ ".html.twig" ignore missing with {element: links} %}
+                   </div>
+
+                   {% sw_include "@Storefront/storefront/element/cms-element-tr-e-listing-headline-text.html.twig" ignore missing with {element: text} %}
+               </div>
+           </div>
+        </section>
+    </div>
+
+{% endblock %}

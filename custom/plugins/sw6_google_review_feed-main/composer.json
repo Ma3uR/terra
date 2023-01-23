@@ -1,0 +1,45 @@
+{
+    "name": "webmp/google-review-feed",
+    "description": "Product Review Feed plugin created for export product review in xml format",
+    "version": "v1.1.7",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Webmasterei Prange",
+            "homepage": "https://webmasterei-prange.de",
+            "role": "Manufacturer"
+        }
+    ],
+    "require": {
+        "shopware/core": "^6.2",
+        "shopware/storefront": "^6.2",
+        "shopware/administration": "^6.2"
+    },
+    "extra": {
+        "shopware-plugin-class": "Webmp\\GoogleReviewFeed\\WebmpGoogleReviewFeed",
+        "plugin-icon": "src/Resources/public/plugin.png",
+        "copyright": "(c) by Bernhard Prange",
+        "label": {
+            "de-DE": "Google product review feed",
+            "en-GB": "Google product review feed"
+        },
+        "description": {
+            "de-DE": "Google Review Feed plugin created for export product review in xml format",
+            "en-GB": "Google Review Feed plugin created for export product review in xml format"
+        },
+        "manufacturerLink": {
+            "en-GB": "https://webmasterei-prange.de",
+            "de-DE": "https://webmasterei-prange.de"
+        },
+        "supportLink": {
+            "en-GB": "https://webmasterei-prange.de/kontakt/",
+            "de-DE": "https://webmasterei-prange.de/en/contact/"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Webmp\\GoogleReviewFeed\\": "src/"
+        }
+    }
+}

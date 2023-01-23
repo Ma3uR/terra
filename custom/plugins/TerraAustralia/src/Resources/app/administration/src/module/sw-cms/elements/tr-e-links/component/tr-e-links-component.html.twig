@@ -1,0 +1,15 @@
+{% block tr_e_links_component %}
+    <div class="tr-e-links-component">
+        
+        <div v-if="!element.data || !element.data.links" class="tr-e-links-component__inner">
+            <span class="link">Link</span>
+            <span class="link">Link</span>
+            <span class="link">Link</span>
+        </div>
+        
+        <div v-else class="tr-e-links-component__inner cf">
+            <span v-for="link in element.data.links" class="link"><b>{{ link.label }}</b>: {{ link.link }}</span>
+        </div>
+        
+    </div>
+{% endblock %}

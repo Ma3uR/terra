@@ -1,0 +1,6 @@
+{% block sw_mail_template_detail_actions_save %}
+    <sw-button :disabled="isTranslationDisabled" :isLoading="isTranslating" @click="onTranslate">
+        {{ $tc('biloba-intl-translation.sw-product.detail.buttonTranslate')}}
+    </sw-button>
+    {% parent %}
+{% endblock %}

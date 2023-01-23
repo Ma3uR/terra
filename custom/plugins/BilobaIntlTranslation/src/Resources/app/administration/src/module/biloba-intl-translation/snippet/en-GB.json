@@ -1,0 +1,77 @@
+{
+    "biloba-intl-translation": {
+    	"general": {
+    		"mainMenuItemGeneral": "Biloba Translation Pro",
+            "notificationTranslated": {
+                "title": "Translation performed",
+                "message": "If individual sections have not been translated, make sure that you had saved before translating."
+            },
+            "notificationTranslatedError": {
+                "title": "Error",
+                "message": "An error occurred during the translation!"
+            }
+    	},
+        "config": {
+        	"detail": {
+                "contextTargetLanguage": "TargetLanguage",
+                "contextSourceLanguage": "SourceLanguage",
+                "contextApi": "Api",
+                "placeholder": "Context",
+                "cancelButtonText": "Cancel",
+                "apiLanguageLabel": "API",
+                "targetLanguageLabel": "Targetlanguage",
+                "sourceLanguageLabel": "Sourcelanguage",
+                "errorSameIdTitle" : "Target Language matches Source Language",
+                "errorSameIdMessage": "Target Language must not match the Source Language",
+                "errorTitle": "Something went wrong!"
+        	},
+            "list": {
+                "columnTargetLanguageTitle": "Targetlanguage",
+                "columnSourceLanguageTitle": "Sourcelanguage",
+                "columnTranslationApiTitle": "API",
+                "createButtonText": "Create Language"
+            }
+        },
+        "log": {
+        	"detail": {
+                "id":"Id",
+                "initiator": "Initiator",
+                "entityId": "EntityId",
+                "entityType": "EntityType",
+                "type": "Type",
+                "status": "Status",
+                "context": "Context",
+                "cancelButtonText": "Cancel",
+                "saveButtonText": "Save"
+            }
+        },
+        "plugin_config": {
+            "configuration": {
+                "deepLButtonTitle": "Check DeepL API key",
+                "googleButtonTitle": "Check Google API key"
+            },
+            "notificationError": {
+                "title": "Error",
+                "message": "Check failed. Please make sure that the plugin configuration has been saved!"
+            },
+            "notificationSuccess": {
+                "title": "Success",
+                "message": "Key is valid"
+            }
+        },
+        "sw-product": {
+            "detail": {
+                "buttonTranslate": "Translate"
+            }
+        },
+        "sw-settings": {
+            "language": {
+                "detail": {
+                    "title": "Translation Settings",
+                    "languageNotSupported": "This language is currently not supported. Please make sure that a localization is selected.\n\nFor more languages please install the More Languages plugin, please make sure that the language you want to use is supported by the plugin.",
+                    "noApiKey": "No API key was set! Please add a key in the plugin settings."
+                }
+            }
+        }
+    }
+}

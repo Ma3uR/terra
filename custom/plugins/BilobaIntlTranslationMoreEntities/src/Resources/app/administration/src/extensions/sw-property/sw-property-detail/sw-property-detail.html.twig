@@ -1,0 +1,8 @@
+{% block sw_property_detail_smart_bar_actions %}
+    <template slot="smart-bar-actions">
+        <sw-button :disabled="isTranslationDisabled" :isLoading="isTranslating" v-tooltip.bottom="tooltipCancel" @click="onTranslate">
+            {{ $tc('biloba-intl-translation.sw-product.detail.buttonTranslate')}}
+        </sw-button>
+    </template>
+    {% parent %}
+{% endblock %}

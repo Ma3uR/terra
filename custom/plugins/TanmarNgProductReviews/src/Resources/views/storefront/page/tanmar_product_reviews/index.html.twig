@@ -1,0 +1,287 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_content %}
+    <div id="tanmar-product-reviews-stars-legend1" class="d-none">{{ "tanmar-product-reviews.stars.legend1"|trans }}</div>
+    <div id="tanmar-product-reviews-stars-legend2" class="d-none">{{ "tanmar-product-reviews.stars.legend2"|trans }}</div>
+    <div id="tanmar-product-reviews-stars-legend3" class="d-none">{{ "tanmar-product-reviews.stars.legend3"|trans }}</div>
+    <div id="tanmar-product-reviews-stars-legend4" class="d-none">{{ "tanmar-product-reviews.stars.legend4"|trans }}</div>
+    <div id="tanmar-product-reviews-stars-legend5" class="d-none">{{ "tanmar-product-reviews.stars.legend5"|trans }}</div>
+
+
+    {% set TanmarProductReviews = context.extensions.TanmarProductReviews %}
+    {% set canVote = TanmarProductReviews.data.canVote %}
+    {% set articles = TanmarProductReviews.data.products %}
+    {% set ordernumber = TanmarProductReviews.data.ordernumber %}
+    {% set hash = TanmarProductReviews.data.hash %}
+    {% set tanmarReviewsStarsPreselected = TanmarProductReviews.data.tanmarReviewsStarsPreselected %}
+    {% set headlineRequired = TanmarProductReviews.data.headlineRequired %}
+    
+    {% block frontend_index_content_review_header %}
+    {% endblock %}
+
+    {% if canVote == false %}
+        {% if voucher and voucher.vouchercode %}
+            <div class="voucher">
+                <div class="voucher_td">
+        {% else %}	
+             <div class="tanmar-reviews-finish">
+                <div class="tanmar-reviews-finish-innen">		
+        {% endif %}
+        
+        {% block frontend_index_content_review_text_done %}
+            <h2>{{ "tanmar-product-reviews.headline.noVote"|trans }}</h2>
+        {% endblock %}		
+        
+        {% if voucher and voucher.vouchercode %}
+            {% block frontend_index_content_review_gutscheintext %}
+                {% if voucher.cashed %}
+                    
+                    {{ "tanmar-product-reviews.voucher.cashed"|trans({'%vouchercode%': voucher.vouchercode}) }}
+                    
+                {% else %}
+                    {% if voucher.shippingfree %}
+                        {{ "tanmar-product-reviews.voucher.infoShippingvoucher"|trans }}<br>
+                    {% else %}
+                        
+                        {# {% if voucher.value %}über {% if voucher.percental %}{{ voucher.value }}%{% else %}{{ voucher.value|currency }}{% endif %}{% endif %} #}
+                        {{ "tanmar-product-reviews.voucher.infoVouchervalue"|trans({'%value%': voucher.value}) }}<br>
+                        
+                    {% endif %}
+                    {{ "tanmar-product-reviews.voucher.display"|trans({'%vouchercode%': voucher.vouchercode}) }}
+
+                    <br>
+                    <button id="js-emailcopybtn">{{ "tanmar-product-reviews.voucher.textCopy"|trans }}</button>
+                    
+
+                    <script>
+                    var copyCodeBtn = document.querySelector('#js-emailcopybtn');
+
+                    copyCodeBtn.addEventListener('click', function(event)
+                    {
+                        // Select the email link anchor text  
+                        var emailLink = document.querySelector('#vote-code');
+                        var range = document.createRange();
+                        range.selectNode(emailLink);
+                        window.getSelection().addRange(range);
+
+                        try
+                        {
+                            // Now that we've selected the anchor text, execute the copy command
+                            var successful = document.execCommand('copy');
+                            var btn = document.getElementById("js-emailcopybtn");
+                            if(btn){
+                                btn.innerHTML = "{{ "tanmar-product-reviews.voucher.textCopied"|trans }}";
+                            }
+                            var voteCode = document.getElementById("vote-code");
+                            if(voteCode){
+                                voteCode.classList.add("voucher_kopiert");
+                            }
+                        } 
+                        catch (err)
+                        {
+
+                        }
+
+                        window.getSelection().removeAllRanges();
+                    });
+
+                    </script>
+
+                {% endif %}
+            {% endblock %}	
+			
+            </div>	
+        </div>
+        <div class="clear"></div>
+        {% endif %}
+    {% else %}
+        {% block frontend_index_content_review_text %}
+            <div class="tanmar-reviews-head-text">
+                <h2>{{ "tanmar-product-reviews.headline.main"|trans }}</h2>
+                <p>{{ "tanmar-product-reviews.reviews.intro"|trans }}</p>
+            </div>
+        {% endblock %}
+        <div class="tanmar-reviews-block">
+        {% for article in articles %}
+
+            {% block frontend_index_content_review_loop %}
+
+            <div class="product{% if article.productReviews %} checked{% endif %}" id="p_{{ article.id }}">
+            {% block frontend_index_content_review_image %}	
+                <div class="left">
+                    {% if article.cover.media.url %}
+                        {% set attributes = {
+                            'class': 'product-image is-'~displayMode,
+                            'alt': (article.cover.media.translated.alt ?: ''),
+                            'title': (article.cover.media.translated.title ?: '')
+                        } %}
+
+                        {% if displayMode == 'cover' or displayMode == 'contain' %}
+                            {% set attributes = attributes|merge({ 'data-object-fit': displayMode }) %}
+                        {% endif %}
+
+                        {% sw_thumbnails 'product-image-thumbnails' with {
+                            attributes:{
+                                alt: article.name
+                            },
+                            media: article.cover.media
+                        } %}
+                    {% else %}
+                        <div class="product-image-placeholder">
+                            {% sw_icon 'placeholder' style {
+                                'size': 'fluid'
+                            } %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endblock %}	
+            <div class="right">
+
+            {% if article.productReviews %}
+                
+                {% set yourRating = article.productReviews.elements|first %}
+                
+                {% block frontend_index_content_review_rated %} 	
+                    {% block frontend_index_content_review_name_rated %} 
+                        <p class="reviewname votename">{{ "tanmar-product-reviews.reviews.productVoteDone"|trans }} <span class="reviewname_product">{{ article.translated.name }}</span></p>
+                    {% endblock %}
+                    {% block frontend_index_content_review_stars_rated %} 
+                        <div class="done-stars" data-stars="{{ yourRating.points }}">
+                            <span data-v="1" class="star{% if yourRating.points >= 1 %} selected{% endif %}"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+                                        <defs>
+                                            <path id="icons-default-basic-shape-star-full-a" d="M6.79981683,23.3169002 C5.78903608,23.7623169 4.60855479,23.3039988 4.16313807,22.2932181 C4.02365389,21.9766877 3.96864772,21.6293924 4.00349179,21.2852512 L4.57593077,15.6314953 L0.789623603,11.3939819 C0.0536586991,10.5703137 0.124756335,9.30598115 0.948424617,8.57001625 C1.20635992,8.33954564 1.51965952,8.17991152 1.85772473,8.1067047 L7.41165943,6.90401989 L10.2717409,1.99356414 C10.8276703,1.03909242 12.0520923,0.716010061 13.0065641,1.27193949 C13.305461,1.4460312 13.554097,1.69466717 13.7281887,1.99356414 L16.5882702,6.90401989 L22.1422049,8.1067047 C23.2217531,8.34047702 23.9073899,9.40513365 23.6736175,10.4846818 C23.6004107,10.822747 23.4407766,11.1360466 23.210306,11.3939819 L19.4239988,15.6314953 L19.9964378,21.2852512 C20.1077058,22.3842021 19.3070306,23.3652785 18.2080797,23.4765465 C17.8639384,23.5113906 17.5166431,23.4563844 17.2001128,23.3169002 L11.9999648,21.0253718 L6.79981683,23.3169002 Z"></path>
+                                        </defs>
+                                        <use fill="#758CA3" fill-rule="evenodd" xlink:href="#icons-default-basic-shape-star-full-a"></use>
+                                    </svg></span>
+                            <span data-v="2" class="star{% if yourRating.points >= 2 %} selected{% endif %}"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+                                        <defs>
+                                            <path id="icons-default-basic-shape-star-full-a" d="M6.79981683,23.3169002 C5.78903608,23.7623169 4.60855479,23.3039988 4.16313807,22.2932181 C4.02365389,21.9766877 3.96864772,21.6293924 4.00349179,21.2852512 L4.57593077,15.6314953 L0.789623603,11.3939819 C0.0536586991,10.5703137 0.124756335,9.30598115 0.948424617,8.57001625 C1.20635992,8.33954564 1.51965952,8.17991152 1.85772473,8.1067047 L7.41165943,6.90401989 L10.2717409,1.99356414 C10.8276703,1.03909242 12.0520923,0.716010061 13.0065641,1.27193949 C13.305461,1.4460312 13.554097,1.69466717 13.7281887,1.99356414 L16.5882702,6.90401989 L22.1422049,8.1067047 C23.2217531,8.34047702 23.9073899,9.40513365 23.6736175,10.4846818 C23.6004107,10.822747 23.4407766,11.1360466 23.210306,11.3939819 L19.4239988,15.6314953 L19.9964378,21.2852512 C20.1077058,22.3842021 19.3070306,23.3652785 18.2080797,23.4765465 C17.8639384,23.5113906 17.5166431,23.4563844 17.2001128,23.3169002 L11.9999648,21.0253718 L6.79981683,23.3169002 Z"></path>
+                                        </defs>
+                                        <use fill="#758CA3" fill-rule="evenodd" xlink:href="#icons-default-basic-shape-star-full-a"></use>
+                                    </svg></span>
+                            <span data-v="3" class="star{% if yourRating.points >= 3 %} selected{% endif %}"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+                                        <defs>
+                                            <path id="icons-default-basic-shape-star-full-a" d="M6.79981683,23.3169002 C5.78903608,23.7623169 4.60855479,23.3039988 4.16313807,22.2932181 C4.02365389,21.9766877 3.96864772,21.6293924 4.00349179,21.2852512 L4.57593077,15.6314953 L0.789623603,11.3939819 C0.0536586991,10.5703137 0.124756335,9.30598115 0.948424617,8.57001625 C1.20635992,8.33954564 1.51965952,8.17991152 1.85772473,8.1067047 L7.41165943,6.90401989 L10.2717409,1.99356414 C10.8276703,1.03909242 12.0520923,0.716010061 13.0065641,1.27193949 C13.305461,1.4460312 13.554097,1.69466717 13.7281887,1.99356414 L16.5882702,6.90401989 L22.1422049,8.1067047 C23.2217531,8.34047702 23.9073899,9.40513365 23.6736175,10.4846818 C23.6004107,10.822747 23.4407766,11.1360466 23.210306,11.3939819 L19.4239988,15.6314953 L19.9964378,21.2852512 C20.1077058,22.3842021 19.3070306,23.3652785 18.2080797,23.4765465 C17.8639384,23.5113906 17.5166431,23.4563844 17.2001128,23.3169002 L11.9999648,21.0253718 L6.79981683,23.3169002 Z"></path>
+                                        </defs>
+                                        <use fill="#758CA3" fill-rule="evenodd" xlink:href="#icons-default-basic-shape-star-full-a"></use>
+                                    </svg></span>
+                            <span data-v="4" class="star{% if yourRating.points >= 4 %} selected{% endif %}"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+                                        <defs>
+                                            <path id="icons-default-basic-shape-star-full-a" d="M6.79981683,23.3169002 C5.78903608,23.7623169 4.60855479,23.3039988 4.16313807,22.2932181 C4.02365389,21.9766877 3.96864772,21.6293924 4.00349179,21.2852512 L4.57593077,15.6314953 L0.789623603,11.3939819 C0.0536586991,10.5703137 0.124756335,9.30598115 0.948424617,8.57001625 C1.20635992,8.33954564 1.51965952,8.17991152 1.85772473,8.1067047 L7.41165943,6.90401989 L10.2717409,1.99356414 C10.8276703,1.03909242 12.0520923,0.716010061 13.0065641,1.27193949 C13.305461,1.4460312 13.554097,1.69466717 13.7281887,1.99356414 L16.5882702,6.90401989 L22.1422049,8.1067047 C23.2217531,8.34047702 23.9073899,9.40513365 23.6736175,10.4846818 C23.6004107,10.822747 23.4407766,11.1360466 23.210306,11.3939819 L19.4239988,15.6314953 L19.9964378,21.2852512 C20.1077058,22.3842021 19.3070306,23.3652785 18.2080797,23.4765465 C17.8639384,23.5113906 17.5166431,23.4563844 17.2001128,23.3169002 L11.9999648,21.0253718 L6.79981683,23.3169002 Z"></path>
+                                        </defs>
+                                        <use fill="#758CA3" fill-rule="evenodd" xlink:href="#icons-default-basic-shape-star-full-a"></use>
+                                    </svg></span>
+                            <span data-v="5" class="star{% if yourRating.points >= 5 %} selected{% endif %}"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+                                        <defs>
+                                            <path id="icons-default-basic-shape-star-full-a" d="M6.79981683,23.3169002 C5.78903608,23.7623169 4.60855479,23.3039988 4.16313807,22.2932181 C4.02365389,21.9766877 3.96864772,21.6293924 4.00349179,21.2852512 L4.57593077,15.6314953 L0.789623603,11.3939819 C0.0536586991,10.5703137 0.124756335,9.30598115 0.948424617,8.57001625 C1.20635992,8.33954564 1.51965952,8.17991152 1.85772473,8.1067047 L7.41165943,6.90401989 L10.2717409,1.99356414 C10.8276703,1.03909242 12.0520923,0.716010061 13.0065641,1.27193949 C13.305461,1.4460312 13.554097,1.69466717 13.7281887,1.99356414 L16.5882702,6.90401989 L22.1422049,8.1067047 C23.2217531,8.34047702 23.9073899,9.40513365 23.6736175,10.4846818 C23.6004107,10.822747 23.4407766,11.1360466 23.210306,11.3939819 L19.4239988,15.6314953 L19.9964378,21.2852512 C20.1077058,22.3842021 19.3070306,23.3652785 18.2080797,23.4765465 C17.8639384,23.5113906 17.5166431,23.4563844 17.2001128,23.3169002 L11.9999648,21.0253718 L6.79981683,23.3169002 Z"></path>
+                                        </defs>
+                                        <use fill="#758CA3" fill-rule="evenodd" xlink:href="#icons-default-basic-shape-star-full-a"></use>
+                                    </svg></span>
+                            <span class="star-legend"></span>
+                        </div>
+                    {% endblock %}
+                    <div class="tanmar-reviews-block">
+                        {% block frontend_index_content_review_comment_rated %} 
+                        <label>{{ "tanmar-product-reviews.reviews.productComment"|trans }}</label>
+                        <p>
+                            <i>{{ yourRating.content }}</i>
+                        </p>
+
+                        {% if headlineRequired %}
+                            <label>{{ "tanmar-product-reviews.reviews.productSummaryRequired"|trans }}</label>
+                        {% else %}
+                            <label>{{ "tanmar-product-reviews.reviews.productSummary"|trans }}</label>
+                        {% endif %}
+                        <p>
+                            <i>{{ yourRating.title }}</i>
+                        </p>
+
+                        {# <p>{{ "tanmar-product-reviews.reviews.voteBy"|trans({'%productReviewsName%': yourRating.name}) }} </p> #}
+                        {% endblock %}
+                    </div>	
+                {% endblock %}
+            {% else %}
+            
+                <form class="tanmarreviews" action="{{ path('frontend.tanmarproductreviews.rating', {'orderNumber':ordernumber, 'hash':hash}) }}" method="post">
+
+
+                    {% block frontend_index_content_review_name %} 		
+                        <input type="hidden" name="sArticle" value="{{ article.id }}">
+                        <p class="reviewname">
+                            {{ "tanmar-product-reviews.reviews.productVote"|trans }} <span class="reviewname_product">{{ article.translated.name }}</span>
+                        </p>
+                    {% endblock %}	
+
+                    {% block frontend_index_content_review_stars %} 		
+                        <div class="stars">
+                            {% for stars in 1..5 %}<span data-v="{{ stars }}" class="star{% if stars <= tanmarReviewsStarsPreselected %} selected{% endif %}">
+                                    
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+                                        <defs>
+                                            <path id="icons-default-basic-shape-star-full-a" d="M6.79981683,23.3169002 C5.78903608,23.7623169 4.60855479,23.3039988 4.16313807,22.2932181 C4.02365389,21.9766877 3.96864772,21.6293924 4.00349179,21.2852512 L4.57593077,15.6314953 L0.789623603,11.3939819 C0.0536586991,10.5703137 0.124756335,9.30598115 0.948424617,8.57001625 C1.20635992,8.33954564 1.51965952,8.17991152 1.85772473,8.1067047 L7.41165943,6.90401989 L10.2717409,1.99356414 C10.8276703,1.03909242 12.0520923,0.716010061 13.0065641,1.27193949 C13.305461,1.4460312 13.554097,1.69466717 13.7281887,1.99356414 L16.5882702,6.90401989 L22.1422049,8.1067047 C23.2217531,8.34047702 23.9073899,9.40513365 23.6736175,10.4846818 C23.6004107,10.822747 23.4407766,11.1360466 23.210306,11.3939819 L19.4239988,15.6314953 L19.9964378,21.2852512 C20.1077058,22.3842021 19.3070306,23.3652785 18.2080797,23.4765465 C17.8639384,23.5113906 17.5166431,23.4563844 17.2001128,23.3169002 L11.9999648,21.0253718 L6.79981683,23.3169002 Z"></path>
+                                        </defs>
+                                        <use fill="#758CA3" fill-rule="evenodd" xlink:href="#icons-default-basic-shape-star-full-a"></use>
+                                    </svg>
+                                    
+                                </span>{% endfor %}
+                            <span class="star-legend">{{ "tanmar-product-reviews.reviews.starDefault"|trans }}</span>
+                            <div class="radiorating">
+                                {% for stars in 1..5 %}<input type="radio" name="points" value="{{ stars }}"{% if stars == tanmarReviewsStarsPreselected %} checked="true"{% endif %}>{% endfor %}
+                            </div>
+                        </div>
+                    {% endblock %}
+
+                    <div class="tanmar-reviews-block">
+                        {% block frontend_index_content_review_comment %} 
+                            <p>
+                                <label for="review_textarea_{{ article.id }}">{{ "tanmar-product-reviews.reviews.productComment"|trans }}</label>
+                                <br>
+                                <textarea id="review_textarea_{{ article.id }}" wrap="soft" placeholder="{{ "tanmar-product-reviews.reviews.productCommentPlaceholder"|trans }}" rows="15" cols="60" name="comment"></textarea>
+                            </p>
+                        {% endblock %}
+
+                        {% block frontend_index_content_review_summary %} 
+                            <p>
+                                {% if headlineRequired %}
+                                    <label for="review_summary_{{ article.id }}">{{ "tanmar-product-reviews.reviews.productSummaryRequired"|trans }}</label>
+                                {% else %}
+                                    <label for="review_summary_{{ article.id }}">{{ "tanmar-product-reviews.reviews.productSummary"|trans }}</label>
+                                {% endif %}
+
+                                <br>
+                                <input id="review_summary_{{ article.id }}" type="text" name="summary">
+                            </p>
+                        {% endblock %}	
+
+                        {% block frontend_index_content_review_anon %} 
+                        {% endblock %}
+
+                        {% block frontend_index_content_review_privacy %}
+                        {% endblock %}
+
+                        {% block frontend_index_content_review_button %}    
+                            <div class="submit">
+                                <button class="btn btn-primary is--primary" type="submit" title="{{ "tanmar-product-reviews.reviews.productSubmit"|trans }}" id="vote_{{ article.id }}">{{ "tanmar-product-reviews.reviews.productSubmit"|trans }}</button>
+                            </div>
+                        {% endblock %}
+                    </div>
+
+                    <input type="hidden" value="{{ sw_csrf('frontend.tanmarproductreviews.rating', {"mode": "twig"}) }}" />
+                    
+                </form>
+            {% endif %}
+            </div>
+            <div class="clear"></div>
+            </div>
+            {% endblock %}
+        {% endfor %}
+        </div>
+        
+        <input type="hidden" value="{{ sw_csrf('frontend.tanmarproductreviews.rating', {"mode": "ajax"}) }}" id="csrf" />
+        
+    {% endif %}
+
+    
+    {% block frontend_index_content_review_footer %}
+    {% endblock %}
+{% endblock %}

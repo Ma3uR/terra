@@ -1,0 +1,10 @@
+{% block sw_cms_el_tr_e_title_config %}
+    <div class="tr-e-title-config">
+        <sw-field v-model="element.config.title.value"
+                  class="tr-e-title-config__title"
+                  type="text"
+                  :label="$tc('global.labels.title')"
+                  :placeholder="$tc('global.placeholders.title')">
+        </sw-field>
+    </div>
+{% endblock %}

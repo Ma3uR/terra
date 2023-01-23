@@ -1,0 +1,54 @@
+{
+    "sw-extension-store": {
+        "tabs": {
+            "apps": "Apps",
+            "themes": "Themes"
+        },
+        "updateWarning": {
+            "headlineFirst": "We've updated the Shopware Store.",
+            "headlineSecond": "Take a moment to update to the latest version.",
+            "description": "Discover numerous great extensions that'll help you grow your business.",
+            "requestDescription": "You'll need to upgrade to the latest version to get new and updated extensions or themes for your shop.",
+            "update": "Update"
+        },
+        "offline": {
+            "headline": "The Shopware Store is not available",
+            "description": "Check your internet connection or try again later."
+        },
+        "detail": {
+            "enterpriseContactLinkText": "Contact us",
+            "enterpriseContactUrl": "https://www.shopware.com/en/enterprise-contact",
+            "enterpriseFeatureAlertText": "This extension is a component of the Enterprise Edition."
+        },
+        "typeLabels": {
+            "self-hosted": "Self hosted",
+            "cloud": "Cloud"
+        },
+        "buy-modal": {
+            "paymentSelectionPlaceholder": "Select a payment method...",
+            "checkboxes": {
+                "permissionsAndAppProvider": {
+                    "introText": "I am aware that this app needs further",
+                    "buttonPermissions": "permissions",
+                    "middleText": "and accept the",
+                    "buttonAppProvider": "app provider",
+                    "endText": "as new sub-processor of Shopware",
+                    "appProviderStartText": "I accept the"
+                }
+            },
+            "legalTextModal": {
+                "title": "Sub-processor of Shopware"
+            },
+            "rent": {
+                "priceTrialAndDiscount": "{trialPrice} / first month, following {discountPrice} until {discountEnds}, then ${netPrice}",
+                "priceTrialWithoutDiscount": "{trialPrice} / first month, following {netPrice} / month",
+                "priceWithoutTrialWithDiscount": "{discountPrice} / month until {discountEnds}, then {netPrice}",
+                "priceWithoutTrialWithoutDiscount": "{netPrice} / month"
+            },
+            "warnings": {
+                "paymentMeansRequiredText": "In order to purchase this app you'll have to",
+                "paymentMeansRequiredLinkText": "add a payment method"
+            }
+        }
+    }
+}

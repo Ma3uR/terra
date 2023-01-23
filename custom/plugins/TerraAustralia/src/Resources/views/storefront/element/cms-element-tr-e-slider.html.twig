@@ -1,0 +1,18 @@
+{% block element_image_slider %}
+    {% set sliderConfig = element.fieldConfig.elements %}
+    {% set sliderItems = element.translated.config.sliderItems.value %}
+
+    {% if sliderItems %}
+        {% for slide in sliderItems %}
+            <div class="tr-banner__item" {% if slide.mediaUrl %} style="background-image: url('{{ slide.mediaUrl }}')" {% endif %}>
+                <div class="container">
+                    <div class="tr-banner__cont">
+                        <div class="tr-banner__sub-title">{{ slide.label }}</div>
+                        <div class="tr-title">{{ slide.title }}</div>
+                        <a href="{% if slide.url %}{{ slide.url }}{% else %}javascript:void(0);{% endif %}" class="btn btn-primary">{{ slide.btnName }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

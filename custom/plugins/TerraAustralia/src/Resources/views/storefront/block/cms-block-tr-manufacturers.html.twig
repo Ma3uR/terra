@@ -1,0 +1,11 @@
+{% block tr_manufacturers %}
+    <div class="col-12">
+        <section class="tr-info-block" style="background-image: url('/bundles/terraaustralia/assets/images/bg-info-block-1.jpg')">
+            <div class="container">
+                {% set element = block.slots.getSlot('manufacturers') %}
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+
+            </div>
+        </section>
+    </div>
+{% endblock %}

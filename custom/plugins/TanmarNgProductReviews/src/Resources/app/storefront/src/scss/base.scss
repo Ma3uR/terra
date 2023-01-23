@@ -1,0 +1,284 @@
+/* 
+    Created on : 13.09.2017, 11:55:51
+    Author     : TANMAR
+*/
+
+$tanmar-reviews-gray: #909090;
+$tanmar-reviews-gray-dark: #303030;
+$tanmar-reviews-highlight-success: #00ff00;
+$tanmar-reviews-rating-star-color: #ff0000;
+
+
+.checkout-newsletter-couponinfo {
+    display: block;
+}
+
+.clear{ 
+    clear:both; 
+}
+
+.is-ctl-tanmarproductreviews{
+
+    .voucher { 
+        text-align: center; 
+        font-size: 20px;   
+        display: table;  
+        width: 100%; 
+        align-items:center; 
+
+        button { 
+            border:0px solid #fff; 
+            background-color: #fff; 
+            font-size: 12px; 
+            color: $tanmar-reviews-gray-dark;
+        }
+        h2 { 
+            font-size:38px; 
+            margin: 20px 0 40px;
+            line-height:46px;  
+        }
+    }
+    .voucher_td { 
+        display: table-cell; 
+        height: 500px; 
+        vertical-align: middle;
+    }
+
+    #vote-code { 
+        font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", "monospace"; padding: 10px 60px; 
+        background-color:lighten($tanmar-reviews-gray,1%);
+        font-size:28px;
+        box-shadow: inset 0px 0px 15px 0px rgba(0,0,0,0.19);
+        border-radius: 20px;
+        display: inline-block; margin: 40px 0 10px;
+        letter-spacing: 2px;
+        border:2px solid #fff;
+    }
+
+    #vote-code.voucher_kopiert { 
+        border:2px solid $tanmar-reviews-highlight-success;  
+        -webkit-transition: all 1s; 
+        transition: all 1s; 
+        background-color: #fff; 
+    }
+
+    .content--wrapper { 
+        padding: 30px;
+    }
+
+    .shopContent .column_center {
+        float: none;
+        padding-left: 20px;
+        padding-right: 20px;
+        width: auto;
+    }
+    .topname {
+        text-align: left;
+
+        input {
+            position: relative;
+            margin-right: 10px;
+        }
+
+    }
+
+    .product{
+        border-bottom: 1px solid $sw-border-color;
+        margin: 0;
+        overflow: hidden;
+        padding: 40px 0;
+        position: relative;
+        transition: height 0.5s, padding 0.5s;
+
+        &.checked .left{
+            opacity: 0.3;
+            filter: alpha(opacity=30); /* For IE8 and earlier */
+        }
+
+        &.ready {
+            height: 41px !important;
+            padding: 0 !important;
+        }
+
+        .left {
+            float: none;
+            text-align: center;
+            width: 32%;
+            display: inline-block;
+            vertical-align: top;
+            margin-bottom: 30px;
+
+            img {
+                margin: 20px auto;
+                max-width: 100%;
+            }
+
+        }
+
+        .right {
+            float: right;
+            width: 65%;
+            display: inline-block;
+            vertical-align: top;
+
+            label {
+                display: inline-block;
+                padding: 5px 0;
+                font-size: 0.875rem;
+            }
+            textarea {
+                height: 140px;
+                box-sizing: border-box;
+                width: 100%;
+                border: 1px solid #ccc;
+                background: #fff none repeat scroll 0 0;
+                box-shadow: 0 0 10px #dedede inset;
+            }
+
+            .submit {
+                text-align: left;
+            }
+        }
+
+        input[type="text"] {
+            padding: 10px 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            background: #fff none repeat scroll 0 0;
+            box-shadow: 0 0 10px #dedede inset;
+        }
+
+        &:last-of-type{
+            border: 0 none;
+        }
+    }
+
+    .loading {
+        background: rgba(255, 255, 255, 0.7) no-repeat scroll center center;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .done {
+        background: rgba(255, 255, 255, 0.7) none repeat scroll 0 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+
+        .box {
+            background: $tanmar-reviews-highlight-success none repeat scroll 0 0;
+            color: #fff;
+            left: 0;
+            margin-top: 0;
+            padding: 18px 0;
+            position: absolute;
+            text-align: center;
+            top: 0;
+            font-weight: bold;
+            width: 100%;
+        }
+    }
+
+
+    .reviewname {
+        font-weight: bold;
+    }
+    .tanmar-reviews-block {
+
+        .stars,
+        .done-stars{
+            background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+            cursor: pointer;
+            height: 31px;
+            position: relative;
+            width: 183px;
+            margin: 20px 0;
+            overflow: visible;
+
+            svg, svg *{
+                fill: currentColor;
+            }
+        }
+        .done-stars{
+            cursor: default;
+        }
+        .star_aktiv,
+        .stars .star,
+        .done-stars .star{
+            display: inline-block;
+            height: 31px;
+            width: 30px;
+        }
+        .star_aktiv,
+        .stars .star.hover,
+        .stars .star.selected,
+        .done-stars .star.selected{
+            color: $icon-review-color;
+        }
+        .stars .star,
+        .done-stars .star{
+            color: $sw-border-color;
+        }
+        .done-stars .selected,
+        .stars .selected, 
+        .stars .hover {
+            background-position: 0 0;
+        }
+        .star-legend {
+            left: 160px;
+            position: absolute;
+            top: 3px;
+            width: 200px;
+            color: $tanmar-reviews-gray-dark;
+        }
+    }	
+    .radiorating {
+        display: none;
+    }
+    .submit button {
+        border: 0 none;
+        padding: 10px 15px;
+    }
+}
+
+
+
+@media (max-width: 920px){
+    .is-ctl-tanmarproductreviews{
+        .product .left,
+        .product .right{
+            display: block;
+            width: 100%;
+        }
+        .product input[type="text"] {
+            padding: 5px 7px;	
+            box-sizing: border-box;
+        }
+        .star-legend {
+            left: 0;
+            position: absolute;
+            top: 40px;
+            width: 200px;
+        }
+        .stars,
+        .done-stars{
+            margin-bottom: 30px;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .is-ctl-tanmarproductreviews{
+        .content--wrapper { padding: 10px; background-color: #fff;} 
+        .content-main--inner {  padding-top:20px;}
+        .submit button { width:100%; text-align: center;}
+    }
+}

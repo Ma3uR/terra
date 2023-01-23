@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Biloba\IntlTranslationMoreEntities\Components\EntityHandlers\CategoryEntityHandler">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+
+            <tag name="biloba.intl_translation.entity_handler"/>
+        </service>
+        <service id="Biloba\IntlTranslationMoreEntities\Components\EntityHandlers\EmailTemplateEntityHandler">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+
+            <tag name="biloba.intl_translation.entity_handler"/>
+        </service>
+        <service id="Biloba\IntlTranslationMoreEntities\Components\EntityHandlers\PropertyEntityHandler">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+            
+            <tag name="biloba.intl_translation.entity_handler"/>
+        </service>
+        <service id="Biloba\IntlTranslationMoreEntities\Components\EntityHandlers\CMSEntityHandler">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+            
+            <tag name="biloba.intl_translation.entity_handler"/>
+        </service>
+        <service id="Biloba\IntlTranslationMoreEntities\Components\EntityHandlers\ProductManufacturerEntityHandler">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+            
+            <tag name="biloba.intl_translation.entity_handler"/>
+        </service>
+        <service id="Biloba\IntlTranslationMoreEntities\Components\EntityHandlers\ProductStreamEntityHandler">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+            
+            <tag name="biloba.intl_translation.entity_handler"/>
+        </service>
+        <service id="Biloba\IntlTranslationMoreEntities\Components\EntityHandlers\SettingsDocumentEntityHandler">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+            
+            <tag name="biloba.intl_translation.entity_handler"/>
+        </service>
+        <service id="Biloba\IntlTranslationMoreEntities\Components\EntityHandlers\MediaEntityHandler">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Biloba\IntlTranslation\Util\Logger"/>
+            
+            <tag name="biloba.intl_translation.entity_handler"/>
+        </service>
+    </services>
+</container>

@@ -1,0 +1,27 @@
+{% block clever_reach_initialSync_banner %}
+    <div class="initial-sync-banner-container" v-if="!isClosed">
+        <div class="initial-sync-banner-header">
+            <div class="initial-sync-banner-close">
+                <a href="#" id="cr-initial-sync-banner-close"><sw-icon name="small-default-x-line-small"/></a>
+            </div>
+        </div>
+        <div class="initial-sync-banner-content">
+            <div class="initial-sync-banner-icon-container">
+                <div class="initial-sync-banner-icon">
+                    <sw-icon name="default-badge-info" color="#274FD4" size="40"/>
+                </div>
+            </div>
+            <div class="initial-sync-banner-text-container">
+                <div class="initial-sync-banner-text-message">
+                    <h3>{{ $tc('clever-reach.initialSync.banner.title') }}</h3>
+                    {{ $tc('clever-reach.initialSync.banner.message') }}
+                </div>
+            </div>
+            <div class="initial-sync-banner-button-container">
+                <sw-button variant="primary" :isLoading="isLoading" @click="buildEmail">
+                    {{ $tc('clever-reach.initialSync.banner.buttonText') }}
+                </sw-button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

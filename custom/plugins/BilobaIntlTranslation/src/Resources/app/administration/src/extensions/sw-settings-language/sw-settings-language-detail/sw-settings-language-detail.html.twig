@@ -1,0 +1,46 @@
+{% block sw_settings_language_detail_content_card %}
+    {% parent %}
+    <sw-card :title="$tc('biloba-intl-translation.sw-settings.language.detail.title')">
+        <sw-alert v-if="isApiMissing" variant="error">
+            {{ $tc('biloba-intl-translation.sw-settings.language.detail.noApiKey')|raw }}
+        </sw-alert>
+        <sw-alert v-if="languageId && !isLanguageSupported" variant="warning">
+            {{ $tc('biloba-intl-translation.sw-settings.language.detail.languageNotSupported')|raw }}
+        </sw-alert>
+
+        <sw-single-select
+            :disabled="!isConfigEnabled"
+            :label="$tc('biloba-intl-translation.config.detail.apiLanguageLabel')"
+            :options="translationApis"
+            v-model="config.translationApi">
+        </sw-single-select>
+        
+        <sw-entity-single-select
+            :disabled="!isConfigEnabled"
+            :label="$t('biloba-intl-translation.config.detail.sourceLanguageLabel')"
+            entity="language"
+            v-model="config.sourceLanguageId">
+
+            <template #result-item="{ isSelected, setValue, item, index, labelProperty, searchTerm, highlightSearchTerm, getKey }">
+                <li is="sw-select-result"
+                    :disabled="isInvalidSourceLanguage(item)"
+                    v-tooltip="{
+                        showDelay: 300,
+                        message: $tc('sw-settings-language.detail.textIsoCodeIsInUse'),
+                        disabled: !isLocaleAlreadyUsed(item)
+                    }"
+                    :selected="isSelected(item)"
+                    @item-select="setValue"
+                    v-bind="{ item, index }">
+                    <sw-highlight-text v-if="highlightSearchTerm"
+                                        :text="getKey(item,labelProperty) || getKey(item, `translated.${labelProperty}`)"
+                                        :searchTerm="searchTerm">
+                    </sw-highlight-text>
+                    <template v-else>
+                        {{ getKey(item,labelProperty) || getKey(item, `translated.${labelProperty}`) }}
+                    </template>
+                </li>
+            </template>
+        </sw-entity-single-select>
+    </sw-card>
+{% endblock %}

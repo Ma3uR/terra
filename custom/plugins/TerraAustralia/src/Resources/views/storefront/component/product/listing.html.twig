@@ -1,0 +1,159 @@
+{% sw_extends '@Storefront/storefront/component/product/listing.html.twig' %}
+
+{% block product_listing %}
+    {% set perpageConfig = app.request.query.get('perpage') ?? shopware.config.TerraAustralia.config.productListingPerPage ?? 16 %}
+    {% set listingExtended = { perpage: perpageConfig }|json_encode %}
+
+    <div class="cms-element-product-listing-wrapper"
+         data-listing-pagination="true"
+         data-listing-pagination-options='{{ paginationConfig }}'
+         data-listing="true"
+         data-listing-extended="true"
+         data-listing-extended-options="{{ listingExtended }}"
+         data-listing-options='{{ listingPagination|json_encode }}'>
+
+        {% block element_product_listing_wrapper_content %}
+            <div class="cms-element-product-listing">
+
+                {% if searchResult.total > 0 %}
+                    {% block element_product_listing_pagination_nav_actions %}
+                        <div class="container">
+                            <div class="cms-element-product-listing-actions row justify-content-between">
+                                <div class="col-md-auto">
+                                    {% block element_product_listing_pagination_nav_top %}
+                                        {% sw_include '@Storefront/storefront/component/pagination.html.twig' with {
+                                            entities: searchResult,
+                                            criteria: searchResult.criteria
+                                        } %}
+                                    {% endblock %}
+                                </div>
+
+                                <div class="col-md-auto tr-product-listing-sorting">
+                                    <div class="row">
+                                        <div class="col-md-auto">
+                                            <div class="tr-numb-show-products">
+                                                {% set ranges = [8, 16, 24, 32, 48, 64] %}
+                                                {% set perpageConfigOptionAdd = true %}
+                                                <select class="custom-select js-select2 js-tr-listingperpage">
+                                                    {% for op in ranges %}
+                                                        {% if op > perpageConfig %}
+                                                            {% if perpageConfigOptionAdd %}
+                                                                <option value="{{ perpageConfig }}">{{ perpageConfig }}</option>
+                                                            {% endif %}
+                                                            <option value="{{ op }}">{{ op }}</option>
+                                                            {% set perpageConfigOptionAdd = false %}
+                                                        {% else %}
+                                                            {% if op >= perpageConfig %}
+                                                                {% set perpageConfigOptionAdd = false %}
+                                                            {% endif %}
+                                                            <option value="{{ op }}">{{ op }}</option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                    {% if perpageConfigOptionAdd %}
+                                                        {% set perpageConfigOptionAdd = false %}
+                                                        <option value="{{ perpageConfig }}">{{ perpageConfig }}</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                            {% block element_product_listing_filter_button %}
+
+                                                <button class="btn btn-primary filter-panel-wrapper-toggle"
+                                                        type="button"
+                                                        data-offcanvas-filter="true"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false"
+                                                        aria-label="{{ "general.menuLink"|trans }}">
+                                                    {{ "listing.filterTitleText"|trans }}
+                                                </button>
+                                            {% endblock %}
+                                        </div>
+                                        <div class="col-md-auto">
+                                            {% block element_product_listing_sorting %}
+                                                {% set searchResultSortings = searchResult.sortings ? searchResult.sortings : searchResult.availableSortings %}
+                                                {% sw_include '@Storefront/storefront/component/sorting.html.twig' with { current: searchResult.sorting, sortings: searchResultSortings } %}
+                                            {% endblock %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock %}
+                {% endif %}
+
+                {% block element_product_listing_rows %}
+                    {% if searchResult.total > 0 %}
+
+                        {% if searchResult.searchResultFirst and  searchResult.searchResultFirst.count() > 0 %}
+                            <div class="container">
+                                <div class="row cms-listing-row js-listing-wrapper">
+                                    {% block element_product_listing_searchresult_first %}
+                                        {% for product in searchResult.searchResultFirst %}
+                                            <div class="cms-listing-col {{ listingColumns }}">
+                                                {% block element_product_listing_box_first %}
+                                                    {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                                                        'layout': boxLayout,
+                                                        'displayMode': displayMode
+                                                    } %}
+                                                {% endblock %}
+                                            </div>
+                                        {% endfor %}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if cmsPage.listingBenefits %}
+                            {% sw_include "@Storefront/storefront/block/cms-block-tr-benefits.html.twig" ignore missing with {block: cmsPage.listingBenefits} %}
+                        {% endif %}
+
+                        {% if searchResult.searchResultSecond and  searchResult.searchResultSecond.count() > 0 %}
+                            <div class="container">
+                                <div class="row cms-listing-row js-listing-wrapper">
+                                    {% block element_product_listing_searchresult_second %}
+                                        {% for product in searchResult.searchResultSecond %}
+                                            <div class="cms-listing-col {{ listingColumns }}">
+                                                {% block element_product_listing_box_second %}
+                                                    {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                                                        'layout': boxLayout,
+                                                        'displayMode': displayMode
+                                                    } %}
+                                                {% endblock %}
+                                            </div>
+                                        {% endfor %}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                    {% else %}
+                        <div class="row cms-listing-row js-listing-wrapper">
+                            {% block element_product_listing_col_empty %}
+                                <div class="cms-listing-col col-12">
+                                    {% block element_product_listing_col_empty_alert %}
+                                        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                                            type: 'info',
+                                            content: 'listing.emptyResultMessage'|trans|sw_sanitize
+                                        } %}
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+                <div class="container">
+                    {% if searchResult.total > searchResult.limit %}
+                        {% block element_product_listing_pagination_nav_bottom %}
+                            {% sw_include '@Storefront/storefront/component/pagination.html.twig' with {
+                                entities: searchResult,
+                                criteria: searchResult.criteria
+                            } %}
+                        {% endblock %}
+                    {% endif %}
+                </div>
+
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

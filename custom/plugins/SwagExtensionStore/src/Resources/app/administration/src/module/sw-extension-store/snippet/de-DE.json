@@ -1,0 +1,54 @@
+{
+    "sw-extension-store": {
+        "tabs": {
+            "apps": "Apps",
+            "themes": "Themes"
+        },
+        "updateWarning": {
+            "headlineFirst": "Wir haben den Shopware Store aktualisiert.",
+            "headlineSecond": "Nimm Dir einen Moment Zeit, um auf die neueste Version zu aktualisieren.",
+            "description": "Entdecke zahlreiche, großartige Erweiterungen, die Dir helfen, Dein Geschäft auszubauen.",
+            "requestDescription": "Du musst auf die neueste Version upgraden, um neue und aktualisierte Erweiterungen oder Themes für Deinen Shop zu erhalten.",
+            "update": "Update"
+        },
+        "offline": {
+            "headline": "Der Shopware Store ist nicht verfügbar",
+            "description": "Überprüfe Deine Internetverbindung oder versuche es später noch einmal."
+        },
+        "detail": {
+            "enterpriseContactLinkText": "Vertrieb kontaktieren",
+            "enterpriseContactUrl": "https://www.shopware.com/de/enterprise-kontakt",
+            "enterpriseFeatureAlertText": "Diese Erweiterung ist Bestandteil der Enterprise Edition."
+        },
+        "typeLabels": {
+            "self-hosted": "Selbst-gehosted",
+            "cloud": "Cloud"
+        },
+        "buy-modal": {
+            "paymentSelectionPlaceholder": "Wähle eine Zahlungsmethode...",
+            "checkboxes": {
+                "permissionsAndAppProvider": {
+                    "introText": "Ich bin mir bewusst, dass diese App weitere",
+                    "buttonPermissions": "Berechtigungen",
+                    "middleText": "benötigt und akzeptiere den",
+                    "buttonAppProvider": "App-Anbieter",
+                    "endText": "als neuen Unterauftragnehmer von Shopware",
+                    "appProviderStartText": "Ich akzeptiere den"
+                }
+            },
+            "legalTextModal": {
+                "title": "Unterauftragnehmer von Shopware"
+            },
+            "rent": {
+                "priceTrialAndDiscount": "{trialPrice} / erster Monat, folgende {discountPrice} bis {discountEnds}, danach ${netPrice}",
+                "priceTrialWithoutDiscount": "{trialPrice} / erster Monat, danach {netPrice} / Monat",
+                "priceWithoutTrialWithDiscount": "{discountPrice} / Monat bis {discountEnds}, danach {netPrice}",
+                "priceWithoutTrialWithoutDiscount": "{netPrice} / Monat"
+            },
+            "warnings": {
+                "paymentMeansRequiredText": "Um diese App zu kaufen, musst Du",
+                "paymentMeansRequiredLinkText": "eine Zahlungsmethode hinzufügen"
+            }
+        }
+    }
+}

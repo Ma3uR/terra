@@ -1,0 +1,44 @@
+{
+  "clever-reach": {
+    "basic": {
+      "label": "CleverReach",
+      "description": "CleverReach - E-Mail Marketing"
+    },
+    "initialSync": {
+      "createSubscriberList":"Crea un elenco di destinatari in CleverReach®",
+      "importSubscribers": "Importa i destinatari da {list} in CleverReach®",
+      "addFields": "Aggiungi campi, segmenti e tag alle tue liste di destinatari",
+      "banner": {
+        "title": "Inizia subito a creare la tua e-mail su CleverReach®",
+        "message": "L'import dati continuerà in background",
+        "buttonText": "Crea un'e-mail ora!"
+      }
+    },
+    "dashboard": {
+      "dashboard": "Dashboard",
+      "helpAndSupport": "Aiuto & Supporto",
+      "helpAndSupportLink": "https://support.cleverreach.de/hc/it",
+      "cleverReachId": "ID cliente CleverReach®:",
+      "title": "E-mail marketing mirato per incrementare i profitti!",
+      "textMessage": "Crea e-mail accattivanti per presentare i tuoi prodotti ai tuoi clienti.",
+      "buttonTextFirst": "Crea la tua prima newsletter →",
+      "buttonTextNext": "Crea ora la tua prossima newsletter! →",
+      "importSuccessful": "Importazione avvenuta con successo!",
+      "recipients": "Destinatari",
+      "recipientList": "Lista di destinatari",
+      "segments": "Segmenti",
+      "gdpr": "Attenzione al GDPR!",
+      "gdprUrl": "https://www.cleverreach.com/en/features/privacy-security/eu-general-data-protection-regulation-gdpr/",
+      "errorPageTitle": "Si è verificato un errore!",
+      "errorPageMessage1": "Descrizione errore ",
+      "errorPageMessage2": "Per maggiori dettagli si prega di contattare il ",
+      "retrySyncButtonText": "Riprova ora la sincronizzazione"
+    },
+    "refresh": {
+      "title": "Errore: token API invalido",
+      "description": "Il token di accesso all'API di CleverReach® non è più valido. Per sincronizzare i dati, autenticati nuovamente con l'ID {id} CleverReach®. Per utilizzare un altro account CleverReach® ID: {id}, reinstalla l'estensione.\"",
+      "authenticateButtonText": "Authenticate now",
+      "helloIcon": "/bundles/crswcleverreachofficial/administration/img/clever-reach-icon-ciao.png"
+    }
+  }
+}

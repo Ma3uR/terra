@@ -1,0 +1,26 @@
+{% block tr_benefits %}
+    <div class="col-12">
+        <section class="tr-info-block" style="background-image: url('/bundles/terraaustralia/assets/images/bg-info-block-1.jpg')">
+            <div class="container">
+                {% set element = block.slots.getSlot('title') %}
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+
+                <div class="tr-info-list-wrap">
+                    <div class="tr-info-list row">
+                        {% set element = block.slots.getSlot('feed1') %}
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+
+                        {% set element = block.slots.getSlot('feed2') %}
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+
+                        {% set element = block.slots.getSlot('feed3') %}
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+
+                        {% set element = block.slots.getSlot('feed4') %}
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

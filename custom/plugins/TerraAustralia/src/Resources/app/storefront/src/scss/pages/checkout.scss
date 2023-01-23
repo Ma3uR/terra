@@ -1,0 +1,33 @@
+.summary-inner {
+    background: #fff;
+    padding: 21px;
+}
+
+.versand-an_wrapper {
+    padding-top: 1.3rem;
+    @include respond-to(991) {
+        padding-top: 0;
+    }
+}
+
+.confirm-payment-shipping {
+    .modal-body {
+        padding: 0px;
+    }
+}
+
+.confirm-address {
+    margin-top: 2rem;
+}
+
+.checkout-additional {
+    margin-top: 2rem;
+}
+
+.checkout-wrapper {
+    max-width: 66.6666666667%;
+    margin: 0 auto;
+    @include respond-to(767) {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,37 @@
+{% block block_tr_widgetbox13 %}
+    <div class="col-12">
+        <div class="container">
+            <section class="tr-listing-category">
+                {% block block_tr_widgetbox13_contacts %}
+                    <div class="tr-listing-category__contacts">
+                        {% set element = block.slots.getSlot('contacts') %}
+
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    </div>
+                {% endblock %}
+
+                <div class="tr-listing-category__list">
+                    <div class="tr-category-list js-listing-category-slider">
+                        {% block block_tr_widgetbox13_box1 %}
+                            {% set element = block.slots.getSlot('box1') %}
+
+                            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ "-" ~ element.config.targetType.value ~ ".html.twig" ignore missing %}
+                        {% endblock %}
+
+                        {% block block_tr_widgetbox13_box2 %}
+                            {% set element = block.slots.getSlot('box2') %}
+
+                            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ "-" ~ element.config.targetType.value ~ ".html.twig" ignore missing %}
+                        {% endblock %}
+
+                        {% block block_tr_widgetbox13_box3 %}
+                            {% set element = block.slots.getSlot('box3') %}
+
+                            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ "-" ~ element.config.targetType.value ~ ".html.twig" ignore missing %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

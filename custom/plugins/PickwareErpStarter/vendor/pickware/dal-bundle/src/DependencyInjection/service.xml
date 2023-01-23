@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<container
+    xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+>
+    <services>
+        <service id="Pickware\DalBundle\EntityManager">
+            <argument id="service_container" type="service" />
+            <argument id="Doctrine\DBAL\Connection" type="service" />
+            <argument id="Shopware\Core\Framework\DataAbstractionLayer\Dbal\CriteriaQueryBuilder" type="service" />
+        </service>
+        <service id="Pickware\DalBundle\ContextFactory">
+            <argument id="Pickware\DalBundle\EntityManager" type="service" />
+        </service>
+        <service id="Pickware\DalBundle\CriteriaJsonSerializer">
+            <argument id="Shopware\Core\Framework\DataAbstractionLayer\Search\RequestCriteriaBuilder" type="service" />
+            <argument
+                type="service"
+                id="Shopware\Core\Framework\DataAbstractionLayer\Search\Parser\AggregationParser"
+            />
+            <argument>%shopware.api.max_limit%</argument>
+        </service>
+    </services>
+</container>

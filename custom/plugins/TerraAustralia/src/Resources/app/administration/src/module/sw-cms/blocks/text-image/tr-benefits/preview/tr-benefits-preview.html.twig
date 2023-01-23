@@ -1,0 +1,11 @@
+{% block sw_cms_block_tr_benefits_preview %}
+    <div class="tr-benefits-preview">
+        <h3>Title</h3>
+        <div class="tr-benefits-preview__inner">
+            <div v-for="i in 4" class="tr-benefits-preview__inner-feed">
+                <img :src="'/administration/static/img/cms/preview_mountain_small.jpg' | asset">
+                <h5>Caption</h5>
+            </div>
+        </div>
+    </div>
+{% endblock %}

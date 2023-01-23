@@ -1,0 +1,184 @@
+.tr-category-list {
+    padding-bottom: 20px;
+
+    &-wrap {
+        //padding-top: 35px;
+        padding-top: 50px;
+        padding-bottom: 20px;
+
+        @include respond-to(767) {
+            padding-top: 5px;
+            padding-bottom: 30px;
+        }
+
+        .container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    &__item {
+        line-height: 1.2;
+        padding: 15px;
+        height: 100%;
+
+        &-cont {
+            background-color: $white;
+            background-repeat: no-repeat;
+            background-position: bottom right;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-size: contain;
+        }
+
+        &-top {
+            padding: 30px;
+            flex-grow: 1;
+
+            @include respond-to(767) {
+                padding: 20px;
+            }
+        }
+    }
+
+    &__title {
+        color: #3b3a37;
+        font-family: $title-font-family;
+        font-size: 28px;
+        margin-bottom: 20px;
+
+        @include respond-to(1024) {
+            font-size: 24px;
+        }
+
+        @include respond-to(767) {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__sub-link {
+        text-transform: uppercase;
+        letter-spacing: 3.2px;
+        padding-left: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        word-break: break-word;
+        color: $default-color;
+        margin-bottom: 10px;
+        min-height: 25px;
+
+        @include respond-to(767) {
+            font-size: 13px;
+            padding-left: 10px;
+        }
+
+        &:hover {
+            text-decoration: none;
+            color: $primary-color;
+
+            .tr-category-list__arrow {
+                background-color: #fec842;
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background-color: $primary-color;
+        }
+    }
+
+    &__arrow {
+        width: 25px;
+        min-width: 25px;
+        height: 25px;
+        background-color: $primary-color;
+        margin-left: 10px;
+        transition: $anim;
+        background-image: url("/bundles/terraaustralia/assets/images/arrow.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 6px 11px;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        word-break: break-word;
+        font-weight: 700;
+        background-color: #fec842;
+        padding: 25px 30px;
+        color: #3b3a37;
+        transition: $anim;
+
+        @include respond-to(767) {
+            padding: 8px 20px;
+        }
+
+        &:hover {
+            text-decoration: none;
+            background-color: #343b43;
+            color: $primary-color;
+
+            .tr-category-list {
+                &__link-el {
+                    border-bottom-color: rgba(255, 93, 79, .2);
+                }
+
+                &__arrow {
+                    background-color: $primary-color;
+                }
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &-el {
+            border-bottom: 1px solid rgba(59,58,55,.2);
+            transition: border-bottom-color .2s ease;
+            display: inline-block;
+            padding-bottom: 5px;
+            line-height: 1.2;
+
+            @include respond-to(767) {
+                padding-bottom: 2px;
+            }
+        }
+
+        .tr-category-list__arrow {
+            background-color: #3b3a37;
+        }
+    }
+
+    .slick-track{
+        display: flex;
+
+        .slick-slide {
+            height: auto;
+
+            & > div {
+                height: 100%;
+            }
+        }
+    }
+
+    .slick-dots li:not(.slick-active) button:not(:hover):before {
+        background-color: #fefefe;
+    }
+}

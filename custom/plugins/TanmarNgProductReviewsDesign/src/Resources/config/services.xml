@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Tanmar\ProductReviewsDesign\Service\ConfigService">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="request_stack"/>
+        </service>
+        <service id="Tanmar\ProductReviewsDesign\Storefront\Page\Product\ProductPageSubscriber">
+            <argument type="service" id="Tanmar\ProductReviewsDesign\Service\ConfigService"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="Tanmar\ProductReviewsDesign\Resources\snippet\en_GB\SnippetFile_en_GB" public="true">
+            <tag name="shopware.snippet.file" priority="100"/>
+        </service>
+
+        <service id="Tanmar\ProductReviewsDesign\Resources\snippet\de_DE\SnippetFile_de_DE" public="true">
+            <tag name="shopware.snippet.file" priority="100"/>
+        </service>
+    </services>
+</container>

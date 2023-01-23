@@ -1,0 +1,28 @@
+{% block element_tr_e_contacts_widget %}
+    {% set translatedConfig = element.translated.config %}
+    
+    {% set backgroundEntity = null %}
+    {% if translatedConfig.background.value %}
+        {% set mCollection = searchMedia([translatedConfig.background.value], context.context) %}
+        {% set backgroundEntity = mCollection.get(translatedConfig.background.value) %}
+    {% endif %}
+    
+    <div class="tr-category-list__item">
+        <div class="tr-category-list__item-cont" {% if backgroundEntity %}style="background-image: url('{{ backgroundEntity.url }}')"{% endif %}>
+            <div class="tr-category-list__item-top">
+                <div class="tr-category-list__title">{{ translatedConfig.title.value }}</div>
+                <span class="tr-category-list__sub-link">{{ "terraAustralia.cms.elements.tr-contacts-widget.contactBlockTitle" | trans }}</span>
+                <div class="tr-contacts__cont row">
+                    <p class="col-6 col-lg-12">{{ "terraAustralia.cms.elements.tr-contacts-widget.hotline" | trans }}: {% if translatedConfig.phone.value %}<a href="tel:{{ translatedConfig.phone.value }}">{{ translatedConfig.phone.value }}</a>{% endif %}</p>
+                    <p class="col-6 col-lg-12">{{ "terraAustralia.cms.elements.tr-contacts-widget.help" | trans }}: {% if translatedConfig.email.value %}<a href="mailto:{{ translatedConfig.email.value }}">{{ translatedConfig.email.value }}</a>{% endif %}</p>
+                </div>
+            </div>
+            
+            {% set linkto = translatedConfig.linkTo.value ?? 'javascript:void(0)' %}
+            <a href="{{ linkto }}" class="tr-category-list__link">
+                <span class="tr-category-list__link-el">{{ "terraAustralia.cms.elements.tr-contacts-widget.linkto" | trans }}</span>
+                <span class="tr-category-list__arrow"></span>
+            </a>
+        </div>
+    </div>
+{% endblock %}

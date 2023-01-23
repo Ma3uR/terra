@@ -1,0 +1,25 @@
+{% sw_extends '@Storefront/storefront/component/account/login.html.twig' %}
+
+{% block component_account_login_form_description %}
+	<p class="login-form-description">
+		{{ "detail.reviewLoginDescription"|trans|sw_sanitize }}
+		<a href="{{ path('frontend.account.login.page') }}"
+		   title="{{ "detail.reviewRegisterLink"|trans|striptags }}">
+            {{ "detail.reviewRegisterLink"|trans|sw_sanitize }}
+		</a>
+	</p>
+{% endblock %}
+
+{% block component_account_login_form_redirect %}
+	<input type="hidden"
+           name="redirectTo"
+           value="frontend.detail.page">
+
+	<input type="hidden"
+		   name="redirectParameters"
+		   value='{"productId": "{{ reviews.productId }}"}'>
+{% endblock %}
+
+{% block component_account_login_submit %}
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,8 @@
+localeCode: 'en-GB'
+subject: 'Reorder Notification'
+sender: 'Shopware Administration'
+description: 'Reorder Notification'
+contentHtml:
+  fromFile: 'content-en-gb.html'
+contentPlain:
+  fromFile: 'content-en-gb.txt'

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<container
+    xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+>
+    <services>
+        <service
+            class="Pickware\PickwareDhl\Installation\FilesystemToFilesystemMigrator"
+            id="pickware_dhl.plugin_filesystem_to_document_bundle_filesystem_migrator"
+            public="true"
+        >
+            <argument id="pickware_dhl.filesystem.private" type="service" />
+            <argument id="document_bundle.filesystem.private" type="service" />
+        </service>
+        <service
+            id="pickware_dhl.bundle_supporting_asset_service"
+            class="Pickware\InstallationLibrary\BundleSupportingAssetService"
+            public="true"
+        >
+            <argument id="Shopware\Core\Framework\Plugin\Util\AssetService" type="service" />
+            <argument id="shopware.filesystem.asset" type="service" />
+        </service>
+    </services>
+</container>

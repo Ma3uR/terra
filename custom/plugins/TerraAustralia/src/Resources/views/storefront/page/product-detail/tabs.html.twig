@@ -1,0 +1,53 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/tabs.html.twig' %}
+
+{% block page_product_detail_tabs_inner %}
+    <div class="tr-product-detail-description">
+        <h2 class="tr-title tr-title_decor">{{ "detail.tabsDescription"|trans|sw_sanitize }}</h2>
+        {% block page_product_detail_description %}
+
+            {% block page_product_detail_description_content %}
+                <div class="tr-content">
+                    {{ page.product.translated.description|raw }}
+                </div>
+            {% endblock %}
+
+            {% block page_product_detail_ordernumber_container %}
+                {% if page.product.productNumber %}
+                        <div class="tr-product-detail-info-list">
+                            <div class="tr-product-detail-info-list__item tr-product-detail-info-list__item_prod-num">
+                                <div class="tr-product-detail-info-list__title">{{ 'terraAustralia.productDetail.articleNumber'|trans }}:</div>
+                                <div class="tr-product-detail-info-list__content">
+                                    {% block page_product_detail_ordernumber %}
+                                        <meta itemprop="productID"
+                                              content="{{ page.product.id }}"/>
+                                        <span itemprop="sku">
+                                                    {{ page.product.productNumber }}
+                                                </span>
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                {% endif %}
+            {% endblock %}
+
+            {% block page_product_detail_description_properties %}
+                {% if page.product.sortedProperties|length > 0 %}
+                    {% sw_include '@Storefront/storefront/page/product-detail/properties.html.twig' %}
+                {% endif %}
+            {% endblock %}
+        {% endblock %}
+
+        <div class="tr-content tr-content_table">
+            {% if page.product.sizesTable %}
+                {{ page.product.sizesTable | raw }}
+            {% endif %}
+        </div>
+    </div>
+
+    <div id="tr-reviews">
+        <h2 class="tr-title tr-title_decor">{{ "detail.tabsReview"|trans|sw_sanitize }}</h2>
+        {% block page_product_detail_review %}
+            {% sw_include '@Storefront/storefront/page/product-detail/review/review.html.twig' with {'reviews': page.reviews} %}
+        {% endblock %}
+    </div>
+{% endblock %}

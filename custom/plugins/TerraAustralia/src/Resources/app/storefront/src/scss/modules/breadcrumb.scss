@@ -1,0 +1,50 @@
+.breadcrumb {
+    justify-content: center;
+    padding: 35px 0 35px;
+    margin: 0;
+    align-items: center;
+
+    @include respond-to(767) {
+        padding: 10px 0 10px;
+    }
+
+    a {
+        font-size: 16px;
+        font-weight: 700;
+        color: $white;
+        text-decoration: underline;
+
+        @include respond-to(767) {
+            font-size: 14px;
+        }
+
+        &:hover {
+            color: $white;
+        }
+
+        &.is-active {
+            color: $white;
+            text-decoration: none;
+        }
+    }
+
+    .breadcrumb-placeholder {
+        margin: 0 20px;
+
+        @include respond-to(767) {
+            margin: 0 10px;
+        }
+
+        .tr-breadcrumb-placeholder-icon {
+            background-image: url("/bundles/terraaustralia/assets/images/angle-double-right.svg");
+            background-repeat: no-repeat;
+            display: block;
+            width: 9px;
+            height: 10px;
+        }
+    }
+
+    .breadcrumb-container {
+        align-items: center;
+    }
+}

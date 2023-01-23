@@ -1,0 +1,71 @@
+{
+    "terraAustralia": {
+        "global":{
+            "more": "Mehr Lesen",
+            "short": "kürzer",
+            "changeQuantity": "menge ändern",
+            "remove": "entfernen",
+            "alerts": {
+                "danger": "Error!",
+                "warning": "Warning!",
+                "info": "Info!",
+                "success": "Success!"
+            }
+        },
+        "header": {
+            "home": "Home"
+        },
+        "footer": {
+            "serviceMenu": "Kundenservice",
+            "contactsAddresse1": "Wikbildstraße 24",
+            "contactsAddresse2": "31246 Ilsede",
+            "contactsPhone": "05172-410308",
+            "paymentTitle": "Zahlungsarten",
+            "shippingTitle": "Versandarten",
+            "allRightsReserved": "Terra Australia. All rights reserved.",
+            "deliveryInfo": "* Versandkostenfreie Lieferung nur innerhalb Deutschlands",
+            "refundInfo": "** Kostenlose Retouren gibt es bei Anmeldung der Retoure mit Paypal. <a href=\"/Service/Ruecksendung/\" title=\"Kostenlose Rücksendung mit Paypal\">Mehr Informationen</a>"
+        },
+        "navigation": {
+            "category": "Zur Kategorie",
+            "allProducts": "Alle Produkte"
+        },
+        "productDetail": {
+            "deliveryInformationTitle": "Verfügbarkeit",
+            "deliveryTimeAvailable": "Sofort verfügbar",
+            "infoListTitle1": "SCHNELLE LIEFERUNG",
+            "infoListTitle2": "VERSANDKOSTENFREI AB 100,-€*",
+            "infoListTitle3": "KOSTENLOSE RETOURE**",
+            "infoListTitle4": "MARKENQUALITÄT",
+            "articleNumber": "Artikelnumer",
+            "deliveryTime": "Lieferzeit",
+            "manufacturer": "Hersteller",
+            "reviewsModalTitle": "Bewertung schreiben"
+        },
+        "cms": {
+            "elements": {
+                "tr-widget-category": {
+                    "linkTo": "Zur Kategorie"
+                },
+                "tr-contacts": {
+                    "contactBlockTitle": "Kontakt:",
+                    "formBlockTitle": "Abonnieren Sie den Newsletter und verpassen Sie keine Neuigkeit oder Aktion mehr:",
+                    "hotline": "Kostenlose Hotline",
+                    "help": "Hilfe",
+                    "formInputEmailPlaceholder": "Ihre E-Mail Adresse",
+                    "formSendBtn": "Senden",
+                    "gdprText": "Die Anmeldung ist kostenlos. Sie können sich jederzeit wieder abmelden. <a data-toggle=\"modal\" data-url=\"%url%\" href=\"%url%\" title=\"Datenschutzbestimmungen\">Datenschutzbestimmungen</a>"
+                },
+                "tr-contacts-widget": {
+                    "contactBlockTitle": "Kontakt",
+                    "hotline": "Kostenlose Hotline",
+                    "help": "Hilfe",
+                    "linkto": "Ask a Question"
+                }
+            }
+        },
+        "newsletter": {
+            "subscriptionError": "Fehlgeschlagen :("
+        }
+    }
+}

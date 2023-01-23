@@ -1,0 +1,5 @@
+<div style="font-family:arial; font-size:12px;">
+    <p><strong>Hello,</strong></p>
+    <p>a new rating for your shop {{salesChannel.translated.name}} has been received with {{tanmarProductReviews.points}} point{% if tanmarProductReviews.points> 1%}s{% endif%}.</p>
+    {% if not tanmarProductReviews.skipModeration %}<p>You can activate these in your Shopware administration.</p>{% endif %}
+</div>

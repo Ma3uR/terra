@@ -1,0 +1,5 @@
+<div style="font-family:arial; font-size:12px;">
+    <p><strong>Guten Tag,</strong></p>
+    <p>es ist eine neue Bewertung mit {{ tanmarProductReviews.points }} Punkt{% if tanmarProductReviews.points > 1 %}en{% endif %} für Ihren Shop {{ salesChannel.translated.name }} eingegangen.</p>
+    {% if not tanmarProductReviews.skipModeration %}<p>Sie können diese in Ihrer Shopware Administration freischalten.</p>{% endif %}
+</div>

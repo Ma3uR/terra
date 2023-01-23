@@ -1,0 +1,48 @@
+{
+    "tanmar-product-reviews": {
+        "headline": {
+            "noVote": "Thanks for your review!",
+            "main": "Share your experiences with other customers"
+        },
+        "voucher": {
+            "cashed": "Your voucher code <span id=\"vote-code\">%vouchercode%</span> has already been successfully redeemed.",
+            "infoShippingvoucher": "You will receive a shipping voucher for your evaluation",
+            "infoVouchervalue": "You will receive a voucher for your evaluation %value%",
+            "display": "Your personal voucher code is:<br><span id=\"vote-code\">%vouchercode%</span>",
+            "textCopy": "Copy coupon code",
+            "textCopied": "Coupon code copied successfully!"
+        },
+        "reviews": {
+            "intro": "Some time ago you ordered the following items. Help other customers with their purchase decisions and rate the items you bought:",
+            "productVoteDone": "You have rated:",
+            "productComment": "Your opinion:",
+            "productSummary": "Your conclusion in one sentence (optional):",
+            "productSummaryRequired": "Your conclusion in one sentence (required):",
+            "voteBy": "author: %productReviewsName%",
+            "productVote": "Your rating for:",
+            "starDefault": "please rate",
+            "productCommentPlaceholder": "Tell us what you think - how is the quality and workmanship? Was the quality-price ratio of the product good/bad?",
+            "productAnonymize": "Do you want to anonymize your name?",
+            "productSubmit": "Rate product",
+            "anon": "A customer",
+            "success": "Rating saved"
+        },
+        "stars": {
+            "legend1": "inadequate",
+            "legend2": "sufficient",
+            "legend3": "satisfying",
+            "legend4": "good",
+            "legend5": "very good"
+        },
+        "optin": {
+            "description": "I would like to be reminded to evaluate the purchased products after receiving the goods.",
+            "coupon": "You will receive a shopping voucher for a fully rated order."
+        },
+        "error":{
+            "missingArticle": "Article does not exist",
+            "validation": "Verification failed",
+            "fillOutCompletely": "Please enter a rating and a text",
+            "missingHeadline": "Please enter a conclusion"
+        }
+    }
+}

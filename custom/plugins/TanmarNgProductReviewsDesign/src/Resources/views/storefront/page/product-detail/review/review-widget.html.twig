@@ -1,0 +1,38 @@
+{% sw_extends '@parent/storefront/page/product-detail/review/review-widget.html.twig' %}
+
+{% block page_product_detail_review_title %}
+    {% set tanmarProductReviewsDesignData = context.context.extensions.tanmarProductReviewsDesignData %}
+    {% if not tanmarProductReviewsDesignData.active %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block page_product_detail_review_overview %}
+    {% set tanmarProductReviewsDesignData = context.context.extensions.tanmarProductReviewsDesignData %}
+    {% if tanmarProductReviewsDesignData.active %}
+        <div class="tanmar-product-reviews-design-rating-outof">
+            <span class="tanmar-product-reviews-design-rating-average">{{ productAvgRating|round(1) }}</span>
+            <span class="tanmar-product-reviews-design-rating-base">/{{ reviews.matrix.maxPoints }}</span>
+        </div>
+        <div class="tanmar-product-reviews-design-rating-outof-right">
+            {{ parent() }}
+            <br/>
+            <p class="product-detail-review-title h5">
+                {{ "detail.reviewTitle"|trans({'%count%': reviews.total, '%total%':reviews.totalReviews })|sw_sanitize }}
+            </p>
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block page_product_detail_review_form_teaser %}
+    {% set tanmarProductReviewsDesignData = context.context.extensions.tanmarProductReviewsDesignData %}
+    {% if tanmarProductReviewsDesignData.active and not tanmarProductReviewsDesignData.postCommentActive %}
+        <div class="is--hidden">
+            {{ parent() }}
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

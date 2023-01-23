@@ -1,0 +1,19 @@
+{% sw_extends '@Storefront/storefront/utilities/offcanvas.html.twig' %}
+
+{% block utilities_offcanvas %}
+    {% block utilities_offcanvas_close %}
+        <div class="offcanvas-close-wrap">
+            <button class="btn btn-block btn-primary offcanvas-close js-offcanvas-close sticky-top">
+                {% block utilities_offcanvas_close_icon %}
+                    {% sw_icon 'x' style { 'size': 'sm' } %}
+                {% endblock %}
+            </button>
+        </div>
+    {% endblock %}
+
+    {% block utilities_offcanvas_content_container %}
+        <div class="offcanvas-content-container">
+            {% block utilities_offcanvas_content %}{% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

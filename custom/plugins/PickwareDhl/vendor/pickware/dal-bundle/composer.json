@@ -1,0 +1,39 @@
+{
+    "name": "pickware/dal-bundle",
+    "type": "library",
+    "description": "A bundle for Shopware 6 that provides helpful utilities for the Shopware DAL",
+    "version": "3.2.1",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Pickware GmbH",
+            "email": "info@pickware.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "shopware/core": "6.4.*",
+        "symfony/config": "^5.2.3",
+        "symfony/dependency-injection": "^5.2.3",
+        "symfony/validator": "^5.2.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5.2"
+    },
+    "config": {
+        "lock": false
+    },
+    "autoload": {
+        "psr-4": {
+            "Pickware\\DalBundle\\": "src"
+        },
+        "exclude-from-classmap": [
+            "**.unit.php",
+            "**.integration.php"
+        ]
+    },
+    "scripts": {
+        "test:integration": "${SHOPWARE_DIR}/vendor/bin/phpunit --config phpunit.integration.xml --testdox",
+        "test:unit": "./vendor/bin/phpunit --config phpunit.unit.xml --testdox"
+    }
+}

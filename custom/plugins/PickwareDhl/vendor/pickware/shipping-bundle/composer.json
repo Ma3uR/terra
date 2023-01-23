@@ -1,0 +1,77 @@
+{
+    "name": "pickware/shipping-bundle",
+    "type": "library",
+    "description": "A bundle that contains functionality that is shared by our shipping plugins.",
+    "version": "1.0.5",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Pickware GmbH",
+            "email": "info@pickware.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-soap": "*",
+        "ext-xml": "*",
+        "doctrine/dbal": "^2.10.0",
+        "guzzlehttp/psr7": "^1.7.0",
+        "league/flysystem": "^1.0.57",
+        "monolog/monolog": "^1.25.1",
+        "pickware/dal-bundle": "^3.2.1",
+        "pickware/document-bundle": "^2.0.4",
+        "pickware/http-utils": "^2.0.3",
+        "pickware/money-bundle": "^2.0.3",
+        "pickware/units-of-measurement": "^2.0.0",
+        "psr/http-message": "^1.0.1",
+        "psr/log": "^1.1.2",
+        "shopware/core": "6.4.*",
+        "symfony/config": "^5.2.3",
+        "symfony/console": "^5.2.3",
+        "symfony/dependency-injection": "^5.2.3",
+        "symfony/dom-crawler": "^5.2.3",
+        "symfony/event-dispatcher": "^5.2.3",
+        "symfony/http-foundation": "^5.2.3",
+        "symfony/polyfill-php80": "^1.20.0",
+        "symfony/yaml": "^5.2.3",
+        "viison/address-splitter": "^0.3.2"
+    },
+    "conflict": {
+        "shopware/administration": "< 6.4.0"
+    },
+    "require-dev": {
+        "league/flysystem-memory": "^1.0.2",
+        "mikey179/vfsstream": "^1.6",
+        "phpunit/phpunit": "^8.3.4",
+        "swiftmailer/swiftmailer": "^6.2.2"
+    },
+    "config": {
+        "lock": false
+    },
+    "autoload": {
+        "psr-4": {
+            "Pickware\\ShippingBundle\\": "src"
+        },
+        "exclude-from-classmap": [
+            "**.unit.php",
+            "**.integration.php"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../libraries/composer-packages/*"
+        },
+        {
+            "type": "path",
+            "url": "../../bundles/*"
+        }
+    ],
+    "minimum-stability": "stable",
+    "scripts": {
+        "test:integration": "${SHOPWARE_DIR}/vendor/bin/phpunit --config phpunit.integration.xml --testdox",
+        "test:unit": "./vendor/bin/phpunit --config phpunit.unit.xml --testdox"
+    }
+}

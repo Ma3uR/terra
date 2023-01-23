@@ -1,0 +1,22 @@
+{% block component_product_box_action_inner %}
+    {% set id = product.id %}
+    <div class="product-action">
+        {% block component_product_box_action_detail %}
+            <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+               class="btn btn-block btn-primary"
+               title="{{ "listing.boxProductDetails"|trans|striptags }}">
+                {{ "listing.boxProductDetails"|trans|sw_sanitize }}
+            </a>
+        {% endblock %}
+    </div>
+
+    {% block component_product_box_action_meta %}
+        <input type="hidden"
+               name="product-name"
+               value="{{ product.translated.name }}">
+
+        <input type="hidden"
+               name="product-id"
+               value="{{ id }}">
+    {% endblock %}
+{% endblock %}

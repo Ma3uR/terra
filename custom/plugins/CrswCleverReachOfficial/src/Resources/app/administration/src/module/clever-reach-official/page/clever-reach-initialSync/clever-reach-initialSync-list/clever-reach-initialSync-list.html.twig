@@ -1,0 +1,28 @@
+{% block clever_reach_initial_sync_list %}
+    <div class="clever-reach-initialSync-list" data-task-list-panel>
+        <ul class="cr-list-group">
+            <clever-reach-initialSync-item
+                    :display-text="$tc('clever-reach.initialSync.createSubscriberList')"
+                    :progress="progress.createSubscriberList"
+                    :disabled="isDisabled.createSubscriberList"
+                    :class-status="classStatus.createSubscriberList"
+            />
+            <clever-reach-initialSync-item
+                    :display-text="$tc('clever-reach.initialSync.addFields')"
+                    :progress="progress.addFields"
+                    :disabled="isDisabled.addFields"
+                    :class-status="classStatus.addFields"
+            />
+            <clever-reach-initialSync-item
+                    :display-text="$tc('clever-reach.initialSync.importSubscribers', 1, {list: integrationList})"
+                    :progress="progress.importSubscribers"
+                    :disabled="isDisabled.importSubscribers"
+                    :class-status="classStatus.importSubscribers"
+            />
+        </ul>
+
+        {% block clever_reach_initialSync_banner %}
+            <clever-reach-initialSync-banner/>
+        {% endblock %}
+    </div>
+{% endblock %}

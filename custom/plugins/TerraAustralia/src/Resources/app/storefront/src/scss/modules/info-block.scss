@@ -1,0 +1,92 @@
+.tr-info-block {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: #3b3a37;
+    color: $white;
+    padding-bottom: 35px;
+    padding-top: 55px;
+
+    @include respond-to(767) {
+        padding-bottom: 10px;
+        padding-top: 30px;
+    }
+
+    .tr-title {
+        color: #f6f5f6;
+    }
+
+    .tr-sub-title {
+        color: $white;
+    }
+}
+
+.tr-contacts {
+    &__cont {
+        font-size: 18px;
+
+        @include respond-to(1024) {
+            font-size: 16px;
+        }
+
+        @include respond-to(991) {
+            margin-bottom: 15px;
+        }
+
+        @include respond-to(767) {
+            font-size: 14px;
+        }
+
+        a {
+            color: $white;
+            font-weight: 700;
+
+            @include respond-to(767) {
+                display: block;
+            }
+        }
+    }
+
+    &__form {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        @include respond-to(375) {
+            padding-bottom: 20px;
+        }
+
+        .form-group {
+            margin-right: 30px;
+            width: calc(100% - 230px);
+
+            @include respond-to(767) {
+                margin-right: 10px;
+                width: calc(100% - 140px);
+            }
+
+            @include respond-to(375) {
+                margin-right: 0;
+                width: 100%;
+            }
+        }
+
+        .btn {
+            width: 200px;
+
+            @include respond-to(767) {
+                width: 130px;
+            }
+
+            @include respond-to(375) {
+                width: 100%;
+            }
+        }
+    }
+    
+    &__gdpr-text {
+        a {
+            display: block;
+        }
+    }
+}

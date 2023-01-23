@@ -1,0 +1,15 @@
+{
+    "name": "webmp-google-review-feed",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "author": "Webmp",
+    "license": "MIT",
+    "devDependencies": {
+        "vue": "^2.6.12",
+        "vuex": "^3.6.2"
+    },
+    "dependencies": {
+        "vue-template-compiler": "^2.6.11"
+    }
+}

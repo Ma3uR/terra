@@ -1,0 +1,39 @@
+{% sw_extends '@Storefront/storefront/component/delivery-information.html.twig' %}
+
+{% block component_delivery_information %}
+    {# @var product \Shopware\Core\Content\Product\ProductEntity #}
+    {% set product = page.product %}
+
+
+    {% if not product.active %}
+        {% block component_delivery_information_not_available %}
+            <div class="tr-product-detail-info-list__item col-6">
+                <link itemprop="availability"
+                      href="http://schema.org/LimitedAvailability"/>
+                <div class="tr-product-detail-info-list__title">{{ 'terraAustralia.productDetail.deliveryInformationTitle'|trans }}:</div>
+                <div class="tr-product-detail-info-list__content tr-danger">{{ "general.deliveryNotAvailable"|trans|sw_sanitize }}</div>
+            </div>
+        {% endblock %}
+
+    {% elseif product.availableStock >= product.minPurchase %}
+
+        <div class="tr-product-detail-info-list__item col-6">
+            <link itemprop="availability" href="http://schema.org/InStock"/>
+            <div class="tr-product-detail-info-list__title">{{ 'terraAustralia.productDetail.deliveryInformationTitle'|trans }}:</div>
+            <div class="tr-product-detail-info-list__content">
+                {{ "terraAustralia.productDetail.deliveryTimeAvailable"|trans }}
+            </div>
+        </div>
+
+    {% elseif product.isCloseout and product.availableStock < product.minPurchase %}
+
+        <div class="tr-product-detail-info-list__item col-6">
+            <link itemprop="availability" href="http://schema.org/LimitedAvailability"/>
+            <div class="tr-product-detail-info-list__title">{{ 'terraAustralia.productDetail.deliveryInformationTitle'|trans }}:</div>
+            <div class="tr-product-detail-info-list__content tr-danger">
+                {{ "detail.soldOut"|trans|sw_sanitize }}
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}

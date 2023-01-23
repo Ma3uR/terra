@@ -1,0 +1,24 @@
+{% block tr_e_products %}
+    {% set translatedConfig = element.translated.config %}
+
+    {% block tr_e_products_title %}
+        {% if translatedConfig.title.value %}
+            <h2 class="tr-title tr-title_center">{{ translatedConfig.title.value }}</h2>
+        {% endif %}
+    {% endblock %}
+
+    {% block tr_e_products_products_inner %}
+        <div class="row tr-products-list">
+        {% for product in element.data.products.elements %}
+            {% block tr_e_products_products_inner_item %}
+                <div class="tr-products-list__item col-sm-6 col-lg-4 col-xl-3">
+                    {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                        'layout': ''
+                    } %}
+                </div>
+            {% endblock %}
+        {% endfor %}
+        </div>
+    {% endblock %}
+
+{% endblock %}

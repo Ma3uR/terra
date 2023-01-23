@@ -1,0 +1,48 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/flyout.html.twig' %}
+
+{% block layout_navigation_flyout %}
+    {% set category = navigationTree.category %}
+    {% set name = category.translated.name %}
+
+    <div class="navigation-flyout-inner">
+        {% block layout_navigation_flyout_content %}
+            <div class="navigation-flyout-content">
+                {% block layout_navigation_flyout_category_headline %}
+                    {% if category.type == 'page' %}
+                        <div class="navigation-flyout-category-title">{{ name }}</div>
+                    {% endif %}
+                {% endblock %}
+
+                {% block layout_navigation_flyout_categories %}
+                    <div class="navigation-flyout-categories">
+                        {% block layout_navigation_flyout_categories_recoursion %}
+                            {% sw_include '@Storefront/storefront/layout/navigation/categories.html.twig' with {
+                                navigationTree: navigationTree.children,
+                                navigationMedia: category.media
+                            } only %}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+
+                {% block layout_navigation_flyout_bar_category %}
+                    <div class="navigation-flyout-category-link">
+                        {% block layout_navigation_flyout_bar_category_link %}
+                            {% if category.type == 'page' %}
+                                <a class="tr-category-list__link"
+                                   href="{{ seoUrl('frontend.navigation.page', { navigationId: category.id }) }}"
+                                   itemprop="url"
+                                   title="{{ name }}">
+                                    {% block layout_navigation_flyout_bar_category_link_text %}
+                                        <span class="tr-category-list__link-el">{{ 'terraAustralia.navigation.allProducts'|trans }}</span>
+                                        <span class="tr-category-list__arrow"></span>
+                                    {% endblock %}
+                                </a>
+                            {% endif %}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+    </div>
+{% endblock %}

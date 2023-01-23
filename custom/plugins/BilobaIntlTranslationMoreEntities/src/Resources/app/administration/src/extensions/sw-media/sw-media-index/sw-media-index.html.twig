@@ -1,0 +1,6 @@
+{% block sw_media_upload_v2_compact_button_file_upload %}
+    <sw-button :disabled="isTranslationDisabled" :isLoading="isTranslating" @click="onTranslate">
+        {{ $tc('biloba-intl-translation.sw-product.detail.buttonTranslate')}}
+    </sw-button>
+    {% parent %}
+{% endblock %}

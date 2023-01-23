@@ -1,0 +1,37 @@
+{
+    "sw-privileges": {
+        "permissions": {
+            "parents": {
+                "tanmar_productreviews": "Customer friendly product reviews"
+            },
+            "tanmar_productreviews": {
+                "label": "Customer friendly product reviews settings"
+            }
+        }
+    },
+    "tanmar-productreviews": {
+        "header": "Customer friendly product reviews",
+        "general": {
+            "mainMenuItemGeneral": "Product Reviews",
+            "descriptionTextModule": "Product Reviews settings"
+        },
+        "mail": {
+            "invitation": {
+                "description": "Send an invitation mail to the store owner",
+                "label": "Test invitation mail"
+            },
+            "notification": {
+                "description": "Send a notification mail to the store owner (not yet implemented)",
+                "label": "Test notification mail"
+            },
+            "coupon": {
+                "description": "Send a coupon/thank you mail to the store owner (not yet implemented)",
+                "label": "Test coupon/thank you mail"
+            }
+        },
+        "messageNotBlank": "This value should not be blank.",
+        "settingForm": {
+            "save": "Save"
+        }
+    }
+}

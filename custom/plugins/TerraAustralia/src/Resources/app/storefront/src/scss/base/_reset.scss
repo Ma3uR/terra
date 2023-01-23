@@ -1,0 +1,40 @@
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td{padding:0;margin:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img, iframe{border:0;}
+input:focus, button:focus,a:focus, textarea:focus, select:focus{outline:none !important;}
+textarea{resize:none;}
+html, body{height:100%;min-height: 100%}
+body{font: normal 14px/1.1  'GothamPro', sans-serif;background:#fff;min-width:320px;color:$default-color;margin:0;overflow-x:hidden;}
+section{max-width:100%;}
+a{color:$default-color;text-decoration:none;}
+a:hover, a:active, a:focus{text-decoration:none;color:$default-color;}
+a img{border:none;}
+img{max-width:100%;display:block;border-style:none;}
+noscript div{position:relative;top:0;background: #fff;z-index:77777;left:0;right:0;width:100%;margin:0 auto;padding:50px;border:3px solid red;font-size:14px;text-align: center;text-transform:uppercase;color:#707070;}
+noscript div a{text-decoration:underline;color:blue;}
+input,
+textarea,
+select{vertical-align:middle;color:$default-color;}
+form, fieldset{margin:0;padding:0;border-style:none;}
+input[type="text"],
+input[type="file"],
+input[type="password"],
+input[type="submit"],
+input[type="email"],
+input[type="tel"],
+textarea, select{-webkit-appearance:none;-moz-appearance:none;-o-appearance:none;appearance:none;-moz-border-radius:0px;-webkit-border-radius:0px;border-radius:0px;}
+input[type="email"]{box-shadow:none;-webkit-box-shadow:none;}
+input[type="image"]{padding:0;border:none;}
+input[type="submit"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+button::-moz-focus-inner{border:0;padding:0;}
+input[type="submit"],
+input[type="button"]{cursor:pointer;}
+input[type="submit"]:focus,
+input[type="button"]:focus{outline:none;border:none;box-shadow:none;}
+button:focus{outline:none;border:none;box-shadow:none;}
+button {cursor: pointer}
+p{max-width: 100%;margin:0 0 10px;}
+p,span,label,h1,h2,h3,h4,h5,h6,b,strong,i,em {max-width: 100%;word-wrap: break-word;}
+div {word-wrap: break-word;}

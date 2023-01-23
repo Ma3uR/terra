@@ -1,0 +1,8 @@
+{
+    "name": "tanmarproductreviews",
+    "version": "1.0.0",
+    "description": "Administration for Tanmar Customerfriendly productreviews",
+    "main": "index.js",
+    "author": "Tanmar Webentwicklung",
+    "license": "MIT"
+}

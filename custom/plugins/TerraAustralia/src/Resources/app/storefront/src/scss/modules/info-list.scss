@@ -1,0 +1,101 @@
+.tr-info-list  {
+    &__item {
+        text-align: center;
+        margin-bottom: 20px;
+
+        &-inner {
+            border: 1px solid #cbc4b9;
+            border-radius: 2px;
+            padding: 25px;
+            height: 100%;
+
+            @include respond-to(1024) {
+                padding: 15px;
+            }
+
+            @include respond-to(767) {
+                padding: 10px;
+            }
+        }
+    }
+
+    &__title {
+        font-weight: 700;
+        line-height: 1.2;
+        text-transform: uppercase;
+
+        @include respond-to(767) {
+            font-size: 12px;
+        }
+    }
+
+    &__image {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 40px;
+
+        @include respond-to(767) {
+            margin-bottom: 22px;
+            width: 40px;
+            height: 40px;
+        }
+
+        img {
+            max-height: 100%;
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 13px;
+            height: 2px;
+            background-color: #fec842;
+            left: calc(50% - 6px);
+            bottom: -20px;
+
+            @include respond-to(767) {
+                bottom: -12px;
+            }
+        }
+    }
+
+    &_product-detail {
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-bottom: 20px;
+
+        @include respond-to(767) {
+            margin-left: -10px;
+            margin-right: -10px;
+            margin-bottom: 10px;
+        }
+
+        .tr-info-list {
+            &__item {
+                margin-bottom: 30px;
+                padding-left: 15px;
+                padding-right: 15px;
+
+                @include respond-to(767) {
+                    margin-bottom: 20px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            }
+
+            &__image:after {
+                background-color: $primary-color;
+            }
+        }
+    }
+
+    &-wrap {
+        max-width: 1170px;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,20 @@
+{% block tr_e_contacts_widget_component %}
+    <div class="tr-e-contacts-widget-component">
+        <h5 v-if="element.config.title.value">{{ element.config.title.value }}</h5>
+        <h5 v-else>{{ $tc('global.cms.elements.tr-contacts-widget.label') }}</h5>
+        
+        <div class="tr-e-contacts-widget-component__inner">
+            <div class="tr-e-contacts-widget-component__inner-left">
+                <span v-if="element.config.phone.value" class="phone"><b>{{ $tc('global.cms.elements.tr-contacts-widget.labels.phone') }}:</b> {{ element.config.phone.value }}</span>
+                <span v-else class="phone"><b>{{ $tc('global.cms.elements.tr-contacts-widget.labels.phone') }}:</b> +123(45)</span>
+                
+                <span v-if="element.config.email.value" class="mail"><b>{{ $tc('global.cms.elements.tr-contacts-widget.labels.email') }}:</b> {{ element.config.email.value }}</span>
+                <span v-else class="mail"><b>{{ $tc('global.cms.elements.tr-contacts-widget.labels.email') }}:</b> mail@com</span>
+                
+                <span v-if="element.config.linkTo.value" class="linkto"><b>{{ $tc('global.cms.elements.tr-contacts-widget.labels.linktoLabel') }}:</b> {{ element.config.linkTo.value }}</span>
+                <span v-else class="linkto"><b>{{ $tc('global.cms.elements.tr-contacts-widget.labels.linktoLabel') }}:</b></span>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}

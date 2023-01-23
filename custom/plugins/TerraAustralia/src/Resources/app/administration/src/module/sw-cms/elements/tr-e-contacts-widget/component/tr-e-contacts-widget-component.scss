@@ -1,0 +1,22 @@
+.tr-e-contacts-widget-component {
+    padding: 10px 20px;
+    width: 100%;
+    
+    h5 {
+        font-size: 18px;
+        border-bottom: 1px solid #d1d9e0;
+        padding-bottom: 20px;
+    }
+    
+    .tr-e-contacts-widget-component__inner {
+        display: flex;
+        flex-direction: row;
+        padding: 10px 0;
+        
+        .tr-e-contacts-widget-component__inner-left {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+}

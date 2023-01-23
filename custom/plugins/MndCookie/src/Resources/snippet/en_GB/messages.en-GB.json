@@ -1,0 +1,37 @@
+{
+  "mnd-cookie": {
+    "notice": {
+      "headline": "Cookie Notice",
+      "text": "We use cookies. Some of them are technically necessary (for example for the shopping cart), others help us improve our website and to offer you a better user experience."
+    },
+    "btns": {
+      "settings": "Settings",
+      "technical": "Accept only necessary",
+      "accept": "Accept all",
+      "savebtn": "Save"
+    },
+    "privacy": {
+      "linktext": "Privacy"
+    },
+    "legal": {
+      "linktext": "Legal Notice"
+    },
+    "settings": {
+      "linktext": "Settings",
+      "headline": "Custom settings",
+      "text": "We use cookies",
+      "active": "active",
+      "inactive": "inactive",
+      "technical": {
+        "name": "Technically necessary cookies",
+        "text": "Technically necessary cookies enable a website to save information that has already been entered (such as user names or language selection) and to offer the user improved, more personal functions."
+      },
+      "analytics": {
+        "name": "Google Analytics"
+      },
+      "pixel": {
+        "name": "Facebook Pixel"
+      }
+    }
+  }
+}

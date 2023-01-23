@@ -1,0 +1,18 @@
+@import "~scss/variables";
+
+.tr-e-widget-component {
+    width: 100%;
+    border: 1px solid #dadee5;
+    border-radius: 4px;
+    background: $color-white;
+    padding: 30px;
+    display: block;
+    
+    .tr-e-widget-component-inner{
+        width: 100%;
+        
+        h2 {
+            margin: 10px;
+        }
+    }
+}

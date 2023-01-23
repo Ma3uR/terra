@@ -1,0 +1,3 @@
+{% sw_extends '@parent/storefront/page/product-detail/index.html.twig' %}
+
+{% block base_body_classes %}{% set tanmarProductReviewsDesignData = context.context.extensions.tanmarProductReviewsDesignData %}{{ parent() }}{% if tanmarProductReviewsDesignData.active %} is-tanmar-product-reviews-design{% endif %}{% endblock %}

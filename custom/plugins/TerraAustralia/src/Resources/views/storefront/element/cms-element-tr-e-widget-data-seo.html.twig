@@ -1,0 +1,45 @@
+{% block element_tr_e_widget_data_seo %}
+    {% set translatedConfig = element.translated.config %}
+
+    {% set targetType = translatedConfig.targetType.value %}
+    {% set mode = translatedConfig.mode.value %}
+
+    {% if targetType == 'category' %}
+        {% set category = page.header.navigation.active %}
+
+        {% if category %}
+            {% set settings = translatedConfig.settings.value[mode] %}
+
+            {% if settings %}
+                {% set categorySource = category.get(settings.sourceType) ?? null %}
+                {% set categoryFields = settings.sourceFields|split(',') %}
+
+                {% if categorySource and categoryFields %}
+                    {% set variables = [] %}
+
+                    {% for field in categoryFields %}
+                        {% set nf = field | trim %}
+                        {% if categorySource[nf] %}
+                            {% set variables = variables|merge([categorySource[nf]]) %}
+                        {% endif %}
+                    {% endfor %}
+                    <div class="container">
+                        <div class="cms-element-text">
+                            <div class="tr-cms-element-content">
+                                <div class="tr-cms-element-content-text">
+                                    <h2 class="tr-content-title">{% if variables[0] %}{{ variables[0] | sw_sanitize }}{% endif %}</h2>
+                                    <p>{% if variables[1] %}{{ variables[1] | sw_sanitize }}{% endif %}</p>
+                                </div>
+                            </div>
+                            <span class="tr-show-more-info js-show-more-info">
+                            <span class="tr-show-more-info__more">{{ 'terraAustralia.global.more'|trans }}</span>
+                            <span class="tr-show-more-info__short">{{ 'terraAustralia.global.short'|trans }}</span>
+                        </span>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{
+    "sw-privileges": {
+        "permissions": {
+            "parents": {
+                "tanmar_productreviews": "Kundenfreundliche Artikelbewertungen"
+            },
+            "tanmar_productreviews": {
+                "label": "Kundenfreundliche Artikelbewertungen Einstellungen"
+            }
+        }
+    },
+    "tanmar-productreviews": {
+        "header": "Kundenfreundliche Artikelbewertungen",
+        "general": {
+            "mainMenuItemGeneral": "Kundenfreundliche Artikelbewertungen",
+            "descriptionTextModule": "Einstellungen für Kundenfreundliche Artikelbewertungen"
+        },
+        "mail": {
+            "invitation": {
+                "description": "Sende eine Bewertungseinladungen an den Shopbesitzer",
+                "label": "Test Bewertungseinladungen Mail"
+            },
+            "notification": {
+                "description": "Sende eine Bewertungs-Benachrichtigung an den Shopbesitzer",
+                "label": "Test Bewertungs-Benachrichtigung Mail"
+            },
+            "coupon": {
+                "description": "Sende eine Gutschein/Danke Mail an Shopbesitzer senden (noch nicht umgesetzt)",
+                "label": "Test Gutschein/Danke Mail"
+            }
+        },
+        "messageNotBlank": "Dieser Wert darf nicht leer sein.",
+        "settingForm": {
+            "save": "Speichern"
+        }
+    }
+}

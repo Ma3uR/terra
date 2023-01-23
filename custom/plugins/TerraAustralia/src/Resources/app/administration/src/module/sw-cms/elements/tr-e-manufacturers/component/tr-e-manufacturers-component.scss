@@ -1,0 +1,23 @@
+.tr-e-manufacturers-component {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    flex-direction: column;
+    
+    .tr-e-manufacturers-component__manufacturers-holder {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 15px;
+        width: 100%;
+        position: relative;
+        padding: 15px 0;
+    
+        .tr-e-manufacturers-component__manufacturers-item {
+            max-width: 200px;
+            
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+}

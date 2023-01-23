@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Configuration</title>
+        <title lang="de-DE">Konfiguration</title>
+
+        <input-field type="bool">
+            <name>active</name>
+            <label>Show cookie notice</label>
+            <label lang="de-DE">Cookie Hinweis anzeigen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>reloadAfter</name>
+            <label>Reload after acceptance?</label>
+            <label lang="de-DE">Seite neu laden nach Bestätigung?</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>reloadAddUtm</name>
+            <label>Add parameter utm_referrer to reload url?</label>
+            <label lang="de-DE">utm_referrer Parameter bei Reload an URL anhängen?</label>
+            <defaultValue>false</defaultValue>
+            <helpText>Adds an url parameter (utm_referrer) to the url of the reload. This helps Google Analytics with identifying the original referrer.</helpText>
+            <helpText lang="de-DE">Hängt einen URL Parameter (utm_referrer) an die Reload-URL an. Damit wird der originale Referrer an Google gesendet.</helpText>
+        </input-field>
+
+        <input-field type="int">
+            <name>expire</name>
+            <label>Cookie expiration in days</label>
+            <label lang="de-DE">Cookie Gültigkeit in Tagen</label>
+            <defaultValue>31</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>showSettings</name>
+            <label>Show individual settings?</label>
+            <label lang="de-DE">Individuelle Einstellungen anzeigen?</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>showPrivacyLink</name>
+            <label>Show link to privacy policy?</label>
+            <label lang="de-DE">Link zu Datenschutzbestimmungen anzeigen?</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>showLegalLink</name>
+            <label>Show link to legal notice?</label>
+            <label lang="de-DE">Link zu Impressum anzeigen?</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>CMS Pages</title>
+        <title lang="de-DE">Inhaltsseiten</title>
+
+        <input-field type="bool">
+            <name>showPrivacyLinkAccessPages</name>
+            <label>Show small privacy settings overlay on the pages defined below?</label>
+            <label lang="de-DE">Overlay Link zu Individuellen Einstellungen auf den unten gewählten Seiten anzeigen?</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <component name="sw-entity-multi-id-select">
+            <name>cmsPagesAccess</name>
+            <entity>cms_page</entity>
+            <label>Choose multiple pages which should always be accessible</label>
+            <label lang="de-DE">Wählen Sie hier die Inhaltsseiten welche immer zugänglich sein müssen</label>
+        </component>
+    </card>
+
+    <card>
+        <title>Layout</title>
+        <title lang="de-DE">Layout</title>
+
+        <input-field type="single-select">
+            <name>type</name>
+            <options>
+                <option>
+                    <id>banner</id>
+                    <name>Banner</name>
+                    <name lang="de-DE">Banner</name>
+                </option>
+                <option>
+                    <id>modal</id>
+                    <name>Modal Overlay</name>
+                    <name lang="de-DE">Modal Fenster</name>
+                </option>
+            </options>
+            <label>Layout</label>
+            <label lang="de-DE">Darstellung</label>
+            <defaultValue>banner</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>showHeadline</name>
+            <label>Show headline in modal</label>
+            <label lang="de-DE">Überschrift im Modal anzeigen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>backgroundColor</name>
+            <label>Background color</label>
+            <label lang="de-DE">Hintergrundfarbe</label>
+            <defaultValue>#000000</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>textColor</name>
+            <label>Text color</label>
+            <label lang="de-DE">Textfarbe</label>
+            <defaultValue>#ffffff</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>linkColor</name>
+            <label>Link color</label>
+            <label lang="de-DE">Linkfarbe</label>
+            <defaultValue>#ffffff</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>primaryButtonBgColor</name>
+            <label>Background color for "Accept All" button</label>
+            <label lang="de-DE">Abweichende Hintergrund-Farbe für "Akzeptieren" Button</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>primaryButtonTextColor</name>
+            <label>Text color for "Accept All" button</label>
+            <label lang="de-DE">Abweichende Text-Farbe für "Akzeptieren" Button</label>
+            <defaultValue>#ffffff</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>secondaryButtonBgColor</name>
+            <label>Background color for "Settings" button</label>
+            <label lang="de-DE">Abweichende Hintergrund-Farbe für "Individuelle Einstellungen" Button</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>secondaryButtonTextColor</name>
+            <label>Text color for "Settings" button</label>
+            <label lang="de-DE">Abweichende Text-Farbe für "Individuelle Einstellungen" Button</label>
+            <defaultValue>#ffffff</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>disableModalClose</name>
+            <label>Prevent modal close?</label>
+            <label lang="de-DE">Schließen des Modal Fensters verhindern?</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Google Analytics</title>
+        <title lang="de-DE">Google Analytics</title>
+
+        <input-field type="bool">
+            <name>gaActive</name>
+            <label>Activate Google Analytics?</label>
+            <label lang="de-DE">Google Analytics aktivieren?</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>gaID</name>
+            <label>Google Analytics UA ID</label>
+            <label lang="de-DE">Google Analytics UA ID</label>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>gaBehaviour</name>
+            <options>
+                <option>
+                    <id>optIn</id>
+                    <name>Opt-In</name>
+                    <name lang="de-DE">Opt-In</name>
+                </option>
+                <option>
+                    <id>optOut</id>
+                    <name>Opt-Out</name>
+                    <name lang="de-DE">Opt-Out</name>
+                </option>
+            </options>
+            <label>Google Analytics behaviour</label>
+            <label lang="de-DE">Google Analytics Verhalten</label>
+            <defaultValue>optIn</defaultValue>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>gaDesc</name>
+            <label>Google Analytics description</label>
+            <label lang="de-DE">Google Analytics Beschreibung</label>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>gaIntegration</name>
+            <label>Integration Code</label>
+            <label lang="de-DE">Integrationscode</label>
+            <helpText>The provided integration code is executed when the user accepts the cookie. The Javascript-Code must be wrapped in a script tag.</helpText>
+            <helpText lang="de-DE">Der bereitgestelle Integrationscode wird ausgeführt sobald der Besucher dem Cookie zustimmt. Der Javascript-Code muss in einem script-Tag stehen.</helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Custom Cookie 1</title>
+        <title lang="de-DE">Eigenes Cookie 1</title>
+
+        <input-field type="text">
+            <name>custom1Label</name>
+            <label>Label</label>
+            <label lang="de-DE">Bezeichnung</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>custom1Name</name>
+            <label>Name</label>
+            <label lang="de-DE">Name</label>
+            <helpText>The technical name is also used for the cookie name, i.e. my-service-active</helpText>
+            <helpText lang="de-DE">Der technische Name wird auch für den Cookie-Namen verwendet, z.B. mein-dienst-aktiv</helpText>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>custom1Behaviour</name>
+            <options>
+                <option>
+                    <id>optIn</id>
+                    <name>Opt-In</name>
+                    <name lang="de-DE">Opt-In</name>
+                </option>
+                <option>
+                    <id>optOut</id>
+                    <name>Opt-Out</name>
+                    <name lang="de-DE">Opt-Out</name>
+                </option>
+            </options>
+            <label>Behaviour</label>
+            <label lang="de-DE">Verhalten</label>
+            <defaultValue>optIn</defaultValue>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>custom1Desc</name>
+            <label>Description</label>
+            <label lang="de-DE">Beschreibung</label>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>custom1Integration</name>
+            <label>Integration Code</label>
+            <label lang="de-DE">Integrationscode</label>
+            <helpText>The provided integration code is executed when the user accepts the cookie. The Javascript-Code must be wrapped in a script tag.</helpText>
+            <helpText lang="de-DE">Der bereitgestelle Integrationscode wird ausgeführt sobald der Besucher dem Cookie zustimmt. Der Javascript-Code muss in einem script-Tag stehen.</helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Custom Cookie 2</title>
+        <title lang="de-DE">Eigenes Cookie 2</title>
+
+        <input-field type="text">
+            <name>custom2Label</name>
+            <label>Label</label>
+            <label lang="de-DE">Bezeichnung</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>custom2Name</name>
+            <label>Name</label>
+            <label lang="de-DE">Name</label>
+            <helpText>The technical name is also used for the cookie name, i.e. my-service-active</helpText>
+            <helpText lang="de-DE">Der technische Name wird auch für den Cookie-Namen verwendet, z.B. mein-dienst-aktiv</helpText>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>custom2Behaviour</name>
+            <options>
+                <option>
+                    <id>optIn</id>
+                    <name>Opt-In</name>
+                    <name lang="de-DE">Opt-In</name>
+                </option>
+                <option>
+                    <id>optOut</id>
+                    <name>Opt-Out</name>
+                    <name lang="de-DE">Opt-Out</name>
+                </option>
+            </options>
+            <label>Behaviour</label>
+            <label lang="de-DE">Verhalten</label>
+            <defaultValue>optIn</defaultValue>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>custom2Desc</name>
+            <label>Description</label>
+            <label lang="de-DE">Beschreibung</label>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>custom2Integration</name>
+            <label>Integration Code</label>
+            <label lang="de-DE">Integrationscode</label>
+            <helpText>The provided integration code is executed when the user accepts the cookie. The Javascript-Code must be wrapped in a script tag.</helpText>
+            <helpText lang="de-DE">Der bereitgestelle Integrationscode wird ausgeführt sobald der Besucher dem Cookie zustimmt. Der Javascript-Code muss in einem script-Tag stehen.</helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Custom Cookie 3</title>
+        <title lang="de-DE">Eigenes Cookie 3</title>
+
+        <input-field type="text">
+            <name>custom3Label</name>
+            <label>Label</label>
+            <label lang="de-DE">Bezeichnung</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>custom3Name</name>
+            <label>Name</label>
+            <label lang="de-DE">Name</label>
+            <helpText>The technical name is also used for the cookie name, i.e. my-service-active</helpText>
+            <helpText lang="de-DE">Der technische Name wird auch für den Cookie-Namen verwendet, z.B. mein-dienst-aktiv</helpText>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>custom3Behaviour</name>
+            <options>
+                <option>
+                    <id>optIn</id>
+                    <name>Opt-In</name>
+                    <name lang="de-DE">Opt-In</name>
+                </option>
+                <option>
+                    <id>optOut</id>
+                    <name>Opt-Out</name>
+                    <name lang="de-DE">Opt-Out</name>
+                </option>
+            </options>
+            <label>Behaviour</label>
+            <label lang="de-DE">Verhalten</label>
+            <defaultValue>optIn</defaultValue>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>custom3Desc</name>
+            <label>Description</label>
+            <label lang="de-DE">Beschreibung</label>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>custom3Integration</name>
+            <label>Integration Code</label>
+            <label lang="de-DE">Integrationscode</label>
+            <helpText>The provided integration code is executed when the user accepts the cookie. The Javascript-Code must be wrapped in a script tag.</helpText>
+            <helpText lang="de-DE">Der bereitgestelle Integrationscode wird ausgeführt sobald der Besucher dem Cookie zustimmt. Der Javascript-Code muss in einem script-Tag stehen.</helpText>
+        </input-field>
+    </card>
+
+
+    <card>
+        <title>Custom Cookie 4</title>
+        <title lang="de-DE">Eigenes Cookie 4</title>
+
+        <input-field type="text">
+            <name>custom4Label</name>
+            <label>Label</label>
+            <label lang="de-DE">Bezeichnung</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>custom4Name</name>
+            <label>Name</label>
+            <label lang="de-DE">Name</label>
+            <helpText>The technical name is also used for the cookie name, i.e. my-service-active</helpText>
+            <helpText lang="de-DE">Der technische Name wird auch für den Cookie-Namen verwendet, z.B. mein-dienst-aktiv</helpText>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>custom4Behaviour</name>
+            <options>
+                <option>
+                    <id>optIn</id>
+                    <name>Opt-In</name>
+                    <name lang="de-DE">Opt-In</name>
+                </option>
+                <option>
+                    <id>optOut</id>
+                    <name>Opt-Out</name>
+                    <name lang="de-DE">Opt-Out</name>
+                </option>
+            </options>
+            <label>Behaviour</label>
+            <label lang="de-DE">Verhalten</label>
+            <defaultValue>optIn</defaultValue>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>custom4Desc</name>
+            <label>Description</label>
+            <label lang="de-DE">Beschreibung</label>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>custom4Integration</name>
+            <label>Integration Code</label>
+            <label lang="de-DE">Integrationscode</label>
+            <helpText>The provided integration code is executed when the user accepts the cookie. The Javascript-Code must be wrapped in a script tag.</helpText>
+            <helpText lang="de-DE">Der bereitgestelle Integrationscode wird ausgeführt sobald der Besucher dem Cookie zustimmt. Der Javascript-Code muss in einem script-Tag stehen.</helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Custom Cookie 5</title>
+        <title lang="de-DE">Eigenes Cookie 5</title>
+
+        <input-field type="text">
+            <name>custom5Label</name>
+            <label>Label</label>
+            <label lang="de-DE">Bezeichnung</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>custom5Name</name>
+            <label>Name</label>
+            <label lang="de-DE">Name</label>
+            <helpText>The technical name is also used for the cookie name, i.e. my-service-active</helpText>
+            <helpText lang="de-DE">Der technische Name wird auch für den Cookie-Namen verwendet, z.B. mein-dienst-aktiv</helpText>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>custom5Behaviour</name>
+            <options>
+                <option>
+                    <id>optIn</id>
+                    <name>Opt-In</name>
+                    <name lang="de-DE">Opt-In</name>
+                </option>
+                <option>
+                    <id>optOut</id>
+                    <name>Opt-Out</name>
+                    <name lang="de-DE">Opt-Out</name>
+                </option>
+            </options>
+            <label>Behaviour</label>
+            <label lang="de-DE">Verhalten</label>
+            <defaultValue>optIn</defaultValue>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>custom5Desc</name>
+            <label>Description</label>
+            <label lang="de-DE">Beschreibung</label>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>custom5Integration</name>
+            <label>Integration Code</label>
+            <label lang="de-DE">Integrationscode</label>
+            <helpText>The provided integration code is executed when the user accepts the cookie. The Javascript-Code must be wrapped in a script tag.</helpText>
+            <helpText lang="de-DE">Der bereitgestelle Integrationscode wird ausgeführt sobald der Besucher dem Cookie zustimmt. Der Javascript-Code muss in einem script-Tag stehen.</helpText>
+        </input-field>
+    </card>
+
+</config>

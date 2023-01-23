@@ -1,0 +1,7 @@
+Dear {{order.orderCustomer.firstName}} {{order.orderCustomer.lastName}},
+We hope that you are satisfied with the products purchased on {{ order.orderDateTime|date }} and enjoy them. Share your experience with other customers by rating the products below. Product reviews help with future purchase decisions, which you can also benefit from.
+{% for lineItem in order.lineItems %}
+{% if lineItem.type == "product" %}
+{{ rawUrl('frontend.tanmarproductreviews', {'orderNumber':order.orderNumber, 'hash':hash}, salesChannel.domains|first.url) }} || {{ lineItem.label }}
+{% endif %}
+{% endfor %}

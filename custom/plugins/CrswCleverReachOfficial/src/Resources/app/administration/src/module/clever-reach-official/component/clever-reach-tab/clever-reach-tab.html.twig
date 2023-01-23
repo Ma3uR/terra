@@ -1,0 +1,13 @@
+{% block clever_reach_tab %}
+
+<div class="cr-tab-wrapper">
+    <div class="cr-dashboard-tab-wrapper">
+        <button class="cr-dashboard-tab">{{ $tc('clever-reach.dashboard.dashboard') }}</button>
+    </div>
+    <div class="cr-pull-right">
+        <a :href="$tc('clever-reach.dashboard.helpAndSupportLink')" rel="noopener" target="_blank">{{ $tc('clever-reach.dashboard.helpAndSupport') }}</a>
+        <p class="cr-id">{{ $tc('clever-reach.dashboard.cleverReachId') }} {{ customerId }}</p>
+    </div>
+</div>
+
+{% endblock %}

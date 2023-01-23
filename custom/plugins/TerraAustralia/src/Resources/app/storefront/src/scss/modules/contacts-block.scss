@@ -1,0 +1,72 @@
+.ex-contacts-block {
+  background-color: #edeeed;
+  padding-bottom: rem(40px);
+  padding-top: rem(60px);
+  position: relative;
+  overflow: hidden;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 80px;
+    top: 0;
+    width: rem(500px);
+    height: rem(285px);
+    background-image: url("/bundles/extremeaudiotheme/assets/images/contacts-image.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include respond-to(1400) {
+      right: 0;
+    }
+
+    @include respond-to(1200) {
+      display: none;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    margin-bottom: rem(30px);
+
+    &:hover {
+      .ex-contacts-block__icon {
+        background-color: $primary-color-hov;
+      }
+    }
+  }
+
+  &__icon {
+    width: rem(50px);
+    height: rem(50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    background-color: $primary-color;
+    margin-right: 30px;
+    border-radius: 3px;
+    transition: $anim;
+
+    .fa-envelope {
+      font-size: rem(20px);
+    }
+  }
+
+  &__text {
+    width: calc(100% - #{rem(80px)});
+    line-height: rem(20px);
+    font-weight: 500;
+  }
+
+  &__list {
+    max-width: 875px;
+  }
+
+  .ex-container {
+    position: relative;
+    z-index: 1;
+  }
+}

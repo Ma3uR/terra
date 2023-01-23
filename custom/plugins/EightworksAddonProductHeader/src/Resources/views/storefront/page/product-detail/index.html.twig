@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/index.html.twig' %}
+
+{% block base_content %}
+    {% if
+        page.product.customFields.eightworks_addon_product_header_activation and
+        not page.product.customFields.eightworks_addon_product_header_fullwidth
+    %}
+        {% include "/storefront/page/product-detail/product-header.html.twig" %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}

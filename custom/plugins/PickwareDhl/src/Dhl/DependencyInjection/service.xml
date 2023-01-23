@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<container
+    xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+>
+    <services>
+        <service id="Pickware\PickwareDhl\Dhl\DhlAdapter">
+            <tag name="pickware_shipping.carrier_adapter" technicalName="dhl" />
+            <argument type="service" id="Pickware\PickwareDhl\Dhl\DhlShipmentOrderFactory" />
+            <argument type="service" id="Pickware\DalBundle\EntityManager" />
+            <argument type="service" id="Pickware\PickwareDhl\Dhl\ApiClient\DhlApiClientFactory" />
+            <argument type="service" id="Pickware\PickwareDhl\Dhl\DhlResponseProcessor" />
+        </service>
+        <service id="Pickware\PickwareDhl\Dhl\DhlShipmentOrderFactory">
+            <argument type="service" id="Pickware\MoneyBundle\ShopwareCurrencyConverter" />
+            <argument type="service" id="Pickware\DalBundle\EntityManager" />
+        </service>
+        <service id="Pickware\PickwareDhl\Dhl\ApiClient\DhlApiClientFactory">
+            <argument type="service" id="Pickware\PickwareDhl\Dhl\ApiClient\DhlSoapClientFactory" />
+            <argument type="service" id="pickware_dhl.logger" />
+        </service>
+        <service id="pickware_dhl.logger" class="Monolog\Logger">
+            <factory service="Pickware\ShippingBundle\Logging\PickwareShippingLoggerFactory" method="createRotating" />
+            <argument type="string">pickware_dhl</argument>
+        </service>
+        <service id="Pickware\PickwareDhl\Dhl\ApiClient\DhlSoapClientFactory" />
+        <service id="Pickware\PickwareDhl\Dhl\DhlResponseProcessor">
+            <argument type="service" id="Pickware\DalBundle\EntityManager" />
+            <argument type="service" id="Pickware\DocumentBundle\DocumentContentsService" />
+        </service>
+    </services>
+</container>

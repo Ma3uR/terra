@@ -1,0 +1,7 @@
+{% block tr_links %}
+    <div class="tr-category-info__category-list">
+        {% set element = block.slots.getSlot('links') %}
+        
+        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+    </div>
+{% endblock %}

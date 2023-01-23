@@ -1,0 +1,41 @@
+{% block tr_e_widget_config %}
+    <div class="tr-e-widget-config">
+        <sw-tabs class="tr-e-widget-config__tabs" defaultItem="content">
+            <template slot-scope="{ active }" >
+                {% block tr_e_widget_config_tabs_content %}
+                    <sw-tabs-item :title="$tc('sw-cms.elements.general.config.tab.content')"
+                                  name="content"
+                                  :activeTab="active">
+                        {{ $tc('sw-cms.elements.general.config.tab.content') }}
+                    </sw-tabs-item>
+                {% endblock %}
+            </template>
+
+            <template slot="content" slot-scope="{ active }">
+                {% block tr_e_widget_config_content %}
+                    <sw-container v-if="active === 'content'" class="tr-e-widget-config__tab-content">
+                        {% block tr_e_widget_config_content_itemtype %}
+                            <sw-select-field 
+                                :label="$tc('global.cms.elements.tr-widget.labels.targetType')"
+                                v-model="element.config.targetType.value">
+                                    <option value="category">{{ $tc('global.cms.elements.tr-widget.labels.typeCategory') }}</option>
+                                </sw-select-field>
+                        {% endblock %}
+                                
+                        {% block tr_e_widget_config_content_item %}
+                            <sw-entity-single-select
+                                :label="$tc('global.cms.elements.tr-widget.labels.target')"
+                                :placeholder="$tc('global.cms.elements.tr-widget.placeholders.target')"
+                                :labelProperty="getLabelProperty"
+                                :entity="getEntity"
+                                :resultLimit="250"
+                                v-if="element.config.targetType.value"
+                                 v-model="element.config.target.value">
+                            </sw-entity-single-select>
+                        {% endblock %}
+                    </sw-container>
+                {% endblock %}
+            </template>
+        </sw-tabs>
+    </div>
+{% endblock %}

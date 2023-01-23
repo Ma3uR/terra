@@ -1,0 +1,48 @@
+{
+    "tanmar-product-reviews": {
+        "headline": {
+            "noVote": "Vielen Dank für Ihre Bewertung!",
+            "main": "Teilen Sie Ihre Erfahrungen mit anderen Kunden"
+        },
+        "voucher": {
+            "cashed": "Ihr Gutscheincode <span id=\"vote-code\">%vouchercode%</span> wurde bereits erfolgreich eingelöst.",
+            "infoShippingvoucher": "Für Ihre Bewertung erhalten Sie einen Versandkosten-Gutschein",
+            "infoVouchervalue": "Für Ihre Bewertung erhalten Sie einen Gutschein %value%",
+            "display": "Ihr persönlicher Gutscheincode lautet:<br><span id=\"vote-code\">%vouchercode%</span>",
+            "textCopy": "Gutscheincode kopieren",
+            "textCopied": "Gutscheincode erfolgreich kopiert!"
+        },
+        "reviews": {
+            "intro": "Sie haben vor einiger Zeit folgende Artikel bei uns bestellt. Unterstützen Sie andere Kunden dabei, gut informierte Kaufentscheidungen zu treffen und bewerten Sie die gekauften Artikel:",
+            "productVoteDone": "Sie haben bewertet:",
+            "productComment": "Ihre Meinung:",
+            "productSummary": "Ihr Fazit in einem Satz (optional):",
+            "productSummaryRequired": "Ihr Fazit in einem Satz (Pflicht):",
+            "voteBy": "von: %productReviewsName%",
+            "productVote": "Ihre Bewertung für:",
+            "starDefault": "bitte Sterne vergeben",
+            "productCommentPlaceholder": "Sagen Sie uns Ihre Meinung -  Wie ist die Qualität und Verarbeitung? War das Preis-Leistungsverhältnis des Produkts gut/schlecht?",
+            "productAnonymize": "Wollen Sie Ihren Namen anonymisieren?",
+            "productSubmit": "Produkt bewerten",
+            "anon": "Ein Kunde",
+            "success": "Bewertung gespeichert"
+        },
+        "stars": {
+            "legend1": "mangelhaft",
+            "legend2": "ausreichend",
+            "legend3": "befriedigend",
+            "legend4": "gut",
+            "legend5": "sehr gut"
+        },
+        "optin": {
+            "description": "Ich möchte daran erinnert werden, die gekauften Produkte nach Erhalt der Ware zu bewerten.",
+            "coupon": "Für eine vollständig bewertete Bestellung gibt es einen kleinen Einkaufsgutschein."
+        },
+        "error":{
+            "missingArticle": "Artikel existiert nicht",
+            "validation": "Fehler bei Verifizierung",
+            "fillOutCompletely": "Bitte geben Sie eine Bewertung und einen Text ein",
+            "missingHeadline": "Bitte geben Sie ein Fazit an"
+        }
+    }
+}

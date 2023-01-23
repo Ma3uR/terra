@@ -1,0 +1,90 @@
+{% block biloba_intl_translation_log_detail %}
+    <sw-page class="biloba-intl-translation-detail">
+        <template slot="smart-bar-actions">
+            <sw-button :routerLink="{ name: 'biloba.intl.translation.log.list' }">
+                {{ $t('biloba-intl-translation.log.detail.cancelButtonText') }}
+            </sw-button>
+        </template>
+
+        <template slot="content">
+            {% block biloba_intl_translation_log_detail_content %}
+                <sw-card-view>
+                    <sw-card v-if="log" :isLoading="isLoading">
+                        <sw-field type="text" 
+                        :label="$t('biloba-intl-translation.log.detail.id')" 
+                        v-model="log.id" 
+                        name="id" 
+                        disabled="true"
+                        validation="required" 
+                        :placeholder="$t('biloba-intl-translation.log.detail.id')"
+                        required>
+                        </sw-field>
+
+                        <sw-field type="text"
+                        :label="$t('biloba-intl-translation.log.detail.initiator')" 
+                        v-model="log.initiator" 
+                        name="initiator" 
+                        disabled="true"
+                        validation="required" 
+                        :placeholder="$t('biloba-intl-translation.log.detail.initiator')"
+                        required>
+                        </sw-field>
+
+                        <sw-field type="text"
+                        :label="$t('biloba-intl-translation.log.detail.entityId')" 
+                        v-model="log.entityId" 
+                        name="entityId" 
+                        disabled="true"
+                        validation="required" 
+                        :placeholder="$t('biloba-intl-translation.log.detail.entityId')"
+                        required>
+                        </sw-field>
+
+                        <sw-field type="text"
+                        :label="$t('biloba-intl-translation.log.detail.entityType')" 
+                        v-model="log.entityType" 
+                        name="entityType" 
+                        disabled="true"
+                        validation="required" 
+                        :placeholder="$t('biloba-intl-translation.log.detail.entityType')"
+                        required>
+                        </sw-field>
+
+                        <sw-field type="text"
+                        :label="$t('biloba-intl-translation.log.detail.type')" 
+                        v-model="log.type" 
+                        name="type" 
+                        disabled="true"
+                        validation="required" 
+                        :placeholder="$t('biloba-intl-translation.log.detail.type')"
+                        required>
+                        </sw-field>
+
+                        <sw-field type="text"
+                        :label="$t('biloba-intl-translation.log.detail.status')" 
+                        v-model="log.status" 
+                        name="status" 
+                        disabled="true"
+                        validation="required" 
+                        :placeholder="$t('biloba-intl-translation.log.detail.status')"
+                        required>
+                        </sw-field>
+                    </sw-card>
+                    <sw-card>
+                        <sw-textarea-field type="textarea" 
+                        :label="$t('biloba-intl-translation.log.detail.context')" 
+                        v-model="context" 
+                        value="context" 
+                        disabled="true"
+                        validation="required"
+                        :placeholder="$t('biloba-intl-translation.log.detail.context')">
+                       </sw-textarea-field>
+                    </sw-card>
+                </sw-card-view>
+            {% endblock %}
+            {% block sw_manufacturer_list_grid_loader %}
+                <sw-loader v-if="isLoading"></sw-loader>
+            {% endblock %}
+        </template>
+    </sw-page>
+{% endblock %}

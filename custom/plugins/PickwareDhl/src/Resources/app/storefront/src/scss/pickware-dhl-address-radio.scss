@@ -1,0 +1,21 @@
+.pickware-dhl-address-radio-logo {
+    height: 18px;
+    margin-left: 5px;
+}
+
+.pickware-dhl-special-address-radio-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    div {
+        align-items: center;
+        display: flex;
+        margin-right: 25px;
+
+        input {
+            // .5rem like Shopware's label margin
+            margin: 0 5px .5rem 0;
+        }
+    }
+}

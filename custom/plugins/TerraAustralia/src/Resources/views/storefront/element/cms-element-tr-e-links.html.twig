@@ -1,0 +1,19 @@
+{% block tr_e_links %}
+    {% set translatedConfig = element.translated.config %}
+    
+    {% set backgroundEntity = null %}
+    {% if translatedConfig.cover.value %}
+        {% set mCollection = searchMedia([translatedConfig.cover.value], context.context) %}
+        {% set backgroundEntity = mCollection.get(translatedConfig.cover.value) %}
+    {% endif %}
+    
+    <div class="tr-category-list__item-cont" {% if backgroundEntity %}style="background-image: url('{{ backgroundEntity.url }}')"{% endif %}>
+        <div class="tr-category-list__item-top">
+            {% for link in translatedConfig.links.value %}
+                {% set url = link.link ?? 'javascript:void(0)' %}
+                
+                <a href="{{ url }}" class="tr-category-list__sub-link">{{ link.label }}<span class="tr-category-list__arrow"></span></a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

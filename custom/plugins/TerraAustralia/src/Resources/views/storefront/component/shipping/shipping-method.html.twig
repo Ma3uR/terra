@@ -1,0 +1,51 @@
+{# @deprecated tag:v6.4.0.0 content moved to new component/shipping/shipping-method.html.twig #}
+{% block component_shipping_method_field %}
+    <div class="form-group checkout-config-form-group">
+
+        {% block component_shipping_method_control %}
+            <div class="custom-control custom-radio confirm-shipping-method-radio">
+
+                {% block component_shipping_method_input %}
+                    <input type="radio"
+                           id="shippingMethod{{ loop.index }}"
+                           name="shippingMethodId"
+                           value="{{ shipping.id }}"
+                           {% if shipping.id is same as(context.shippingMethod.id) %}checked="checked"{% endif %}
+                           class="custom-control-input shipping-method-input">
+                {% endblock %}
+
+                {% block component_shipping_method_label %}
+                    <label class="custom-control-label shipping-method-label"
+                           for="shippingMethod{{ loop.index }}">
+
+                        {% block component_shipping_form_image %}
+                            {% if shipping.media %}
+                                {% sw_thumbnails 'confirm-shipping-image-thumbnails' with {
+                                    media: shipping.media,
+                                    sizes: {
+                                        'default': '100px'
+                                    },
+                                    attributes: {
+                                        'class': 'confirm-shipping-method-image',
+                                        'alt': (shipping.media.translated.alt ?: shipping.translated.name),
+                                        'title': (shipping.media.translated.title ?: shipping.translated.name)
+                                    }
+                                } %}
+                            {% endif %}
+                        {% endblock %}
+
+                        {% block component_shipping_method_description %}
+                            <div class="shipping-method-description">
+                                <strong>{{ shipping.translated.name }}</strong>
+                                {% if shipping.translated.description %}
+                                    <p>{{ shipping.translated.description|raw }}</p>
+                                {% endif %}
+                            </div>
+                        {% endblock %}
+                    </label>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+

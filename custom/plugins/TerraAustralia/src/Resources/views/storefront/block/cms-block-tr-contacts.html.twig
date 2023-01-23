@@ -1,0 +1,6 @@
+{% block tr_contacts %}
+    {% set element = block.slots.getSlot('content') %}
+    
+    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ "-" ~ element.translated.config.mode.value ~ ".html.twig" ignore missing %}
+
+{% endblock %}

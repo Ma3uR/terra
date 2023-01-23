@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<container
+    xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+>
+    <services>
+        <!-- Models -->
+        <service id="Pickware\ShippingBundle\Shipment\Model\ShipmentDefinition">
+            <tag name="shopware.entity.definition" entity="pickware_shipping_shipment" />
+        </service>
+        <service id="Pickware\ShippingBundle\Shipment\Model\TrackingCodeDefinition">
+            <tag name="shopware.entity.definition" entity="pickware_shipping_tracking_code" />
+        </service>
+        <service id="Pickware\ShippingBundle\Shipment\Model\ShipmentOrderMappingDefinition">
+            <tag name="shopware.entity.definition" entity="pickware_shipping_shipment_order_mapping" />
+        </service>
+        <service id="Pickware\ShippingBundle\Shipment\Model\DocumentTrackingCodeMappingDefinition">
+            <tag name="shopware.entity.definition" entity="pickware_shipping_document_tracking_code_mapping" />
+        </service>
+        <service id="Pickware\ShippingBundle\Shipment\Model\DocumentShipmentMappingDefinition">
+            <tag name="shopware.entity.definition" entity="pickware_shipping_document_shipment_mapping" />
+        </service>
+        <!-- Extensions -->
+        <service id="Pickware\ShippingBundle\Shipment\EntityExtension\CarrierExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+        <service id="Pickware\ShippingBundle\Shipment\EntityExtension\OrderExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+        <service id="Pickware\ShippingBundle\Shipment\EntityExtension\DocumentExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+        <service id="Pickware\ShippingBundle\Shipment\EntityExtension\SalesChannelExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+    </services>
+</container>

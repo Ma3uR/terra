@@ -1,0 +1,78 @@
+{
+    "biloba-intl-translation": {
+    	"general": {
+    		"mainMenuItemGeneral": "Biloba Translation Pro",
+            "notificationTranslated": {
+                "title": "la traducción realizada",
+                "message": "Si no se han traducido las secciones individuales, asegúrese de haberlas guardado antes de traducir."
+            },
+            "notificationTranslatedError": {
+                "title": "Error",
+                "message": "¡Se produjo un error durante la traducción!"
+            }
+    	},
+        "config": {
+        	"detail": {
+                "contextTargetLanguage": "Lengua de destino",
+                "contextSourceLanguage": "Lengua de origen",
+                "contextApi": "Api",
+                "placeholder": "Contexto",
+        		"cancelButtonText": "Cancelar",
+                "saveButtonText": "Guardar",
+                "apiLanguageLabel": "API",
+                "targetLanguageLabel": "Lengua de destino",
+                "sourceLanguageLabel": "Lengua de origen",
+                "errorSameIdTitle" : "El idioma de destino coincide con el idioma de origen",
+                "errorSameIdMessage": "El idioma de destino no debe coincidir con el idioma de origen",
+                "errorTitle": "¡Algo salió mal!"
+        	},
+            "list": {
+                "columnTargetLanguageTitle": "Lengua de destino",
+                "columnSourceLanguageTitle": "Lengua de origen",
+                "columnTranslationApiTitle": "API",
+                "createButtonText": "Crear el lenguaje"
+            }
+        },
+        "log": {
+        	"detail": {
+                "id":"Id",
+                "initiator": "Iniciador",
+                "entityId": "EntityId",
+                "entityType": "EntityType",
+                "type": "Type",
+                "status": "Estado",
+                "context": "Contexto",
+                "cancelButtonText": "Cancelar",
+                "saveButtonText": "Guardar"
+            }
+        },
+        "plugin_config": {
+            "configuration": {
+                "deepLButtonTitle": "Compruebe la clave API de DeepL",
+                "googleButtonTitle": "Compruebe la clave del API de Google"
+            },
+            "notificationError": {
+                "title": "Error",
+                "message": "El cheque falló. Por favor, asegúrate de que la configuración del plugin se ha guardado."
+            },
+            "notificationSuccess": {
+                "title": "Suceso",
+                "message": "La clave es válida"
+            }
+        },
+        "sw-product": {
+            "detail": {
+                "buttonTranslate": "Traducir"
+            }
+        },
+        "sw-settings": {
+            "language": {
+                "detail": {
+                    "title": "Configuración de la traducción",
+                    "languageNotSupported": "Este lenguaje no está actualmente soportado. Por favor, asegúrese de que se seleccione una localización.\n\nPara más idiomas, instala el plugin More Languages, asegúrate de que el idioma que quieres usar es compatible con el plugin.",
+                    "noApiKey": "¡No se fijó ninguna clave API! Por favor, añade una clave en la configuración del plugin."
+                }
+            }
+        }
+    }
+}

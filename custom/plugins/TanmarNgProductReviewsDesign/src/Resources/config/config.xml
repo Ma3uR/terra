@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Basic Configuration</title>
+        <title lang="de-DE">Allgemeine Konfiguration</title>
+        <input-field type="bool">
+            <name>active</name>
+            <label>Active</label>
+            <label lang="de-DE">Aktiv</label>
+        </input-field>
+        <input-field type="int">
+            <name>readMoreCounter</name>
+            <label>Show "Read more" for more than X Reviews</label>
+            <label lang="de-DE">"Mehr lesen" anzeigen ab X Bewertungen</label>
+            <placeholder>10</placeholder>
+            <helpText>Specifies how many ratings should be displayed on the details page. The rest will be shown by clicking on "read more".</helpText>
+            <helpText lang="de-DE">Gibt an, wie viele Bewertungen auf der Detailseite angezeigt werden sollen. Der Rest wird mit Klick auf "mehr lesen" angezeigt.</helpText>
+            <copyable>true</copyable>
+        </input-field>
+    </card>
+    <card>
+        <title>Review form on detail page</title>
+        <title lang="de-DE">Bewertungsformular auf Detailseite</title>
+        <input-field type="bool">
+            <name>postCommentActive</name>
+            <label>Active</label>
+            <label lang="de-DE">Aktiv</label>
+        </input-field>
+    </card>
+    <card>
+        <title>Highlight one positive and one negative review</title>
+        <title lang="de-DE">Hervorhebung einer positiven / kritischen Bewertung</title>
+        <input-field type="bool">
+            <name>goodVsBadActive</name>
+            <label>Active</label>
+            <label lang="de-DE">Aktiv</label>
+            <helpText>Activates the comparison of positive and negative product reviews</helpText>
+            <helpText lang="de-DE">Aktiviert die Gegenüberstellung von guten und kritischen Kundenbewertungen.</helpText>
+        </input-field>
+        <input-field type="int">
+            <name>goodVsBadMinStrlen</name>
+            <label>Minimum char length for features reviews</label>
+            <label lang="de-DE">Mindestanzahl Zeichen für Hervorhebung</label>
+            <placeholder>50</placeholder>
+            <helpText>Ratings with fewer characters in the comment are not taken into account when determining the highlighted ratings.</helpText>
+            <helpText lang="de-DE">Bewertungen mit weniger Zeichen im Kommentar werden beim Ermitteln der hervorgehobenen Bewertung nicht berücksichtigt.</helpText>
+            <copyable>true</copyable>
+        </input-field>
+        <input-field type="int">
+            <name>goodVsBadMinReviews</name>
+            <label>Minimum number of ratings for featured reviews</label>
+            <label lang="de-DE">Mindestanzahl Bewertungen für Hervorhebung</label>
+            <placeholder>5</placeholder>
+            <helpText>For products with fewer ratings, the comparison of customer ratings is not displayed.</helpText>
+            <helpText lang="de-DE">Bei Produkten mit weniger Bewertungen wird die Gegenüberstellung von Kundenbewertungen nicht angezeigt.</helpText>
+            <copyable>true</copyable>
+        </input-field>
+        <input-field type="int">
+            <name>goodVsBadMinPointsBest</name>
+            <label>Min score for positive reviews</label>
+            <label lang="de-DE">Min. Punktzahl positive Bewertung</label>
+            <placeholder>4</placeholder>
+            <helpText>Ratings with fewer points are not taken into account when determining the featured positive review.</helpText>
+            <helpText lang="de-DE">Bewertungen mit weniger Punkten werden beim Ermitteln der hervorgehobenen positiven Bewertung nicht berücksichtigt.</helpText>
+            <copyable>true</copyable>
+        </input-field>
+        <input-field type="int">
+            <name>goodVsBadMaxPointsWorst</name>
+            <label>Max score for negative reviews</label>
+            <label lang="de-DE">Max. Punktzahl für negative Bewertung</label>
+            <placeholder>3</placeholder>
+            <helpText>Reviews with higher scores will not be taken into account when determining the featured negative review.</helpText>
+            <helpText lang="de-DE">Bewertungen mit mehr Punkten werden beim Ermitteln der hervorgehobenen negativen Bewertung nicht berücksichtigt.</helpText>
+            <copyable>true</copyable>
+        </input-field>
+    </card>
+</config>

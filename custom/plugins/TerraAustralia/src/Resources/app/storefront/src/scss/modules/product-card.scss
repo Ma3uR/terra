@@ -1,0 +1,202 @@
+.product-box {
+    border: none;
+    border-radius: 0;
+
+    .card-body {
+        padding: 0;
+    }
+}
+
+.product-image-wrapper {
+    height: 260px;
+    margin-bottom: 0;
+
+    @include respond-to(767) {
+        height: 170px;
+    }
+}
+
+.tr-product-category {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.4px;
+    line-height: 1.2;
+    padding-bottom: 12px;
+    margin-bottom: 7px;
+    position: relative;
+
+    @include respond-to(767) {
+        display: none;
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: calc(50% - 6px);
+        width: 14px;
+        height: 2px;
+        background-color: $primary-color;
+        bottom: 0;
+    }
+
+    &__text {
+        display: block;
+        height: 15px;
+        overflow: hidden;
+    }
+}
+
+.product-info {
+    text-align: center;
+    background-color: #f6f5f6;
+
+    &-top {
+        padding: 20px 15px 0;
+
+        @include respond-to(767) {
+            padding-top: 15px;
+        }
+    }
+}
+
+.product-name {
+    font-weight: 700;
+    color: $default-color;
+
+    &:focus {
+        outline: none;
+    }
+
+    @include respond-to(767) {
+        font-size: 14px;
+        line-height: 16px;
+        height: 30px;
+    }
+}
+
+.product-price {
+    color: $primary-color;
+    font-size: 22px;
+    line-height: 24px;
+    height: 24px;
+    margin-bottom: 5px;
+
+    @media (min-width: 992px) and (max-width: 1100px) {
+        font-size: 20px;
+    }
+
+    @include respond-to(767) {
+        font-size: 16px;
+        line-height: 18px;
+        height: 18px;
+    }
+}
+
+.product-price-info {
+    .product-detail-tax {
+        font-size: 12px;
+        //margin: 0;
+        margin: 0 0 10px 0;
+        line-height: 14px;
+        height: 14px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        @include respond-to(767) {
+            font-size: 11px;
+        }
+    }
+}
+
+.product-action {
+    margin-top: 5px;
+    display: flex;
+
+    .buy-widget {
+        width: 100%;
+        //width: calc(100% - 61px);
+        //margin-right: 1px;
+        //
+        //@include respond-to(767) {
+        //    width: calc(100% - 41px);
+        //}
+    }
+
+    .btn:not(.btn-buy) {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        line-height: 38px;
+
+        @media (min-width: 992px) and (max-width: 1100px) {
+            font-size: 14px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        @include respond-to(767) {
+            line-height: 28px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    }
+}
+
+.tr-wishlist-product-btn {
+    width: 60px;
+    height: 60px;
+    background-color: #fec842;
+    padding: 5px;
+    display: block;
+    position: relative;
+    border: none;
+    transition: $anim;
+
+    @include respond-to(767) {
+        width: 40px;
+        height: 40px;
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: calc(50% - 10px);
+        top: calc(50% - 9px);
+        width: 20px;
+        height: 18px;
+        background-image: url("/bundles/terraaustralia/assets/images/heart.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    &:hover {
+        background-color: $primary-color;
+
+        &:after {
+            background-image: url("/bundles/terraaustralia/assets/images/heart-white.png");
+        }
+    }
+
+    &.active, &:active {
+        background-color: $primary-color-hov;
+
+        &:after {
+            background-image: url("/bundles/terraaustralia/assets/images/heart-white.png");
+        }
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.product-image {
+    max-height: 100%;
+}
+
+.product-price .list-price {
+    font-size: 16px;
+    color: $default-color;
+}

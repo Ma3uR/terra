@@ -1,0 +1,16 @@
+.tr-e-links-component {
+    .tr-e-links-component__inner {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        
+        span.link {
+            color: #635757;
+            border: 1px solid #A0A0A0;
+            border-radius: 3px;
+            font-size: 16px;
+            margin-bottom: 5px;
+            padding: 2px 5px;
+        }
+    }
+}

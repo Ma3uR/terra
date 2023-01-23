@@ -1,0 +1,13 @@
+{% block tr_e_listing_headline_text %}
+    {% set translatedConfig = element.translated.config %}
+    {% set category = page.header.navigation.active %}
+
+    <div class="tr-category-info__content tr-content">
+        {% if category and category.translated.description %}
+            <h1 class="tr-category-info__content-title">{{ category.translated.name }}</h1>
+            <p>{{ category.translated.description | sw_sanitize }}</p>
+        {% else %}
+            {{ translatedConfig.content.value | raw }}
+        {% endif %}
+    </div>
+{% endblock %}

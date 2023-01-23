@@ -1,0 +1,78 @@
+{
+    "biloba-intl-translation": {
+    	"general": {
+    		"mainMenuItemGeneral": "Biloba Translation Pro",
+            "notificationTranslated": {
+                "title": "Übersetzung durchgeführt",
+                "message": "Falls einzelne Bereiche nicht übersetzt wurden stellen Sie sicher, dass Sie vor dem Übersetzen gespeichert hatten."
+            },
+            "notificationTranslatedError": {
+                "title": "Fehler",
+                "message": "Während der Übersetzung ist ein Fehler aufgetreten!"
+            }
+    	},
+        "config": {
+        	"detail": {
+                "contextTargetLanguage": "Zielsprache",
+                "contextSourceLanguage": "Quellsprache",
+                "contextApi": "Api",
+                "placeholder": "Kontext",
+        		"cancelButtonText": "Abbrechen",
+                "saveButtonText": "Speichern",
+                "apiLanguageLabel": "API",
+                "targetLanguageLabel": "Zielsprache",
+                "sourceLanguageLabel": "Quellsprache",
+                "errorSameIdTitle" : "Zielsprache entspricht Ausgangssprache",
+                "errorSameIdMessage": "Die Zielsprache darf nicht mit der Ausgangssprache übereinstimmen.",
+                "errorTitle": "Etwas ist schief gelaufen!"
+        	},
+            "list": {
+                "columnTargetLanguageTitle": "Zielsprache",
+                "columnSourceLanguageTitle": "Quellsprache",
+                "columnTranslationApiTitle": "API",
+                "createButtonText": "Sprache hinzufügen"
+            }
+        },
+        "log": {
+        	"detail": {
+                "id":"Id",
+                "initiator": "Initiator",
+                "entityId": "EntityId",
+                "entityType": "EntityType",
+                "type": "Typ",
+                "status": "Status",
+                "context": "Kontext",
+                "cancelButtonText": "Abbrechen",
+                "saveButtonText": "Speichern"
+            }
+        },
+        "plugin_config": {
+            "configuration": {
+                "deepLButtonTitle": "DeepL API-Key prüfen",
+                "googleButtonTitle": "Google API-Key prüfen"
+            },
+            "notificationError": {
+                "title": "Fehler",
+                "message": "Prüfung fehlgeschlagen. Bitte stellen Sie sicher das die Plugin Konfiguration gespeichert wurde!"
+            },
+            "notificationSuccess": {
+                "title": "Erfolg",
+                "message": "Key ist gültig"
+            }
+        },
+        "sw-product": {
+            "detail": {
+                "buttonTranslate": "Übersetzen"
+            }
+        },
+        "sw-settings": {
+            "language": {
+                "detail": {
+                    "title": "Übersetzungseinstellungen",
+                    "languageNotSupported": "Diese Sprache wird im Moment nicht unterstützt. Bitte stellen Sie sich das eine lokalisierung gewählt ist.\n\nFür weitere Sprachen installiere bitte das Mehr Sprachen Plugin, bitte stellen Sie sicher das die gewünschte Sprache vom Plugin unterstützt wird.",
+                    "noApiKey": "Es wurde kein API Key hinterlegt! Bitte fügen Sie ein Key in den Plugin Einstellungen ein."
+                }
+            }
+        }
+    }
+}

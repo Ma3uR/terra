@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!--Controllers-->
+        <service id="Webmp\GoogleReviewFeed\Storefront\Controller\GoogleReviewFeedController" public="true">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="webmp_google_review_feed.filesystem.private"/>
+            <argument type="service" id="sales_channel.repository"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Webmp\GoogleReviewFeed\Administration\Controller\GoogleReviewFeedController" public="true">
+            <argument type="service" id="Webmp\GoogleReviewFeed\Helper\GoogleReviewFeedHelper"/>
+        </service>
+
+        <!--Scheduled Tasks-->
+        <service id="Webmp\GoogleReviewFeed\ScheduledTask\GenerateGoogleReviewFeedTask">
+            <tag name="shopware.scheduled.task" />
+        </service>
+
+        <service id="Webmp\GoogleReviewFeed\ScheduledTask\GoogleReviewFeedTaskHandler">
+            <argument type="service" id="scheduled_task.repository" />
+            <argument id="Webmp\GoogleReviewFeed\Helper\GoogleReviewFeedHelper" type="service"/>
+            <tag name="messenger.message_handler" />
+        </service>
+
+        <!--Commands-->
+        <service id="Webmp\GoogleReviewFeed\Command\GenerateGoogleReviewFeedCommand">
+            <argument id="Webmp\GoogleReviewFeed\Helper\GoogleReviewFeedHelper" type="service"/>
+            <tag name="console.command"/>
+        </service>
+
+        <!--Helpers-->
+        <service id="Webmp\GoogleReviewFeed\Helper\GoogleReviewFeedHelper">
+            <argument id="product_review.repository" type="service"/>
+            <argument id="Shopware\Core\Content\Seo\SeoUrlPlaceholderHandlerInterface" type="service"/>
+            <argument type="service" id="Shopware\Core\System\SalesChannel\Context\SalesChannelContextFactory"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="webmp_google_review_feed.filesystem.private"/>
+        </service>
+    </services>
+</container>

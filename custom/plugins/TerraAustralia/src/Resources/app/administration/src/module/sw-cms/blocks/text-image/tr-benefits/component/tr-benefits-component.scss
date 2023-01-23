@@ -1,0 +1,20 @@
+.tr-benefits-component {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    flex-direction: column;
+    
+    .tr-benefits-component__title {
+    
+    }
+    
+    .tr-benefits-component__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 15px;
+        padding: 15px 0;
+    
+        .tr-benefits-component__inner-feed {
+        }
+    }
+}

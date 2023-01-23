@@ -1,0 +1,43 @@
+{
+  "name": "crsw/cleverreachofficial",
+  "description": "CleverReach Shopware6 plugin",
+  "version": "v1.2.5",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "CleverReach®"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "shopware/core": ">=6.1.0",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-openssl": "*"
+  },
+  "extra": {
+    "shopware-plugin-class": "Crsw\\CleverReachOfficial\\CrswCleverReachOfficial",
+    "label": {
+      "de-DE": "CleverReach",
+      "en-GB": "CleverReach"
+    },
+    "description": {
+      "de-DE": "CleverReach - E-Mail Marketing",
+      "en-GB": "CleverReach - E-Mail Marketing"
+    },
+    "manufacturerLink": {
+      "de-DE": "https://store.shopware.com/cleverreach.html",
+      "en-GB": "https://store.shopware.com/en/cleverreach.html"
+    },
+    "supportLink": {
+      "de-DE": "https://support.cleverreach.de/hc/de/articles/360010559739",
+      "en-GB": "https://support.cleverreach.de/hc/en-us/articles/360010450340"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Crsw\\CleverReachOfficial\\": "src/"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{% block block_tr_widget_data %}
+    <div class="col-12">
+        {% block block_tr_widget_data_data %}
+            {% set element = block.slots.getSlot('data') %}
+
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ "-" ~ element.config.mode.value ~ ".html.twig" ignore missing %}
+        {% endblock %}
+    </div>
+{% endblock %}

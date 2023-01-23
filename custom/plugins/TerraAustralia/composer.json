@@ -1,0 +1,19 @@
+{
+  "name": "webmasterei/terra-australia",
+  "description": "Theme for TerraAustralia",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "version": "1.0.0",
+  "autoload": {
+    "psr-4": {
+      "TerraAustralia\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "TerraAustralia\\TerraAustralia",
+    "label": {
+      "de-DE": "Theme TerraAustralia plugin",
+      "en-GB": "Theme TerraAustralia plugin"
+    }
+  }
+}

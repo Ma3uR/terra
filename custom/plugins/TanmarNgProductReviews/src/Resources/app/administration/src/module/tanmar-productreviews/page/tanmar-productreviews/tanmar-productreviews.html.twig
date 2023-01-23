@@ -1,0 +1,147 @@
+{% block tanmar_productreviews %}
+    <sw-page class="tanmar-productreviews">
+
+        {% block tanmar_productreviews_header %}
+            <template #smart-bar-header>
+                <h2>
+                    {{ $tc('sw-settings.index.title') }}
+                    <sw-icon name="small-arrow-medium-right" small></sw-icon>
+                        {{ $tc('tanmar-productreviews.header') }}
+                </h2>
+            </template>
+        {% endblock %}
+
+        {% block tanmar_productreviews_actions %}
+            <template #smart-bar-actions>
+                {% block tanmar_productreviews_actions_save %}
+                    <sw-button-process v-model="isSaveSuccessful"
+                                       class="sw-settings-login-registration__save-action"
+                                       variant="primary"
+                                       :isLoading="isLoading"
+                                       :disabled="isLoading || savingDisabled || hasError || !acl.can('tanmar-productreviews.editor')"
+                                       @click="onSave">
+                        {{ $tc('tanmar-productreviews.settingForm.save') }}
+                    </sw-button-process>
+                {% endblock %}
+
+            </template>
+        {% endblock %}
+
+        {% block tanmar_productreviews_content %}
+            <template #content>
+
+                {% block tanmar_productreviews_content_card %}
+                    <sw-card-view>
+
+                        {% block tanmar_productreviews_content_card_channel_config %}
+                            <sw-sales-channel-config v-model="config"
+                                                     ref="configComponent"
+                                                     domain="TanmarNgProductReviews.settings">
+
+                                {% block tanmar_productreviews_content_card_channel_config_sales_channel %}
+                                    <template #select="{ onInput, selectedSalesChannelId }">
+
+                                        {% block tanmar_productreviews_content_card_channel_config_sales_channel_card %}
+                                            <sw-card :title="$tc('global.entities.sales_channel', 2)">
+
+                                                {% block tanmar_productreviews_content_card_channel_config_sales_channel_card_title %}
+                                                    <sw-single-select v-model="selectedSalesChannelId"
+                                                                      labelProperty="translated.name"
+                                                                      valueProperty="id"
+                                                                      :isLoading="isLoading"
+                                                                      :options="salesChannels"
+                                                                      :disabled="!acl.can('tanmar-productreviews.editor')"
+                                                                      @change="onInput">
+                                                    </sw-single-select>
+                                                {% endblock %}
+
+                                                {% block tanmar_productreviews_content_card_channel_config_sales_channel_card_footer %}
+                                                    <template #footer>
+
+                                                            {% block tanmar_productreviews_content_card_channel_config_sales_channel_card_footer_container %}
+                                                                <sw-container columns="2fr 1fr" gap="5px 30px">
+
+                                                                    {% block tanmar_productreviews_content_card_channel_config_sales_channel_card_footer_container_invitation %}
+                                                                        {% block tanmar_productreviews_content_card_channel_config_sales_channel_card_footer_container_invitation_text %}
+                                                                            <p>{{ $tc('tanmar-productreviews.mail.invitation.description') }}</p>
+                                                                        {% endblock %}
+
+                                                                        {% block tanmar_productreviews_content_card_channel_config_sales_channel_card_footer_container_invitation_button %}
+                                                                            <sw-button-process
+                                                                                               :isLoading="isLoading"
+                                                                                               :disabled="!acl.can('tanmar-productreviews.editor')"
+                                                                                               @click="testInvitation">
+                                                                                {{ $tc('tanmar-productreviews.mail.invitation.label') }}
+                                                                            </sw-button-process>
+                                                                        {% endblock %}
+                                                                    {% endblock %}
+
+
+                                                                    {% block tanmar_productreviews_content_card_channel_config_sales_channel_card_footer_container_notification %}
+
+                                                                            {% block tanmar_productreviews_content_card_channel_config_sales_channel_card_footer_container_notification_text %}
+                                                                                <p>{{ $tc('tanmar-productreviews.mail.notification.description') }}</p>
+                                                                            {% endblock %}
+
+                                                                            {% block tanmar_productreviews_content_card_channel_config_sales_channel_card_footer_container_notification_button %}
+                                                                                <sw-button-process
+                                                                                                   :isLoading="isLoading"
+                                                                                                   :disabled="!acl.can('tanmar-productreviews.editor')"
+                                                                                                   @click="testNotification">
+                                                                                    {{ $tc('tanmar-productreviews.mail.notification.label') }}
+                                                                                </sw-button-process>
+                                                                            {% endblock %}
+
+                                                                    {% endblock %}
+
+
+                                                                    {% block tanmar_productreviews_content_card_channel_config_sales_channel_card_footer_container_coupon %}
+                                                                            {% block tanmar_productreviews_content_card_channel_config_sales_channel_card_footer_container_coupon_text %}
+                                                                                <p>{{ $tc('tanmar-productreviews.mail.coupon.description') }}</p>
+                                                                            {% endblock %}
+
+                                                                            {% block tanmar_productreviews_content_card_channel_config_sales_channel_card_footer_container_coupon_button %}
+                                                                                <sw-button-process
+                                                                                                   :isLoading="isLoading"
+                                                                                                   :disabled="!acl.can('tanmar-productreviews.editor')"
+                                                                                                   @click="testCoupon">
+                                                                                    {{ $tc('tanmar-productreviews.mail.coupon.label') }}
+                                                                                </sw-button-process>
+                                                                            {% endblock %}
+                                                                    {% endblock %}
+
+                                                                </sw-container>
+                                                            {% endblock %}
+                                                    </template>
+                                                {% endblock %}
+
+                                            </sw-card>
+                                        {% endblock %}
+
+                                    </template>
+                                {% endblock %}
+
+                            </sw-sales-channel-config>
+
+
+                            {% block tanmar_productreviews_system_config %}
+                                <sw-system-config :domain="domain"
+                                                  :salesChannelId="salesChannelId"
+                                                  ref="systemConfig">
+                                </sw-system-config>
+                            {% endblock %}
+                        {% endblock %}
+
+                        {% block tanmar_productreviews_content_card_loading %}
+                            <sw-loader v-if="isLoading"></sw-loader>
+                            {% endblock %}
+
+                    </sw-card-view>
+                {% endblock %}
+
+            </template>
+        {% endblock %}
+
+
+    </sw-page>
+{% endblock %}

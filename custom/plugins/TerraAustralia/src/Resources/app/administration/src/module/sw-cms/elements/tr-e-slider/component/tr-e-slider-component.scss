@@ -1,0 +1,18 @@
+@import "~scss/variables";
+
+.tr-e-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    align-items: start;
+
+    .tr-e-slider__image-box {
+        display: grid;
+        position: relative;
+
+        .tr-e-slider__image {
+            margin: 0 auto;
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{% block tr_listing_headline_component %}
+    <div class="tr-listing-headline-component">
+        {% block tr_listing_headline_component_links %}
+            <div class="tr-listing-headline-component-links">
+                <slot name="links"></slot>
+            </div>
+        {% endblock %}
+        
+        {% block tr_listing_headline_component_text %}
+            <div class="tr-listing-headline-component-text">
+                <slot name="text"></slot>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

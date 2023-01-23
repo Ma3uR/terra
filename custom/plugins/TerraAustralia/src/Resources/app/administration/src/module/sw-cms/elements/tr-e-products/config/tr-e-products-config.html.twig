@@ -1,0 +1,121 @@
+{% block tr_e_products_config %}
+    <div class="tr-e-products-config">
+        {% block tr_e_products_config_tabs %}
+            <sw-tabs class="tr-e-products-config__tabs" defaultItem="content">
+                <template slot-scope="{ active }" >
+                    {% block tr_e_products_config_tab_content %}
+                        <sw-tabs-item :title="$tc('sw-cms.elements.general.config.tab.content')"
+                                      name="content"
+                                      :activeTab="active">
+                            {{ $tc('sw-cms.elements.general.config.tab.content') }}
+                        </sw-tabs-item>
+                    {% endblock %}
+                </template>
+
+                <template slot="content" slot-scope="{ active }">
+                    {% block tr_e_products_config_content %}
+                        <sw-container v-if="active === 'content'" class="tr-e-products-config__tab-content">
+                            {% block tr_e_products_config_content_title %}
+                                <sw-field type="text"
+                                          :label="$tc('global.cms.elements.tr-products.labels.title')"
+                                          :placeholder="$tc('global.cms.elements.tr-products.placeholders.title')"
+                                          v-model="element.config.title.value">
+                                </sw-field>
+                            {% endblock %}
+                            
+                            <sw-container columns="1fr 1fr" gap="30px">
+                                {% block tr_e_products_config_content_default_sorting %}
+                                    <sw-entity-single-select
+                                        :value="defaultSorting.id"
+                                        entity="product_sorting"
+                                        @option-select="onDefaultSortingChange"
+                                        :label="$tc('global.cms.elements.tr-products.config.label.defaultSorting')"
+                                        :placeholder="$tc('global.cms.elements.tr-products.config.placeholder.defaultSorting')"
+                                        :criteria="allProductSortingsCriteria"
+                                        labelProperty="label">
+                                    </sw-entity-single-select>
+                                {% endblock %}
+                            
+                                {% block tr_e_products_config_content_product_stream_limit %}
+                                    <sw-number-field
+                                        :label="$tc('global.cms.elements.tr-products.config.label.productStreamLimit')"
+                                        class="sw-cms-el-config-product-slider__product-stream-limit"
+                                        :disabled="!productStream"
+                                        v-if="element.config.products.source === 'product_stream'"
+                                        :min="1"
+                                        v-model="element.config.productStreamLimit.value">
+                                    </sw-number-field>
+                                {% endblock %}
+                            </sw-container>
+                            
+                            {% block tr_e_products_config_content_product_assignment_type %}
+                                <sw-single-select
+                                    class="sw-cms-el-config-product-slider__product-assignment-type-select"
+                                    :label="$tc('global.cms.elements.tr-products.config.label.productAssignmentType')"
+                                    v-model="element.config.products.source"
+                                    @change="onChangeAssignmentType"
+                                    :options="productAssignmentTypes">
+                                </sw-single-select>
+                            {% endblock %}
+
+                            <template v-if="element.config.products.source === 'product_stream'">
+                                {% block tr_e_products_config_content_product_stream_select %}
+                                    <sw-entity-single-select
+                                        entity="product_stream"
+                                        class="sw-cms-el-config-product-slider__product-stream-select"
+                                        :label="$tc('global.cms.elements.tr-products.config.label.productStreamChoice')"
+                                        :placeholder="$tc('global.cms.elements.tr-products.config.placeholder.productStreamChoice')"
+                                        @change="onChangeProductStream"
+                                        v-model="element.config.products.value">
+                                    </sw-entity-single-select>
+                                {% endblock %}
+
+                                {% block tr_e_products_config_content_product_stream_performance_hint %}
+                                    <sw-alert
+                                        class="sw-cms-el-config-product-slider__product-stream-performance-hint"
+                                        variant="info">
+                                        {{ $tc('global.cms.elements.tr-products.config.textProductStreamPerformanceHint') }}
+                                    </sw-alert>
+                                {% endblock %}
+                            </template>
+
+                            {% block tr_e_products_config_content_products %}
+                                <sw-entity-multi-select
+                                        v-else
+                                        class="sw-cms-el-config-product-slider__products"
+                                        :label="$tc('global.cms.elements.tr-products.labels.selection')"
+                                        :placeholder="$tc('global.cms.elements.tr-products.placeholders.selection')"
+                                        v-model="productCollection"
+                                        @change="onProductsChange"
+                                        :context="productMultiSelectContext"
+                                        :criteria="productMediaFilter">
+                                        <template #selection-label-property="{ item }">
+                                            <sw-product-variant-info
+                                                :variations="item.variation">
+                                                {{ item.translated.name || item.name }}
+                                            </sw-product-variant-info>
+                                        </template>
+                                    <template #result-item="{ item, index }">
+                                        <slot name="result-item" v-bind="{ item, index }">
+                                            <li is="sw-select-result" v-bind="{ item, index }">
+                                                {% block sw_entity_single_select_base_results_list_result_label %}
+                                                    <span class="sw-select-result__result-item-text">
+                                                        <sw-product-variant-info
+                                                            :variations="item.variation">
+                                                            {{ item.translated.name || item.name }}
+                                                        </sw-product-variant-info>
+                                                    </span>
+                                                {% endblock %}
+                                            </li>
+                                        </slot>
+                                    </template>
+                                </sw-entity-multi-select>
+                            {% endblock %}
+                        </sw-container>
+                    {% endblock %}
+
+                </template>
+            </sw-tabs>
+        {% endblock %}
+    </div>
+{% endblock %}

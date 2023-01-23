@@ -1,0 +1,51 @@
+{
+    "name": "pickware/money-bundle",
+    "type": "library",
+    "description": "A bundle for Shopware 6 to provide a money library",
+    "version": "2.0.3",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Pickware GmbH",
+            "email": "info@pickware.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "pickware/dal-bundle": "^3.2.1",
+        "shopware/core": "6.4.*",
+        "symfony/config": "^5.2.3",
+        "symfony/dependency-injection": "^5.2.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5.0"
+    },
+    "config": {
+        "lock": false
+    },
+    "autoload": {
+        "psr-4": {
+            "Pickware\\MoneyBundle\\": "src"
+        },
+        "exclude-from-classmap": [
+            "**.unit.php",
+            "**.integration.php"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../libraries/composer-packages/*"
+        },
+        {
+            "type": "path",
+            "url": "../../bundles/*"
+        }
+    ],
+    "scripts": {
+        "test:integration": "${SHOPWARE_DIR}/vendor/bin/phpunit --config phpunit.integration.xml --testdox",
+        "test:unit": "./vendor/bin/phpunit --config phpunit.unit.xml --testdox"
+    }
+}

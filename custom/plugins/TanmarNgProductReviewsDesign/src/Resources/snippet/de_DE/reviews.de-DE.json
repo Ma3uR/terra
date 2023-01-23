@@ -1,0 +1,12 @@
+{
+    "tanmar-product-reviews-design": {
+        "good-vs-bad": {
+            "vs-badge": "vs.",
+            "best-review-headline": "Ein zufriedener Kunde sagt",
+            "worst-review-headline": "Ein kritischer Kunde sagt"
+        },
+        "read-more": {
+            "button": "show %tanmarMore% more"
+        }
+    }
+}

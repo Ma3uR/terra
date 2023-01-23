@@ -1,0 +1,34 @@
+{
+    "name": "mnd/cookie-plugin",
+    "description": "MND Next Cookie Notice Plugin",
+    "version": "1.0.9",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "require": {
+        "shopware/core": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "MndCookie\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "MndCookie\\MndCookie",
+        "label": {
+            "de-DE": "MND Next Cookie Hinweis Plugin",
+            "en-GB": "MND Next Cookie Notice Plugin"
+        },
+        "description": {
+            "de-DE": "Cookie Hinweis mit Consent-Verwaltung (Opt-In/Opt-Out)",
+            "en-GB": "Cookie Notice with Consent Management (Opt-in/Opt-Out)"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/mnd-next.html",
+            "en-GB": "https://store.shopware.com/en/mnd-next.html"
+        },
+        "supportLink": {
+            "de-DE": "https://mndnext.atlassian.net/wiki/spaces/MNDSW/",
+            "en-GB": "https://mndnext.atlassian.net/wiki/spaces/MNDSW/"
+        }
+    }
+}

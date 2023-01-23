@@ -1,0 +1,13 @@
+<script>
+    let checkStatusUrl = '{{ checkStatusUrl }}';
+
+    if (checkStatusUrl) {
+        let auth = new CleverReach.Authorization(checkStatusUrl, completeAuth);
+        auth.getStatus();
+    }
+
+    function completeAuth() {
+        window.parent.location.reload();
+    }
+</script>
+

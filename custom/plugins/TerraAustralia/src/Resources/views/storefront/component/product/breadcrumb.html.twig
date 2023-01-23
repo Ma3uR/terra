@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/component/product/breadcrumb.html.twig' %}
+
+{% block component_product_breadcrumb_placeholder %}
+    {% if item != breadcrumb|last %}
+        <div class="breadcrumb-placeholder">
+            <span class="tr-breadcrumb-placeholder-icon"></span>
+        </div>
+    {% endif %}
+{% endblock %}

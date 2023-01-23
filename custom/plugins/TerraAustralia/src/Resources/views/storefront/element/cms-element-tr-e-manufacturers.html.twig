@@ -1,0 +1,27 @@
+{% block tr_e_manufacturers %}
+    {% set translatedConfig = element.translated.config %}
+
+    {% block tr_e_manufacturers_title %}
+        {% if translatedConfig.title.value %}
+            <h2 class="tr-title tr-title_center">{{ translatedConfig.title.value }}</h2>
+        {% endif %}
+    {% endblock %}
+
+    {% block tr_e_manufacturers_inner %}
+        <div class="tr-brands js-brands-slider">
+            {% for manufacturer in element.data.manufacturers.elements %}
+                {% block tr_e_products_manufacturers_inner_item %}
+                    <div class="tr-brands__item">
+                        {% if manufacturer.media %}
+                            <img src="{{ manufacturer.media.url }}" alt="">
+                        {% else %}
+                            {# Placeholder image here #}
+                            <img src="/bundles/terraaustralia/assets/images/no-image.png" alt="">
+                        {% endif %}
+                    </div>
+                {% endblock %}
+            {% endfor %}
+        </div>
+    {% endblock %}
+
+{% endblock %}

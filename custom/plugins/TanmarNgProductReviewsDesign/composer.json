@@ -1,0 +1,46 @@
+{
+    "name": "tanmar/product-reviews-design",
+    "description": "Optimized product reviews presentation",
+    "version": "v1.1.1",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Tanmar Webentwicklung"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/storefront": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Tanmar\\ProductReviewsDesign\\TanmarNgProductReviewsDesign",
+        "copyright": "(c) by Tanmar Webentwicklung",
+        "label": {
+            "de-DE": "Erweiterte Darstellung der Produktbewertungen",
+            "en-GB": "Optimized product reviews presentation"
+        },
+        "description": {
+            "de-DE": "Erweiterte Darstellung der Produktbewertungen für Shopware 6",
+            "en-GB": "Optimized product reviews presentation"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.tanmar.de",
+            "en-GB": "https://www.tanmar.de"
+        },
+        "supportLink": {
+            "de-DE": "https://www.tanmar.de/kontakt/",
+            "en-GB": "https://www.tanmar.de/kontakt/"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Tanmar\\ProductReviewsDesign\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tanmar\\ProductReviewsDesign\\Test\\": "tests/"
+        }
+    }
+}

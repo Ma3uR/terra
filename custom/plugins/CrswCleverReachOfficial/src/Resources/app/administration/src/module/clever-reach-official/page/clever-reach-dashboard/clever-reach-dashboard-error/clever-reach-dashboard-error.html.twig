@@ -1,0 +1,23 @@
+{% block clever_reach_dashboard_error %}
+<clever-reach-content-window-wrapper>
+    <div class="clever-reach-error">
+        <div class="cr-icon-container">
+            <img class="cr-icon" :src="'/crswcleverreachofficial/administration/img/clever-reach-icon-start-mailing.svg' | asset"/>
+        </div>
+        <h3>
+            {{ $tc('clever-reach.dashboard.errorPageTitle') }}
+        </h3>
+        <div class="clever-reach-error-main-text">
+            {{ $tc('clever-reach.dashboard.errorPageMessage1') }} {{ errorDescription }}
+            <br>{{ $tc('clever-reach.dashboard.errorPageMessage2') }}
+            <a :href="$tc('clever-reach.dashboard.helpAndSupportLink')" rel="noopener" target="_blank">{{ $tc('clever-reach.dashboard.helpAndSupport') }}</a>
+        </div>
+
+        <div class="cr-button-container">
+            <button class="cr-primary" id="cr-retrySync">
+                {{ $tc('clever-reach.dashboard.retrySyncButtonText') }}
+            </button>
+        </div>
+    </div>
+</clever-reach-content-window-wrapper>
+{% endblock %}

@@ -1,0 +1,18 @@
+{
+    "webmasterei": {
+        "general" : {
+            "generateFeed": "Feed generieren",
+            "generateAccessKey": "API Key erstellen",
+            "mainMenuItemGeneral": "Google Review Feed"
+        },
+        "notification" : {
+            "success": {
+                "title": "Erfolg",
+                "feedGenerated": "Der Feed wurde erfolgreich generiert!"
+            },
+            "error": {
+                "title": "Error"
+            }
+        }
+    }
+}

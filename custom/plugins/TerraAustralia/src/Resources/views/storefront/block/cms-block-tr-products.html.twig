@@ -1,0 +1,11 @@
+{% block tr_products %}
+    <div class="col-12">
+        <section class="tr-products">
+            {% set element = block.slots.getSlot('productCollection') %}
+
+            <div class="container">
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% block clever_reach_dashboard_statistics %}
+    <div class="cr-import">
+        <svg viewBox="0 0 400 150" preserveAspectRatio="xMinYMin meet"
+             style="stroke: none; fill: url('#cr-gradient')">
+            <path d="M0,130 C150,180 200,60 400,120 L400,00 L0,0 Z" style="stroke: none;"></path>
+            <defs>
+                <linearGradient id="cr-gradient" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#0AE355"></stop>
+                    <stop offset="72%" stop-color="#00C526"></stop>
+                </linearGradient>
+            </defs>
+        </svg>
+        <div class="cr-import-successful">
+            {{ $tc('clever-reach.dashboard.importSuccessful') }}
+        </div>
+        <div class="cr-success-circle">
+            <i class="fa fa-check"></i>
+        </div>
+        <div class="cr-report-content">
+            <div class="cr-recipients">
+                <div class="cr-dashboard-report-icon-large">
+                    <i class="fa fa-users"></i>
+                </div>
+                <div class="cr-dashboard-concrete-report">
+                    <div class="title">
+                        {{ $tc('clever-reach.dashboard.recipients') }}
+                    </div>
+                    <div class="value">
+                        {{ numberOfRecipients }}
+                    </div>
+                </div>
+            </div>
+            <div class="cr-recipient-list">
+                <div class="cr-dashboard-report-icon-large">
+                    <i class="fa fa-clipboard-list"></i>
+                </div>
+                <div class="cr-dashboard-concrete-report">
+                    <div class="title">
+                        {{ $tc('clever-reach.dashboard.recipientList') }}
+                    </div>
+                    <div class="value cr-recipient-list-value"
+                         :title="recipientListName">
+                        {{ recipientListName }}
+                    </div>
+                </div>
+            </div>
+            <div class="cr-segments">
+                <div class="cr-dashboard-report-icon-small">
+                    <i class="fa fa-tag"></i>
+                </div>
+                <div class="cr-dashboard-concrete-report" id="cr-statistics-segments">
+                    <div class="title">
+                        {{ $tc('clever-reach.dashboard.segments') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cr-gdpr">
+            <a :href="$tc('clever-reach.dashboard.gdprUrl')" target="_blank" rel="noopener" class="cr-link">
+            <i>
+                {{ $tc('clever-reach.dashboard.gdpr') }}
+            </i>
+            </a>
+        </div>
+    </div>
+{% endblock %}

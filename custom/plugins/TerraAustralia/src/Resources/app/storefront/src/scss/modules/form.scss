@@ -1,0 +1,50 @@
+.form-control {
+    font-size: 15px;
+    height: 50px;
+    padding: 10px 20px;
+
+    &::placeholder {
+        color: $default-color;
+    }
+
+    @include respond-to(767) {
+        height: 40px;
+        padding: 5px 15px;
+        font-size: 14px;
+    }
+}
+
+.min-input, .max-input {
+    height: 28px;
+}
+
+.custom-select {
+    padding: 10px 40px 10px 20px;
+    border-radius: 0;
+    background-image: url("/bundles/terraaustralia/assets/images/arrow-select-down.png");
+    background-position: right 10px center;
+    background-size: 25px 25px;
+    font-size: 16px;
+    height: 50px;
+
+    @include respond-to(767) {
+        font-size: 14px;
+        height: 40px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    &:invalid {
+        color: #828282;
+    }
+
+    &:focus {
+        box-shadow: none;
+        color: $default-color;
+        background-image: url("/bundles/terraaustralia/assets/images/arrow-select-up.png");
+    }
+
+    &:hover {
+        color: $default-color;
+    }
+}

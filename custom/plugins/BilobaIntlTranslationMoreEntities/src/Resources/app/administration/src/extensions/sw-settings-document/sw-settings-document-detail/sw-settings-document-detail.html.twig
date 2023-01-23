@@ -1,0 +1,6 @@
+{% block sw_settings_document_detail_actions_abort %}
+    <sw-button :disabled="isTranslationDisabled" :isLoading="isTranslating" @click="onTranslate">
+        {{ $tc('biloba-intl-translation.sw-product.detail.buttonTranslate')}}
+    </sw-button>
+    {% parent %}
+{% endblock %}

@@ -1,0 +1,46 @@
+{% sw_extends '@parent/storefront/page/product-detail/review/review.html.twig' %}
+
+{% block page_product_detail_review_list %}
+    {% set tanmarProductReviewsDesignData = context.context.extensions.tanmarProductReviewsDesignData %}    
+    {% if tanmarProductReviewsDesignData.active and tanmarProductReviewsDesignData.goodVsBadActive and tanmarProductReviewsDesignData.bestReview %}
+        {% block page_product_detail_review_main_tanmar_good_vs_bad %}
+            <div class="tanmar-product-reviews-design-best-vs-worst-review">
+                {% if tanmarProductReviewsDesignData.bestReview %}
+                    <div class="tanmar-product-reviews-design-best-review">
+                        <h3>{{ "tanmar-product-reviews-design.good-vs-bad.best-review-headline"|trans }}</h3>
+                        {% sw_include '@Storefront/storefront/page/product-detail/review/review-item.html.twig' with {'review': tanmarProductReviewsDesignData.bestReview, 'goodVsBadEntry': true} %}
+                    </div>
+                {% endif%}
+                {% if tanmarProductReviewsDesignData.worstReview %}
+                    <div class="tanmar-product-reviews-design-vs-badge">{{ "tanmar-product-reviews-design.good-vs-bad.vs-badge"|trans }}</div>
+                    <div class="tanmar-product-reviews-design-worst-review">
+                        <h3>{{ "tanmar-product-reviews-design.good-vs-bad.worst-review-headline"|trans }}</h3>
+                        {% sw_include '@Storefront/storefront/page/product-detail/review/review-item.html.twig' with {'review': tanmarProductReviewsDesignData.worstReview, 'goodVsBadEntry': true} %}
+                    </div>
+                {% endif %}                
+            </div>
+        {% endblock %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% block page_product_detail_review_form_container %}
+    {% set tanmarProductReviewsDesignData = context.context.extensions.tanmarProductReviewsDesignData %}
+    {% if tanmarProductReviewsDesignData.active and not tanmarProductReviewsDesignData.postCommentActive %}
+        <div class="is--hidden">
+            {{ parent() }}
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block page_product_detail_review_list_content %}
+    {{ parent() }}
+    {% if tanmarProductReviewsDesignData.active and (tanmarProductReviewsDesignData.readMoreCounter > 0) %}
+        <div class="tanmar-product-reviews-design-read-more-counter">
+            <div class="gradient"></div>
+            {{ "tanmar-product-reviews-design.read-more.button"|trans({'%tanmarMore%': tanmarProductReviewsDesignData.readMoreCounterMore}) }}
+        </div>
+    {% endif %}
+{% endblock %}

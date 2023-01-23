@@ -1,0 +1,77 @@
+{% block sw_category_detail_products %}
+    {% parent %}
+    
+    <sw-card :title="$tc('global.category-header-widget.cardTitle')"
+             :isLoading="isLoading">
+             
+             {% block tr_header_widget_card_product_assignment_type %}
+                <sw-single-select
+                    class="tr-header-widget-card-product-assignment-type-select"
+                    :label="$tc('global.category-header-widget.labels.productAssignmentType')"
+                    v-model="widget.source"
+                    @change="onWidgetChangeAssignmentType"
+                    :options="widgetProductAssignmentTypes">
+                </sw-single-select>
+            {% endblock %}
+            
+            <sw-container columns="1fr 1fr" gap="30px">
+                {% block tr_header_widget_card_product_assignment_stream_sorting %}
+                    <sw-entity-single-select
+                        class="tr-header-widget-card-product-assignment-type-stream-select-sorting"
+                        :value="defaultSorting.id"
+                        entity="product_sorting"
+                        @option-select="onDefaultSortingChange"
+                        :label="$tc('global.category-header-widget.labels.defaultSorting')"
+                        :placeholder="$tc('global.category-header-widget.placeholders.defaultSorting')"
+                        :criteria="allProductSortingsCriteria"
+                        labelProperty="label">
+                    </sw-entity-single-select>
+                {% endblock %}
+            </sw-container>
+            
+            <template v-if="widget.source === 'product_stream'">
+                {% block tr_header_widget_card_product_assignment_stream_select %}
+                    <sw-entity-single-select
+                        entity="product_stream"
+                        class="tr-header-widget-card-product-assignment-type-stream-select"
+                        :label="$tc('global.category-header-widget.labels.productStreamChoice')"
+                        :placeholder="$tc('global.category-header-widget.placeholders.productStreamChoice')"
+                        @change="onWidgetChangeProductStream"
+                        v-model="widget.products">
+                    </sw-entity-single-select>
+                {% endblock %}
+            </template>
+            
+            {% block tr_header_widget_card_product_assignment_manually %}
+                <sw-entity-multi-select
+                        v-else
+                        class="tr-header-widget-card-product-assignment-type-manually"
+                        :label="$tc('global.category-header-widget.labels.products')"
+                        :placeholder="$tc('global.category-header-widget.placeholders.products')"
+                        v-model="widget.productCollection"
+                        @change="onWidgetProductsChange">
+                        <template #selection-label-property="{ item }">
+                            <sw-product-variant-info
+                                :variations="item.variation">
+                                {{ item.translated.name || item.name }}
+                            </sw-product-variant-info>
+                        </template>
+                    <template #result-item="{ item, index }">
+                        <slot name="result-item" v-bind="{ item, index }">
+                            <li is="sw-select-result" v-bind="{ item, index }">
+                                {% block sw_entity_single_select_base_results_list_result_label %}
+                                    <span class="sw-select-result__result-item-text">
+                                        <sw-product-variant-info
+                                            :variations="item.variation">
+                                            {{ item.translated.name || item.name }}
+                                        </sw-product-variant-info>
+                                    </span>
+                                {% endblock %}
+                            </li>
+                        </slot>
+                    </template>
+                </sw-entity-multi-select>
+            {% endblock %}
+             
+    </sw-card>
+{% endblock %}

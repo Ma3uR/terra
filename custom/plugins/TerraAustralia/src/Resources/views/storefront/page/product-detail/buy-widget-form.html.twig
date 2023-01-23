@@ -1,0 +1,90 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget-form.html.twig' %}
+
+{% block page_product_detail_buy_container %}
+    {% if buyable %}
+        <div class="form-row buy-widget-container">
+            {% block page_product_detail_buy_quantity_container %}
+                <div class="col-auto">
+                    {% block page_product_detail_buy_quantity %}
+                        <div class="tr-quantity-product">
+                            <input type="number"
+                                   name="lineItems[{{ product.id }}][quantity]"
+                                   value="{{ product.minPurchase }}"
+                                   min="{{ product.minPurchase }}"
+                                   max="{{ product.calculatedMaxPurchase }}"
+                                   class="js-tr-counter-input tr-quantity-product__control"
+                            >
+                            <div class="tr-quantity-product__btn-wrap">
+                                <span class="tr-quantity-product__btn js-tr-plus">
+                                   {% sw_icon 'arrow-medium-up' style {
+                                       'pack': 'solid', 'size': 'xs'
+                                   } %}
+                                </span>
+                                <span class="tr-quantity-product__btn js-tr-minus" disabled="disabled">
+                                    {% sw_icon 'arrow-medium-down' style {
+                                        'pack': 'solid', 'size': 'xs'
+                                    } %}
+                                </span>
+                            </div>
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block page_product_detail_buy_redirect_input %}
+                {# fallback redirect back to detail page is deactivated via js #}
+                <input type="hidden"
+                       name="redirectTo"
+                       value="frontend.detail.page">
+
+                <input type="hidden"
+                       name="redirectParameters"
+                       data-redirect-parameters="true"
+                       value='{"productId": "{{ product.id }}"}'>
+            {% endblock %}
+
+            {% block page_product_detail_buy_product_buy_info %}
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][id]"
+                       value="{{ product.id }}">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][type]"
+                       value="product">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][referencedId]"
+                       value="{{ product.id }}">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][stackable]"
+                       value="1">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][removable]"
+                       value="1">
+            {% endblock %}
+
+            {% block page_product_detail_product_buy_meta %}
+                <input type="hidden"
+                       name="product-name"
+                       value="{{ product.translated.name }}">
+                <input type="hidden"
+                       name="brand-name"
+                       value="{{ product.manufacturer.getName() }}">
+            {% endblock %}
+
+            {% block page_product_detail_buy_button_container %}
+                <div class="col">
+                    {% block page_product_detail_buy_button %}
+                        <button class="btn btn-primary btn-block btn-buy"
+                                title="{{ "detail.addProduct"|trans|striptags }}"
+                                aria-label="{{ "detail.addProduct"|trans|striptags }}">
+                            {{ "detail.addProduct"|trans|sw_sanitize }}
+                        </button>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+{#            <div class="col-auto">#}
+{#                 <button class="tr-wishlist-product-btn"></button> #}
+{#            </div>#}
+        </div>
+    {% endif %}
+{% endblock %}

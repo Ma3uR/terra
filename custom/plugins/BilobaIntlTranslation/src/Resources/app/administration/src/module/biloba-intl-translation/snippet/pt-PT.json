@@ -1,0 +1,78 @@
+{
+    "biloba-intl-translation": {
+    	"general": {
+    		"mainMenuItemGeneral": "Biloba Translation Pro",
+            "notificationTranslated": {
+                "title": "Tradução realizada",
+                "message": "Se as secções individuais não tiverem sido traduzidas, certifique-se de que guardou antes de traduzir."
+            },
+            "notificationTranslatedError": {
+                "title": "Erro",
+                "message": "Ocorreu um erro durante a tradução!"
+            }
+    	},
+        "config": {
+        	"detail": {
+                "contextTargetLanguage": "Língua de destino",
+                "contextSourceLanguage": "Língua de partida",
+                "contextApi": "Api",
+                "placeholder": "Contexto",
+        		"cancelButtonText": "Cancelar",
+                "saveButtonText": "Salvar",
+                "apiLanguageLabel": "API",
+                "targetLanguageLabel": "Língua de destino",
+                "sourceLanguageLabel": "Língua de partida",
+                "errorSameIdTitle" : "Língua de destino corresponde à língua de origem",
+                "errorSameIdMessage": "A língua-alvo não deve corresponder à língua de partida",
+                "errorTitle": "Alguma coisa correu mal!"
+        	},
+            "list": {
+                "columnTargetLanguageTitle": "Língua de destino",
+                "columnSourceLanguageTitle": "Língua de partida",
+                "columnTranslationApiTitle": "API",
+                "createButtonText": "Criar linguagem"
+            }
+        },
+        "log": {
+        	"detail": {
+                "id":"Id",
+                "initiator": "Iniciador",
+                "entityId": "EntityId",
+                "entityType": "EntityType",
+                "type": "Tipo",
+                "status": "Estado",
+                "context": "Contexto",
+                "cancelButtonText": "Cancelar",
+                "saveButtonText": "Salvar"
+            }
+        },
+        "plugin_config": {
+            "configuration": {
+                "deepLButtonTitle": "Verifique DeepL Chave API",
+                "googleButtonTitle": "Verifique Google Chave API"
+            },
+            "notificationError": {
+                "title": "Erro",
+                "message": "A verificação falhou. Por favor certifique-se de que a configuração do plugin foi guardada!"
+            },
+            "notificationSuccess": {
+                "title": "Sucesso",
+                "message": "A chave é válida"
+            }
+        },
+        "sw-product": {
+            "detail": {
+                "buttonTranslate": "Traduzir"
+            }
+        },
+        "sw-settings": {
+            "language": {
+                "detail": {
+                    "title": "Definições de tradução",
+                    "languageNotSupported": "Esta língua não é actualmente suportada. Por favor, certifique-se de que uma localização é seleccionada.\n\nPara mais idiomas, por favor instale o plugin Mais Idiomas, certifique-se de que o idioma que pretende utilizar é suportado pelo plugin.",
+                    "noApiKey": "Não foi definida nenhuma chave API! Por favor, adicione uma chave nas configurações do plugin."
+                }
+            }
+        }
+    }
+}

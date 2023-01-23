@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title lang="de-DE">API Zugangsdaten</title>
+        <title lang="en-GB">API Credentials</title>
+        
+        <input-field type="text">
+            <name>GoogleApiKey</name>
+            <copyable>true</copyable>
+            <label>Google API Key</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>DeeplApiKey</name>
+            <copyable>true</copyable>
+            <label>Deepl API Key</label>
+        </input-field>
+
+        <input-field type="int">
+            <name>ApiTimeout</name>
+            <copyable>true</copyable>
+            <label>API Timeout</label>
+            <helpText lang="de-DE">Der Request Timeout für externe APIs. Standard: 60 Sekunden</helpText>
+            <helpText lang="en-GB">The request timeout for external APIs. Default: 60 seconds</helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title lang="de-DE">API Zugangsdaten prüfen</title>
+        <title lang="en-GB">Check API credentials</title>
+        <component name="check-api-keys">
+            <name>checkApiKeys</name>
+        </component>
+    </card>
+</config>

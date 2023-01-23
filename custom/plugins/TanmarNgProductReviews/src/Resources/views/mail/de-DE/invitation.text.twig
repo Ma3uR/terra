@@ -1,0 +1,7 @@
+Guten Tag {{order.orderCustomer.salutation.letterName }} {{order.orderCustomer.firstName}} {{order.orderCustomer.lastName}},
+Wir hoffen, dass Sie mit den am {{ order.orderDateTime|date }} erworbenen Produkten zufrieden sind und Freude daran haben. Teilen Sie doch Ihre Erfahrungen mit anderen Kunden, indem Sie untenstehende Produkte bewerten. Produktbewertungen helfen bei zukünftigen Kaufentscheidungen, wovon auch Sie profitieren können.
+{% for lineItem in order.lineItems %}
+{% if lineItem.type == "product" %}
+{{ rawUrl('frontend.tanmarproductreviews', {'orderNumber':order.orderNumber, 'hash':hash}, salesChannel.domains|first.url) }} || {{ lineItem.label }}
+{% endif %}
+{% endfor %}

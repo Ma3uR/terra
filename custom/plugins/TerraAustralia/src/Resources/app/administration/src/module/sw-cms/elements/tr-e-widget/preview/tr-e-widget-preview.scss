@@ -1,0 +1,15 @@
+@import "~scss/variables";
+
+.tr-e-widget-preview {
+    overflow: hidden;
+
+    .tr-e-widget-preview-headline {
+        margin-bottom: 10px;
+        border-bottom: 1px solid $color-gray-300;
+        padding-bottom: 5px;
+    }
+    
+    .tr-e-widget-preview-inner {
+        text-align: center;
+    }
+}

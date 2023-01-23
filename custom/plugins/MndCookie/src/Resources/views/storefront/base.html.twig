@@ -1,0 +1,366 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_body_inner %}
+    {{ parent() }}
+
+    {% set mndCookieConfig = config('MndCookie.config') %}
+
+    {% if mndCookieConfig.isAccessPage %}
+        {% set mndCookieType = 'banner' %}
+
+        <div class="mnd-overlay-settings-link {% if mndCookieConfig.showPrivacyLinkAccessPages %}is--active{% endif %}">
+            <a href="javascript:void(0)" class="mnd-cookie-bar-text-link mnd-btn-open-settings">{{ "mnd-cookie.btns.settings" | trans }}</a>
+        </div>
+    {% else %}
+        {% set mndCookieType = mndCookieConfig.type %}
+    {% endif %}
+
+    <div class="mnd-cookie-wrapper"
+         data-mnd-cookie-plugin="true"
+         data-mnd-cookie-options='{
+            "mndCookieType": "{{ mndCookieType }}",
+            "mndCookieActive": {{ mndCookieConfig.active|default(0) }},
+            "mndCookieReloadAfter": {{ mndCookieConfig.reloadAfter|default(0) }},
+            "mndCookieReloadAddUtm": {{ mndCookieConfig.reloadAddUtm|default(0) }},
+            "mndCookieShowSettings": {{ mndCookieConfig.showSettings|default(0) }},
+            "mndCookieShowPrivacyLink": {{ mndCookieConfig.showPrivacyLink|default(0) }},
+            "mndCookieShowLegalLink": {{ mndCookieConfig.showLegalLink|default(0) }},
+            "mndCookieGAActive": {{ mndCookieConfig.gaActive|default(0) }},
+            "mndCookieGAIds": "{{ mndCookieConfig.gaID|default(0) }}",
+            "mndCookieGABehaviour": "{{ mndCookieConfig.gaBehaviour }}",
+            "mndCookieCustom1Label": "{{ mndCookieConfig.custom1Label }}",
+            "mndCookieCustom1Name": "{{ mndCookieConfig.custom1Name }}",
+            "mndCookieCustom1Type": "{{ mndCookieConfig.custom1Type }}",
+            "mndCookieCustom1Behaviour": "{{ mndCookieConfig.custom1Behaviour }}",
+            "mndCookieCustom1Desc": "{{ mndCookieConfig.custom1Desc }}",
+            "mndCookieCustom2Label": "{{ mndCookieConfig.custom2Label }}",
+            "mndCookieCustom2Name": "{{ mndCookieConfig.custom2Name }}",
+            "mndCookieCustom2Type": "{{ mndCookieConfig.custom2Type }}",
+            "mndCookieCustom2Behaviour": "{{ mndCookieConfig.custom2Behaviour }}",
+            "mndCookieCustom2Desc": "{{ mndCookieConfig.custom2Desc }}",
+            "mndCookieCustom3Label": "{{ mndCookieConfig.custom3Label }}",
+            "mndCookieCustom3Name": "{{ mndCookieConfig.custom3Name }}",
+            "mndCookieCustom3Type": "{{ mndCookieConfig.custom3Type }}",
+            "mndCookieCustom3Behaviour": "{{ mndCookieConfig.custom3Behaviour }}",
+            "mndCookieCustom3Desc": "{{ mndCookieConfig.custom3Desc }}",
+            "mndCookieCustom4Label": "{{ mndCookieConfig.custom4Label }}",
+            "mndCookieCustom4Name": "{{ mndCookieConfig.custom4Name }}",
+            "mndCookieCustom4Type": "{{ mndCookieConfig.custom4Type }}",
+            "mndCookieCustom4Behaviour": "{{ mndCookieConfig.custom4Behaviour }}",
+            "mndCookieCustom4Desc": "{{ mndCookieConfig.custom4Desc }}",
+            "mndCookieCustom5Label": "{{ mndCookieConfig.custom5Label }}",
+            "mndCookieCustom5Name": "{{ mndCookieConfig.custom5Name }}",
+            "mndCookieCustom5Type": "{{ mndCookieConfig.custom5Type }}",
+            "mndCookieCustom5Behaviour": "{{ mndCookieConfig.custom5Behaviour }}",
+            "mndCookieCustom5Desc": "{{ mndCookieConfig.custom5Desc }}",
+            "mndFbPixelActive": "{% if mndCookieConfig.fpIsActive == true and config('MndFacebookPixelTracking.config.active') == true and config('MndFacebookPixelTracking.config.pixelId') !='' %}true{% else %}false{% endif %}",
+            "mndFbPixelSetting": "{% if config('MndFacebookPixelTracking.config.optOut') %}{{ config('MndFacebookPixelTracking.config.optOut') }}{% endif %}"
+
+            }'
+        data-mnd-fb-installed="{% if mndCookieConfig.fpIsActive == true and config('MndFacebookPixelTracking.config.active') == true and config('MndFacebookPixelTracking.config.pixelId') !='' %}true{% else %}false{% endif %}">
+
+        <div class="mnd-cookie-bar" aria-hidden="true">
+            <div class="mnd-cookie-bar-text">
+                {{ "mnd-cookie.notice.text" | trans }}
+
+                {% if mndCookieConfig.showPrivacyLink and mndCookieConfig.privacyLinkUrl %}
+                    <a data-url="{{ seoUrl('frontend.cms.page',{ id: config('core.basicInformation.privacyPage') }) }}" data-toggle="modal" href="{{ seoUrl('frontend.cms.page',{ id: config('core.basicInformation.privacyPage') }) }}" class="mnd-cookie-bar-text-link mnd-link-privacy">{{ "mnd-cookie.privacy.linktext" | trans }}</a>
+                {% endif %}
+
+                {% if mndCookieConfig.showLegalLink and mndCookieConfig.legalLinkUrl %}
+                    <a data-url="{{ seoUrl('frontend.cms.page',{ id: config('core.basicInformation.imprintPage') }) }}" data-toggle="modal" href="{{ seoUrl('frontend.cms.page',{ id: config('core.basicInformation.imprintPage') }) }}" class="mnd-cookie-bar-text-link mnd-link-legal">{{ "mnd-cookie.legal.linktext" | trans }}</a>
+                {% endif %}
+            </div>
+
+            <div class="mnd-cookie-bar-btns">
+                {% if mndCookieConfig.showSettings %}
+                    <button type="button" class="btn btn-outline-secondary mnd-btn-open-settings">{{ "mnd-cookie.btns.settings" | trans }}</button>
+                {% endif %}
+
+                <button type="button" class="btn btn-primary mnd-btn-accept-all">{{ "mnd-cookie.btns.accept" | trans }}</button>
+            </div>
+        </div>
+
+        <div class="modal fade mnd-cookie-modal"{% if mndCookieConfig.disableModalClose %} data-keyboard="false" data-backdrop="static"{% endif %} tabindex="-1" role="dialog" aria-labelledby="mndCookieModal" aria-hidden="true" id="mndCookieModal">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        {% if mndCookieConfig.showHeadline %}
+                            <h5>{{ "mnd-cookie.notice.headline" | trans }}</h5>
+                        {% endif %}
+
+                        {{ "mnd-cookie.notice.text" | trans }}
+
+                        {% if mndCookieConfig.showPrivacyLink %}
+                            <a data-url="{{ seoUrl('frontend.cms.page',{ id: config('core.basicInformation.privacyPage') }) }}" data-toggle="modal" href="{{ seoUrl('frontend.cms.page',{ id: config('core.basicInformation.privacyPage') }) }}" class="mnd-cookie-bar-text-link mnd-link-privacy">{{ "mnd-cookie.privacy.linktext" | trans }}</a>
+                        {% endif %}
+
+                        {% if mndCookieConfig.showLegalLink %}
+                            <a data-url="{{ seoUrl('frontend.cms.page',{ id: config('core.basicInformation.imprintPage') }) }}" data-toggle="modal" href="{{ seoUrl('frontend.cms.page',{ id: config('core.basicInformation.imprintPage') }) }}" class="mnd-cookie-bar-text-link mnd-link-legal">{{ "mnd-cookie.legal.linktext" | trans }}</a>
+                        {% endif %}
+                    </div>
+                    <div class="modal-footer border-0">
+                        {% if mndCookieConfig.showSettings %}
+                            <button type="button" class="btn btn-outline-secondary mnd-btn-open-settings" data-dismiss="modal" id="mndModalSettings">{{ "mnd-cookie.btns.settings" | trans }}</button>
+                        {% endif %}
+
+                        <button type="button" class="btn btn-primary mnd-btn-accept-all" data-dismiss="modal" id="mndModalAcceptAll">{{ "mnd-cookie.btns.accept" | trans }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade mnd-cookie-modal" tabindex="-1" role="dialog" aria-labelledby="mndSettingsModal" aria-hidden="true" id="mndSettingsModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="mndSettingsModalLabel">{{ "mnd-cookie.settings.headline" | trans }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mnd-settings-cookie-container">
+                            <div class="mnd-settings-cookie" data-mnd-cookie-type="technical">
+                                <div class="mnd-settings-cookie-name">{{ "mnd-cookie.settings.technical.name" | trans }}</div>
+                                <div class="mnd-settings-cookie-status">
+                                    <span class="mnd-settings-status-container">
+                                        <strong class="mnd-settings-status mnd-settings-status-active">
+                                            {{ "mnd-cookie.settings.active" | trans }}
+                                        </strong>
+                                    </span>
+                                </div>
+                                <div class="mnd-settings-cookie-toggle mnd-settings-cookie-toggle-disabled">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" disabled checked="checked" id="mndTechnicalCookies">
+                                        <label class="custom-control-label" for="mndTechnicalCookies"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mnd-settings-cookie-text">
+                                {{ "mnd-cookie.settings.technical.text" | trans }}
+                            </div>
+                        </div>
+
+                        {% if mndCookieConfig.gaActive %}
+                            <div class="mnd-settings-cookie-container">
+                                <div class="mnd-settings-cookie" data-mnd-cookie-type="ga">
+                                    <div class="mnd-settings-cookie-name">{{ "mnd-cookie.settings.analytics.name" | trans }}</div>
+                                    <div class="mnd-settings-cookie-status">
+                                        <span class="mnd-settings-status-container">
+                                            <strong class="mnd-settings-status mnd-settings-status-active">{{ "mnd-cookie.settings.active" | trans }}</strong>
+                                            <strong class="mnd-settings-status mnd-settings-status-inactive">{{ "mnd-cookie.settings.inactive" | trans }}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="mnd-settings-cookie-toggle">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="mndAnalyticsCookie">
+                                            <label class="custom-control-label" for="mndAnalyticsCookie"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mnd-settings-cookie-text">
+                                    {{ mndCookieConfig.gaDesc|raw }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if mndCookieConfig.fpIsActive == true and config('MndFacebookPixelTracking.config.active') == true and config('MndFacebookPixelTracking.config.pixelId') !='' %}
+                            <div class="mnd-settings-cookie-container">
+                                <div class="mnd-settings-cookie" data-mnd-cookie-type="fb">
+                                    <div class="mnd-settings-cookie-name">{{ "mnd-cookie.settings.pixel.name" | trans }}</div>
+                                    <div class="mnd-settings-cookie-status">
+                                        <span class="mnd-settings-status-container">
+                                            <strong class="mnd-settings-status mnd-settings-status-active">{{ "mnd-cookie.settings.active" | trans }}</strong>
+                                            <strong class="mnd-settings-status mnd-settings-status-inactive">{{ "mnd-cookie.settings.inactive" | trans }}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="mnd-settings-cookie-toggle">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="mndFacebookPixelCookie">
+                                            <label class="custom-control-label" for="mndFacebookPixelCookie"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mnd-settings-cookie-text">
+                                    {{ config('MndFacebookPixelTracking.config.pixelDesc') }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if mndCookieConfig.custom1Label != '' and mndCookieConfig.custom1Name != '' %}
+                            <div class="mnd-settings-cookie-container">
+                                <div class="mnd-settings-cookie" data-mnd-cookie-type="{{ mndCookieConfig.custom1Name }}">
+                                    <div class="mnd-settings-cookie-name">{{ mndCookieConfig.custom1Label }}</div>
+                                    <div class="mnd-settings-cookie-status">
+                                        <span class="mnd-settings-status-container">
+                                            <strong class="mnd-settings-status mnd-settings-status-active">{{ "mnd-cookie.settings.active" | trans }}</strong>
+                                            <strong class="mnd-settings-status mnd-settings-status-inactive">{{ "mnd-cookie.settings.inactive" | trans }}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="mnd-settings-cookie-toggle">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="mndCustom1Cookie">
+                                            <label class="custom-control-label" for="mndCustom1Cookie"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mnd-settings-cookie-text">
+                                    {{ mndCookieConfig.custom1Desc|raw }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if mndCookieConfig.custom2Label != '' and mndCookieConfig.custom2Name != '' %}
+                            <div class="mnd-settings-cookie-container">
+                                <div class="mnd-settings-cookie" data-mnd-cookie-type="{{ mndCookieConfig.custom2Name }}">
+                                    <div class="mnd-settings-cookie-name">{{ mndCookieConfig.custom2Label }}</div>
+                                    <div class="mnd-settings-cookie-status">
+                                        <span class="mnd-settings-status-container">
+                                            <strong class="mnd-settings-status mnd-settings-status-active">{{ "mnd-cookie.settings.active" | trans }}</strong>
+                                            <strong class="mnd-settings-status mnd-settings-status-inactive">{{ "mnd-cookie.settings.inactive" | trans }}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="mnd-settings-cookie-toggle">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="mndCustom2Cookie">
+                                            <label class="custom-control-label" for="mndCustom2Cookie"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mnd-settings-cookie-text">
+                                    {{ mndCookieConfig.custom2Desc|raw }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if mndCookieConfig.custom3Label != '' and mndCookieConfig.custom3Name != '' %}
+                            <div class="mnd-settings-cookie-container">
+                                <div class="mnd-settings-cookie" data-mnd-cookie-type="{{ mndCookieConfig.custom3Name }}">
+                                    <div class="mnd-settings-cookie-name">{{ mndCookieConfig.custom3Label }}</div>
+                                    <div class="mnd-settings-cookie-status">
+                                        <span class="mnd-settings-status-container">
+                                            <strong class="mnd-settings-status mnd-settings-status-active">{{ "mnd-cookie.settings.active" | trans }}</strong>
+                                            <strong class="mnd-settings-status mnd-settings-status-inactive">{{ "mnd-cookie.settings.inactive" | trans }}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="mnd-settings-cookie-toggle">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="mndCustom3Cookie">
+                                            <label class="custom-control-label" for="mndCustom3Cookie"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mnd-settings-cookie-text">
+                                    {{ mndCookieConfig.custom3Desc|raw }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if mndCookieConfig.custom4Label != '' and mndCookieConfig.custom4Name != '' %}
+                            <div class="mnd-settings-cookie-container">
+                                <div class="mnd-settings-cookie" data-mnd-cookie-type="{{ mndCookieConfig.custom4Name }}">
+                                    <div class="mnd-settings-cookie-name">{{ mndCookieConfig.custom4Label }}</div>
+                                    <div class="mnd-settings-cookie-status">
+                                        <span class="mnd-settings-status-container">
+                                            <strong class="mnd-settings-status mnd-settings-status-active">{{ "mnd-cookie.settings.active" | trans }}</strong>
+                                            <strong class="mnd-settings-status mnd-settings-status-inactive">{{ "mnd-cookie.settings.inactive" | trans }}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="mnd-settings-cookie-toggle">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="mndCustom4Cookie">
+                                            <label class="custom-control-label" for="mndCustom4Cookie"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mnd-settings-cookie-text">
+                                    {{ mndCookieConfig.custom4Desc|raw }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if mndCookieConfig.custom5Label != '' and mndCookieConfig.custom5Name != '' %}
+                            <div class="mnd-settings-cookie-container">
+                                <div class="mnd-settings-cookie" data-mnd-cookie-type="{{ mndCookieConfig.custom5Name }}">
+                                    <div class="mnd-settings-cookie-name">{{ mndCookieConfig.custom5Label }}</div>
+                                    <div class="mnd-settings-cookie-status">
+                                        <span class="mnd-settings-status-container">
+                                            <strong class="mnd-settings-status mnd-settings-status-active">{{ "mnd-cookie.settings.active" | trans }}</strong>
+                                            <strong class="mnd-settings-status mnd-settings-status-inactive">{{ "mnd-cookie.settings.inactive" | trans }}</strong>
+                                        </span>
+                                    </div>
+                                    <div class="mnd-settings-cookie-toggle">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="mndCustom5Cookie">
+                                            <label class="custom-control-label" for="mndCustom5Cookie"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mnd-settings-cookie-text">
+                                    {{ mndCookieConfig.custom5Desc|raw }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-outline-secondary mnd-btn-save-settings">{{ "mnd-cookie.btns.savebtn" | trans }}</button>
+                        <button type="button" class="btn btn-primary mnd-btn-accept-all" id="mndSettingsModalAcceptAll">{{ "mnd-cookie.btns.accept" | trans }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block base_script_hmr_mode %}
+    {{ parent() }}
+    {% set mndCookieConfig = config('MndCookie.config') %}
+
+    {% if mndCookieConfig.active %}
+        {% if mndCookieConfig.gaActive %}
+            {% set mndGACookie = app.request.cookies.get('mnd-ga-opted-in') %}
+
+            {% if mndCookieConfig.gaIntegration != '' and mndGACookie == "true" %}
+                {{ mndCookieConfig.gaIntegration|raw }}
+            {% endif %}
+        {% endif %}
+
+        {% if mndCookieConfig.custom1Label != '' and mndCookieConfig.custom1Name != '' %}
+            {% set mndCookieCustom1 = app.request.cookies.get(mndCookieConfig.custom1Name) %}
+
+            {% if mndCookieConfig.custom1Integration != '' and mndCookieCustom1 == "true" %}
+                {{ mndCookieConfig.custom1Integration|raw }}
+            {% endif %}
+        {% endif %}
+
+        {% if mndCookieConfig.custom2Label != '' and mndCookieConfig.custom2Name != '' %}
+            {% set mndCookieCustom2 = app.request.cookies.get(mndCookieConfig.custom2Name) %}
+            {% if mndCookieConfig.custom2Integration != '' and mndCookieCustom2 == "true" %}
+                {{ mndCookieConfig.custom2Integration|raw }}
+            {% endif %}
+        {% endif %}
+
+        {% if mndCookieConfig.custom3Label != '' and mndCookieConfig.custom3Name != '' %}
+            {% set mndCookieCustom3 = app.request.cookies.get(mndCookieConfig.custom3Name) %}
+            {% if mndCookieConfig.custom3Integration != '' and mndCookieCustom3 == "true" %}
+                {{ mndCookieConfig.custom3Integration|raw }}
+            {% endif %}
+        {% endif %}
+
+        {% if mndCookieConfig.custom4Label != '' and mndCookieConfig.custom4Name != '' %}
+            {% set mndCookieCustom4 = app.request.cookies.get(mndCookieConfig.custom4Name) %}
+            {% if mndCookieConfig.custom4Integration != '' and mndCookieCustom4 == "true" %}
+                {{ mndCookieConfig.custom4Integration|raw }}
+            {% endif %}
+        {% endif %}
+
+        {% if mndCookieConfig.custom5Label != '' and mndCookieConfig.custom5Name != '' %}
+            {% set mndCookieCustom5 = app.request.cookies.get(mndCookieConfig.custom5Name) %}
+            {% if mndCookieConfig.custom5Integration != '' and mndCookieCustom5 == "true" %}
+                {{ mndCookieConfig.custom5Integration|raw }}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endblock %}

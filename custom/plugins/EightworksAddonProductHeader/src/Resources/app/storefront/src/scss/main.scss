@@ -1,0 +1,27 @@
+.ew-addon-product-header {
+
+    // Overlay styles
+    .ew-addon-product-header-overlay {
+        z-index: 900;
+        pointer-events: none;
+    }
+
+    // Mobile scaling classes
+    @include media-breakpoint-down(xs) {
+        .ew-addon-product-header-scale-mobile-100 {
+            zoom: 1;
+        }
+        .ew-addon-product-header-scale-mobile-75 {
+            zoom: 0.75;
+        }
+        .ew-addon-product-header-scale-mobile-50 {
+            zoom: 0.5;
+        }
+        .ew-addon-product-header-scale-mobile-25 {
+            zoom: 0.25;
+        }
+        .ew-addon-product-header-scale-mobile-0 {
+            visibility: hidden;
+        }
+    }
+}

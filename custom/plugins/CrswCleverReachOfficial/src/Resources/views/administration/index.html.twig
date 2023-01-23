@@ -1,0 +1,7 @@
+{% sw_extends 'administration/index.html.twig' %}
+
+{% block administration_scripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/crswcleverreachofficial/administration/js/crsw-clever-reach-official.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/crswcleverreachofficial/administration/css/crsw-clever-reach-official.css') }}">
+{% endblock %}

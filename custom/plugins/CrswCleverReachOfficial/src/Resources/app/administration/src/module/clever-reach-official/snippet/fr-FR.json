@@ -1,0 +1,44 @@
+{
+  "clever-reach": {
+    "basic": {
+      "label": "CleverReach",
+      "description": "CleverReach - E-Mail Marketing"
+    },
+    "initialSync": {
+      "createSubscriberList":"Créer une liste d\\'abonnés dans CleverReach®",
+      "importSubscribers": "Importer vos destinataires de {list} à CleverReach®",
+      "addFields": "Ajouter des champs de données, des segments et des Balises à liste d\\'abonnés",
+      "banner": {
+        "title": "Commencez directement et Créez une campagne de courrier électronique dans CleverReach dès maintenant",
+        "message": "L'importation de vos données se poursuit en arrière-plan",
+        "buttonText": "Créer dès maintenant votre campagne email!"
+      }
+    },
+    "dashboard": {
+      "dashboard": "Tableaux de bord",
+      "helpAndSupport": "Aide & Support",
+      "helpAndSupportLink": "https://support.cleverreach.de/hc/en-us",
+      "cleverReachId": "CleverReach® Numéro Client:",
+      "title": "Marketing par Email Ciblées pour réaliser plus de ventes!",
+      "textMessage": "Créer des mailings attractifs afin de présentez vos produits à vos clients.",
+      "buttonTextFirst": "Créer votre première newsletter →",
+      "buttonTextNext": "Créez maintenant votre prochaine Newsletters! →",
+      "importSuccessful": "L'importation réussie!",
+      "recipients": "Destinataires",
+      "recipientList": "Liste des destinataires",
+      "segments": "Segments",
+      "gdpr": "Observez les notes sur le GDPR!",
+      "gdprUrl": "https://www.cleverreach.com/en/features/privacy-security/eu-general-data-protection-regulation-gdpr/",
+      "errorPageTitle": "Une erreur est survenue!",
+      "errorPageMessage1": "Description de l'erreur: ",
+      "errorPageMessage2": " Pour plus de détails, veuillez contacter ",
+      "retrySyncButtonText": "Veuillez réessayer la synchronisation"
+    },
+    "refresh": {
+      "title": "API token non valide",
+      "description": "Le token d'accès à l'API CleverReach® n'est plus valide. Afin de permettre au système de synchroniser vos données, Vous devrez toutefois vous authentifier à nouveau avec votre CleverReach® ID: {id}. Si vous souhaitez utiliser un compte CleverReach® différent, vous devez réinstaller cette extension.",
+      "authenticateButtonText": "Authenticate now",
+      "helloIcon": "/bundles/crswcleverreachofficial/administration/img/clever-reach-icon-bonjour.png"
+    }
+  }
+}

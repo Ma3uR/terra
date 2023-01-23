@@ -1,0 +1,95 @@
+{% block tr_e_contacts_config %}
+    <div class="tr-e-contacts-config">
+        {% block tr_e_contacts_config_media_upload %}
+            <sw-media-upload-v2 variant="regular"
+                             class="tr-e-contacts-config-upload"
+                             :uploadTag="uploadTag"
+                             :source="previewSource"
+                             :allowMultiSelect="false"
+                             :defaultFolder="cmsPageState.pageEntityName"
+                             :label="$tc('global.cms.elements.tr-contacts.labels.background')"
+                             @media-upload-sidebar-open="onOpenMediaModal"
+                             @media-upload-remove-image="onImageRemove">
+            </sw-media-upload-v2>
+            <sw-upload-listener
+                    :uploadTag="uploadTag"
+                    autoUpload
+                    @media-upload-finish="onImageUpload">
+            </sw-upload-listener>
+        {% endblock %}
+
+        {% block tr_e_contacts_config_title %}
+            <div class="tr-e-contacts-config__title">
+                <sw-field v-model="element.config.title.value"
+                          class="tr-e-contacts-config__title-label"
+                          type="text"
+                          :label="$tc('global.cms.elements.tr-contacts.labels.title')"
+                          :placeholder="$tc('global.cms.elements.tr-contacts.placeholders.title')">
+                </sw-field>
+            </div>
+        {% endblock %}
+        
+        {% block tr_e_contacts_config_phone %}
+            <div class="tr-e-contacts-config__phone">
+                <sw-field v-model="element.config.phone.value"
+                          class="tr-e-contacts-config__phone-label"
+                          type="text"
+                          :label="$tc('global.cms.elements.tr-contacts.labels.phone')"
+                          :placeholder="$tc('global.cms.elements.tr-contacts.placeholders.phone')">
+                </sw-field>
+            </div>
+        {% endblock %}
+        
+        {% block tr_e_contacts_config_email %}
+            <div class="tr-e-contacts-config__email">
+                <sw-field v-model="element.config.email.value"
+                          class="tr-e-contacts-config__email-label"
+                          type="text"
+                          :label="$tc('global.cms.elements.tr-contacts.labels.email')"
+                          :placeholder="$tc('global.cms.elements.tr-contacts.placeholders.email')">
+                </sw-field>
+            </div>
+        {% endblock %}
+        
+        {% block tr_e_contacts_config_mode %}
+            <div class="tr-e-contacts-config__mode">
+                <sw-radio-field 
+                    :label="$tc('global.cms.elements.tr-contacts.labels.mode')"
+                    class="tr-e-contacts-config__mode-label"
+                    identification="fieldType"
+                    v-model="element.config.mode.value"
+                    :options="[
+                        {'value': 'widget', 'name': 'Only contacts'},
+                        {'value': 'form', 'name': 'Contacts with form'},
+                        {'value': 'widget_link', 'name': 'Contacts with link'}
+                    ]">
+                </sw-radio-field>
+            </div>
+        {% endblock %}
+        
+        {% block tr_e_contacts_config_linkto %}
+            <div v-if="element.config.mode.value == 'widget_link'" class="tr-e-contacts-config__linkto">
+                <sw-field v-model="element.config.linkTo.value"
+                          class="tr-e-contacts-config__linkto-label"
+                          type="text"
+                          :label="$tc('global.cms.elements.tr-contacts.labels.linkto')"
+                          :placeholder="$tc('global.cms.elements.tr-contacts.placeholders.linkto')">
+                </sw-field>
+            </div>
+        {% endblock %}
+        
+        {% block tr_e_contacts_config_background_modal %}
+            <sw-media-modal-v2
+                variant="regular"
+                v-if="mediaModalIsOpen"
+                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                :entityContext="cmsPageState.entityName"
+                :allowMultiSelect="false"
+                :initialFolderId="cmsPageState.defaultMediaFolderId"
+                @media-upload-remove-image="onImageRemove"
+                @media-modal-selection-change="onSelectionChanges"
+                @modal-close="onCloseModal">
+            </sw-media-modal-v2>
+        {% endblock %}
+    </div>
+{% endblock %}

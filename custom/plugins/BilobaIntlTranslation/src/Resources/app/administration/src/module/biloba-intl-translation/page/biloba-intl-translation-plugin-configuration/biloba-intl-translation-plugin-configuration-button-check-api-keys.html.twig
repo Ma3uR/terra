@@ -1,0 +1,16 @@
+<div class="button-container">
+    <div class="button-group">
+        <sw-button
+            ref="checkApiKeyButton"
+            data-identifier="google"
+            variant="ghost"
+            @click="checkApi">{{ $t('biloba-intl-translation.plugin_config.configuration.googleButtonTitle') }}
+        </sw-button>
+        <sw-button
+            ref="checkApiKeyButton"
+            data-identifier="deepl"
+            variant="ghost"
+            @click="checkApi">{{ $t('biloba-intl-translation.plugin_config.configuration.deepLButtonTitle') }}
+        </sw-button>
+    </div>
+</div>

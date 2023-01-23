@@ -1,0 +1,63 @@
+{% sw_extends '@Storefront/storefront/page/content/index.html.twig' %}
+
+{% block base_main_inner %}
+    <div class="container-main">
+        {% block page_content %}
+            {% if not (controllerName|lower == 'navigation' and controllerAction|lower == 'home') %}
+                {% set bcCover = null %}
+                {% set category = page.header.navigation.active %}
+
+                {% if category %}
+                    {% if category.customFields.terra_listing_bc_background %}
+                        {% set mediaCollection = searchMedia([category.customFields.terra_listing_bc_background], context.context) %}
+                        {% set bcCover = mediaCollection.get(category.customFields.terra_listing_bc_background) %}
+                    {% endif %}
+                {% endif %}
+
+                {% if bcCover %}
+                    <div class="tr-visual-block" style="background-image: url('{{ bcCover.url }}')">
+                        <div class="container">
+                            <div class="breadcrumb cms-breadcrumb cms-breadcrump">
+                                <a href="/">{{ "terraAustralia.header.home" | trans }}</a>
+                                <div class="breadcrumb-placeholder">
+                                    <span class="tr-breadcrumb-placeholder-icon"></span>
+                                </div>
+
+                                {% block cms_breadcrumb %}
+                                    {% sw_include '@Storefront/storefront/layout/breadcrumb.html.twig' with {
+                                        navigationTree: page.header.navigation.tree,
+                                        category: page.header.navigation.active
+                                    } only %}
+                                {% endblock %}
+                            </div>
+                            <h2 class="tr-title tr-title_center">{{ page.header.navigation.active.name }}</h2>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="tr-visual-block tr-visual-block_no-bg">
+                        <div class="container">
+                            <div class="breadcrumb cms-breadcrumb cms-breadcrump">
+                                <a href="/">{{ "terraAustralia.header.home" | trans }}</a>
+                                <div class="breadcrumb-placeholder">
+                                    <span class="tr-breadcrumb-placeholder-icon"></span>
+                                </div>
+
+                                {% sw_include '@Storefront/storefront/layout/breadcrumb.html.twig' with {
+                                    navigationTree: page.header.navigation.tree,
+                                    category: page.header.navigation.active
+                                } only %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endif %}
+
+            <div class="cms-page">
+                {% block page_content_blocks %}
+                    {% sw_include "@Storefront/storefront/page/content/detail.html.twig" with {'cmsPage': page.cmsPage} %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

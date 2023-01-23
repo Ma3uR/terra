@@ -1,0 +1,78 @@
+{
+    "biloba-intl-translation": {
+    	"general": {
+    		"mainMenuItemGeneral": "Biloba Translation Pro",
+            "notificationTranslated": {
+                "title": "Wykonane tłumaczenie",
+                "message": "Jeśli poszczególne sekcje nie zostały przetłumaczone, należy upewnić się, że zostały zapisane przed tłumaczeniem."
+            },
+            "notificationTranslatedError": {
+                "title": "Błąd",
+                "message": "Podczas tłumaczenia wystąpił błąd!"
+            }
+    	},
+        "config": {
+        	"detail": {
+                "contextTargetLanguage": "Język docelowy",
+                "contextSourceLanguage": "Język źródłowy",
+                "contextApi": "Api",
+                "placeholder": "Kontekst",
+        		"cancelButtonText": "Anuluj",
+                "saveButtonText": "Zapisz",
+                "apiLanguageLabel": "API",
+                "targetLanguageLabel": "Język docelowy",
+                "sourceLanguageLabel": "Język źródłowy",
+                "errorSameIdTitle" : "Dopasowanie języka docelowego Język źródłowy",
+                "errorSameIdMessage": "Język docelowy nie może być zgodny z językiem źródłowym.",
+                "errorTitle": "Coś poszło nie tak!"
+        	},
+            "list": {
+                "columnTargetLanguageTitle": "Język docelowy",
+                "columnSourceLanguageTitle": "Język źródłowy",
+                "columnTranslationApiTitle": "API",
+                "createButtonText": "Tworzenie języka"
+            }
+        },
+        "log": {
+        	"detail": {
+                "id":"Id",
+                "initiator": "Inicjator",
+                "entityId": "EntityId",
+                "entityType": "EntityType",
+                "type": "Typ",
+                "status": "Status",
+                "context": "Kontekst",
+                "cancelButtonText": "Anuluj",
+                "saveButtonText": "Zapisz"
+            }
+        },
+        "plugin_config": {
+            "configuration": {
+                "deepLButtonTitle": "Sprawdź DeepL Klucz API",
+                "googleButtonTitle": "Sprawdź Google Klucz API"
+            },
+            "notificationError": {
+                "title": "Błąd",
+                "message": "Kontrola nie powiodła się. Proszę upewnić się, że konfiguracja wtyczki została zapisana!"
+            },
+            "notificationSuccess": {
+                "title": "Sukces",
+                "message": "Klucz jest ważny"
+            }
+        },
+        "sw-product": {
+            "detail": {
+                "buttonTranslate": "Tłumaczenie"
+            }
+        },
+        "sw-settings": {
+            "language": {
+                "detail": {
+                    "title": "Ustawienia tłumaczeń",
+                    "languageNotSupported": "Ten język nie jest obecnie obsługiwany. Proszę upewnić się, że wybrana lokalizacja jest wybrana.\n\nW przypadku większej liczby języków proszę zainstalować wtyczkę More Languages, upewnij się, że język, którego chcesz używać, jest obsługiwany przez wtyczkę.",
+                    "noApiKey": "Nie ustawiono żadnego klucza API! Proszę dodać klucz w ustawieniach wtyczki."
+                }
+            }
+        }
+    }
+}
